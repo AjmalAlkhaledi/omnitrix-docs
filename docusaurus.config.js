@@ -7,9 +7,13 @@ const config = {
   tagline: 'Asynchronous PHP APIs on OpenSwoole',
   favicon: 'img/favicon.svg',
 
-  // Set DOCS_URL and DOCS_BASE_URL when deploying (for example to GitHub Pages).
-  url: process.env.DOCS_URL || 'http://localhost:3000',
-  baseUrl: process.env.DOCS_BASE_URL || '/',
+  // Published on GitHub Pages; DOCS_URL and DOCS_BASE_URL override the address (for example for another host).
+  url: process.env.DOCS_URL || 'https://ajmalalkhaledi.github.io',
+  baseUrl: process.env.DOCS_BASE_URL || '/omnitrix-docs/',
+  organizationName: 'AjmalAlkhaledi',
+  projectName: 'omnitrix-docs',
+  deploymentBranch: 'gh-pages',
+  trailingSlash: false,
 
   onBrokenLinks: 'throw',
   onBrokenAnchors: 'warn',
