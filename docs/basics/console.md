@@ -30,6 +30,23 @@ Every project has a command line: `php omnitrix`. Run `php omnitrix list` for al
 When `app.env` is `production`, `migrate:rollback`, `migrate:reset`, `migrate:fresh` and
 `db:seed` refuse to run unless `--force` is given.
 
+If the database named in `config/database.php` does not exist yet, `migrate` and
+`migrate:fresh` ask whether to create it:
+
+```text
+$ php omnitrix migrate
+The database 'omnitrix' does not exist.
+Would you like to create it? (yes/no) [yes] yes
+Created database 'omnitrix'.
+  Migrated 2026_01_01_000000_create_users_table (13.5 ms)
+  Migrated 2026_01_01_000001_create_posts_table (17.4 ms)
+Migrations complete.
+```
+
+Answering `no` exits without changing anything. With `--no-interaction` the database is
+created. It uses the configured `charset` and `collation` (`utf8mb4` and `utf8mb4_unicode_ci` by
+default), and the database user needs the `CREATE` privilege.
+
 ## Generators
 
 | Command | Creates |

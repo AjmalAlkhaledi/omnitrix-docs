@@ -128,7 +128,7 @@ To run a statement the builder does not cover, execute SQL directly:
 
 | Command | Effect |
 |---|---|
-| `migrate` | runs every pending migration as one new batch |
+| `migrate` | runs every pending migration as one new batch; offers to create the database if it does not exist |
 | `migrate --seed` | the same, then runs `DatabaseSeeder` |
 | `migrate:status` | shows each migration, whether it ran and its batch |
 | `migrate:rollback [--step=N]` | reverts the last N batches (default 1) |

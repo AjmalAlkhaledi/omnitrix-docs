@@ -1491,6 +1491,15 @@ An ordered list of models returned by queries. Serialises to a JSON array.
 - `offsetSet(mixed $offset, mixed $value): void`
 - `offsetUnset(mixed $offset): void`
 
+### DatabaseCreator (class)
+
+Creates the database named in the `database` configuration when it does not exist yet. Used by
+
+- `__construct(array $section, ?string $connection = NULL)`
+- `static isUnknownDatabase(Throwable $error): bool` — True when `$error` (or one of its previous exceptions) is MySQL's "Unknown database".
+- `name(): string`
+- `create(): void` — Creates the database (if it does not exist) with the configured charset and collation.
+
 ## Omnitrix\Database\Migrations
 
 ### Migration (abstract class)

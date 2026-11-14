@@ -72,7 +72,7 @@ Both ways produce the same project and copy `.env.example` to `.env`.
 ```bash
 cd my-api
 # edit .env: database and Redis credentials
-php omnitrix migrate
+php omnitrix migrate          # offers to create the database if it does not exist yet
 php omnitrix serve
 ```
 
