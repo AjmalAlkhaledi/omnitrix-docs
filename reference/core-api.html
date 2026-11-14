@@ -1,0 +1,1099 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-reference/core-api" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.2">
+<title data-rh="true">Core API (omnitrix/core) | Omnitrix</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://ajmalalkhaledi.github.io/omnitrix-docs/reference/core-api"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Core API (omnitrix/core) | Omnitrix"><meta data-rh="true" name="description" content="Public classes and methods, generated from the source. Classes and methods marked @internal are implementation details and are not listed."><meta data-rh="true" property="og:description" content="Public classes and methods, generated from the source. Classes and methods marked @internal are implementation details and are not listed."><link data-rh="true" rel="icon" href="/omnitrix-docs/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://ajmalalkhaledi.github.io/omnitrix-docs/reference/core-api"><link data-rh="true" rel="alternate" href="https://ajmalalkhaledi.github.io/omnitrix-docs/reference/core-api" hreflang="en"><link data-rh="true" rel="alternate" href="https://ajmalalkhaledi.github.io/omnitrix-docs/reference/core-api" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Core API (omnitrix/core)","item":"https://ajmalalkhaledi.github.io/omnitrix-docs/reference/core-api"}]}</script><link rel="stylesheet" href="/omnitrix-docs/assets/css/styles.f02ed9f6.css">
+<script src="/omnitrix-docs/assets/js/runtime~main.c6ae52aa.js" defer="defer"></script>
+<script src="/omnitrix-docs/assets/js/main.cbb53c60.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/omnitrix-docs/"><div class="navbar__logo"><img src="/omnitrix-docs/img/logo.svg" alt="Omnitrix" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/omnitrix-docs/img/logo.svg" alt="Omnitrix" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Omnitrix</b></a><a class="navbar__item navbar__link" href="/omnitrix-docs/">Guide</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/omnitrix-docs/reference/framework-api">Reference</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/omnitrix-docs/reference/framework-api"><span class="linkLabel_WmDU">Framework API (omnitrix/framework)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" href="/omnitrix-docs/reference/core-api"><span class="linkLabel_WmDU">Core API (omnitrix/core)</span></a></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/omnitrix-docs/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Core API (omnitrix/core)</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Core API (omnitrix/core)</h1></header>
+<p>Public classes and methods, generated from the source. Classes and methods marked <code>@internal</code> are implementation details and are not listed.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcorecache">Omnitrix\Core\Cache<a href="#omnitrixcorecache" class="hash-link" aria-label="Direct link to Omnitrix\Core\Cache" title="Direct link to Omnitrix\Core\Cache" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cache-class">Cache (class)<a href="#cache-class" class="hash-link" aria-label="Direct link to Cache (class)" title="Direct link to Cache (class)" translate="no">​</a></h3>
+<p>Application cache over a key-value store.</p>
+<ul>
+<li class=""><code>__construct(Omnitrix\Core\Cache\KeyValueStoreInterface $store, string $prefix = &#x27;cache:&#x27;, int $defaultTtl = 3600)</code></li>
+<li class=""><code>get(string $key, mixed $default = NULL): mixed</code></li>
+<li class=""><code>set(string $key, mixed $value, ?int $ttl = NULL): bool</code></li>
+<li class=""><code>add(string $key, mixed $value, ?int $ttl = NULL): bool</code> — Stores only when the key is absent (atomic).</li>
+<li class=""><code>forever(string $key, mixed $value): bool</code></li>
+<li class=""><code>has(string $key): bool</code></li>
+<li class=""><code>delete(string ...$keys): int</code></li>
+<li class=""><code>getMany(array $keys): array</code></li>
+<li class=""><code>remember(string $key, ?int $ttl, callable $compute): mixed</code> — Returns the cached value or computes, stores and returns it.</li>
+<li class=""><code>increment(string $key, int $by = 1): int</code></li>
+<li class=""><code>decrement(string $key, int $by = 1): int</code></li>
+<li class=""><code>ttl(string $key): int</code></li>
+<li class=""><code>key(string $key): string</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="keyvaluestoreinterface-interface">KeyValueStoreInterface (interface)<a href="#keyvaluestoreinterface-interface" class="hash-link" aria-label="Direct link to KeyValueStoreInterface (interface)" title="Direct link to KeyValueStoreInterface (interface)" translate="no">​</a></h3>
+<p>Minimal string store the cache is built on (Redis in production, in-memory in tests).</p>
+<ul>
+<li class=""><code>get(string $key): ?string</code></li>
+<li class=""><code>set(string $key, string $value, ?int $ttl = NULL): bool</code></li>
+<li class=""><code>setIfAbsent(string $key, string $value, ?int $ttl = NULL): bool</code></li>
+<li class=""><code>getMany(array $keys): array</code></li>
+<li class=""><code>delete(string ...$keys): int</code></li>
+<li class=""><code>exists(string $key): bool</code></li>
+<li class=""><code>increment(string $key, int $by = 1): int</code></li>
+<li class=""><code>decrement(string $key, int $by = 1): int</code></li>
+<li class=""><code>expire(string $key, int $seconds): bool</code></li>
+<li class=""><code>ttl(string $key): int</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcoreconcurrency">Omnitrix\Core\Concurrency<a href="#omnitrixcoreconcurrency" class="hash-link" aria-label="Direct link to Omnitrix\Core\Concurrency" title="Direct link to Omnitrix\Core\Concurrency" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="async-class">Async (class)<a href="#async-class" class="hash-link" aria-label="Direct link to Async (class)" title="Direct link to Async (class)" translate="no">​</a></h3>
+<p>Structured concurrency combinators over {@see TaskScope}.</p>
+<ul>
+<li class=""><code>static all(array $tasks, ?float $timeout = NULL, ?int $concurrency = NULL, ?Omnitrix\Core\Concurrency\CancellationToken $parent = NULL): array</code> — Runs all callables concurrently and returns their results keyed like <code>$tasks</code>.</li>
+<li class=""><code>static allSettled(array $tasks, ?float $timeout = NULL, ?int $concurrency = NULL, ?Omnitrix\Core\Concurrency\CancellationToken $parent = NULL): array</code> — Runs all callables concurrently and reports every outcome; individual failures do not</li>
+<li class=""><code>static race(array $tasks, ?float $timeout = NULL, ?Omnitrix\Core\Concurrency\CancellationToken $parent = NULL): mixed</code> — Returns the result of the first task to complete successfully and cancels the rest.</li>
+<li class=""><code>static withTimeout(callable $body, float $timeout, ?Omnitrix\Core\Concurrency\CancellationToken $parent = NULL): mixed</code> — Runs <code>$body</code> in a child task bounded by <code>$timeout</code> seconds; on expiry the task is</li>
+<li class=""><code>static scope(callable $body, ?int $concurrency = NULL, ?Omnitrix\Core\Concurrency\CancellationToken $parent = NULL): mixed</code> — Runs <code>$body</code> with a scope that is closed (remaining tasks cancelled and awaited) when</li>
+<li class=""><code>static sleep(float $seconds): void</code> — Cooperative, cancellable sleep.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cancellationtoken-class">CancellationToken (class)<a href="#cancellationtoken-class" class="hash-link" aria-label="Direct link to CancellationToken (class)" title="Direct link to CancellationToken (class)" translate="no">​</a></h3>
+<p>Cooperative cancellation signal.</p>
+<ul>
+<li class=""><code>static none(): Omnitrix\Core\Concurrency\CancellationToken</code></li>
+<li class=""><code>isCancelled(): bool</code></li>
+<li class=""><code>reason(): ?string</code></li>
+<li class=""><code>throwIfCancelled(): void</code></li>
+<li class=""><code>onCancel(callable $callback): void</code> — Registers a callback; runs immediately if already cancelled. @param callable(string|null): void $callback</li>
+<li class=""><code>attach(int $cid): void</code> — Attaches a coroutine that will be interrupted on cancel.</li>
+<li class=""><code>detach(int $cid): void</code></li>
+<li class=""><code>createChild(): Omnitrix\Core\Concurrency\CancellationToken</code> — A token that is cancelled when this one is (but not the other way round).</li>
+<li class=""><code>cancel(?string $reason = NULL): void</code> — Idempotent.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cancelledexception-class">CancelledException (class)<a href="#cancelledexception-class" class="hash-link" aria-label="Direct link to CancelledException (class)" title="Direct link to CancelledException (class)" translate="no">​</a></h3>
+<p>The operation was cancelled through its {@see CancellationToken}.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="outcome-class">Outcome (class)<a href="#outcome-class" class="hash-link" aria-label="Direct link to Outcome (class)" title="Direct link to Outcome (class)" translate="no">​</a></h3>
+<p>Result of one task in {@see Async::allSettled()}: fulfilled with a value or rejected with a throwable.</p>
+<ul>
+<li class=""><code>static fulfilled(mixed $value): Omnitrix\Core\Concurrency\Outcome</code></li>
+<li class=""><code>static rejected(Throwable $reason, bool $cancelled = false): Omnitrix\Core\Concurrency\Outcome</code></li>
+<li class=""><code>isRejected(): bool</code></li>
+<li class=""><code>get(): mixed</code> — The value, or throws the rejection reason.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="semaphore-class">Semaphore (class)<a href="#semaphore-class" class="hash-link" aria-label="Direct link to Semaphore (class)" title="Direct link to Semaphore (class)" translate="no">​</a></h3>
+<p>Counting semaphore for bounding concurrency across coroutines (permits are channel tokens).</p>
+<ul>
+<li class=""><code>__construct(int $limit)</code></li>
+<li class=""><code>acquire(?float $timeout = NULL, ?Omnitrix\Core\Concurrency\CancellationToken $token = NULL): void</code> — Waits for a permit. Throws {@see TimeoutException} after <code>$timeout</code> seconds or</li>
+<li class=""><code>release(): void</code></li>
+<li class=""><code>withPermit(callable $fn, ?float $timeout = NULL, ?Omnitrix\Core\Concurrency\CancellationToken $token = NULL): mixed</code> — Runs <code>$fn</code> while holding a permit.</li>
+<li class=""><code>available(): int</code></li>
+<li class=""><code>inUse(): int</code></li>
+<li class=""><code>peak(): int</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="task-class">Task (class)<a href="#task-class" class="hash-link" aria-label="Direct link to Task (class)" title="Direct link to Task (class)" translate="no">​</a></h3>
+<p>A unit of concurrent work running in its own coroutine, owned by a {@see TaskScope}.</p>
+<ul>
+<li class=""><code>static start(string|int $key, callable $body, Omnitrix\Core\Concurrency\CancellationToken $parentToken, ?Omnitrix\Core\Concurrency\Semaphore $semaphore = NULL, ?callable $onSettle = NULL): Omnitrix\Core\Concurrency\Task</code> — Starts the task immediately (the coroutine is created now; it runs until its first</li>
+<li class=""><code>state(): Omnitrix\Core\Concurrency\TaskState</code></li>
+<li class=""><code>isDone(): bool</code></li>
+<li class=""><code>token(): Omnitrix\Core\Concurrency\CancellationToken</code></li>
+<li class=""><code>coroutineId(): int</code></li>
+<li class=""><code>cancel(?string $reason = NULL): void</code> — Requests cancellation; the task settles as Cancelled once its coroutine unwinds.</li>
+<li class=""><code>await(?float $timeout = NULL): mixed</code> — Waits for completion and returns the result; rethrows the task&#x27;s failure, throws</li>
+<li class=""><code>join(?float $timeout = NULL): bool</code> — Waits for the task to settle without throwing its failure. Returns false on timeout.</li>
+<li class=""><code>result(): mixed</code></li>
+<li class=""><code>failure(): ?Throwable</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="taskscope-class">TaskScope (class)<a href="#taskscope-class" class="hash-link" aria-label="Direct link to TaskScope (class)" title="Direct link to TaskScope (class)" translate="no">​</a></h3>
+<p>Structured concurrency scope: every task spawned here is joined or cancelled before the</p>
+<ul>
+<li class=""><code>__construct(?Omnitrix\Core\Concurrency\CancellationToken $parent = NULL, ?int $concurrency = NULL)</code></li>
+<li class=""><code>token(): Omnitrix\Core\Concurrency\CancellationToken</code></li>
+<li class=""><code>spawn(callable $body, string|int|null $key = NULL): Omnitrix\Core\Concurrency\Task</code> — Starts a task. <code>$body</code> receives the scope&#x27;s cancellation token.</li>
+<li class=""><code>nextSettled(?float $timeout = NULL): ?Omnitrix\Core\Concurrency\Task</code> — Returns the next task to settle (completion order), or null when every spawned task</li>
+<li class=""><code>tasks(): array</code></li>
+<li class=""><code>count(): int</code></li>
+<li class=""><code>cancel(?string $reason = NULL): void</code> — Cancels every task (idempotent).</li>
+<li class=""><code>join(?float $timeout = NULL): bool</code> — Waits for all tasks to settle (success, failure or cancellation). Returns false if the</li>
+<li class=""><code>close(float $graceSeconds = 5.0): int</code> — Closes the scope: cancels unfinished tasks and waits for them to unwind. After this no</li>
+<li class=""><code>running(): array</code> — Coroutine ids of tasks that are still running (diagnostics).</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="taskstate-enum">TaskState (enum)<a href="#taskstate-enum" class="hash-link" aria-label="Direct link to TaskState (enum)" title="Direct link to TaskState (enum)" translate="no">​</a></h3>
+<ul>
+<li class=""><code>static cases(): array</code></li>
+<li class=""><code>static from(string|int $value): static</code></li>
+<li class=""><code>static tryFrom(string|int $value): ?static</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="timeoutexception-class">TimeoutException (class)<a href="#timeoutexception-class" class="hash-link" aria-label="Direct link to TimeoutException (class)" title="Direct link to TimeoutException (class)" translate="no">​</a></h3>
+<p>A deadline passed before the awaited work completed.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcorecontainer">Omnitrix\Core\Container<a href="#omnitrixcorecontainer" class="hash-link" aria-label="Direct link to Omnitrix\Core\Container" title="Direct link to Omnitrix\Core\Container" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="container-class">Container (class)<a href="#container-class" class="hash-link" aria-label="Direct link to Container (class)" title="Direct link to Container (class)" translate="no">​</a></h3>
+<p>Small explicit PSR-11 container (no autowiring, no reflection).</p>
+<ul>
+<li class=""><code>bind(string $id, callable $factory): void</code> — Registers a factory that produces a new instance on every <code>get()</code>.</li>
+<li class=""><code>singleton(string $id, callable $factory): void</code> — Registers a factory whose first result is cached for the container&#x27;s lifetime.</li>
+<li class=""><code>instance(string $id, mixed $instance): void</code> — Registers an existing instance.</li>
+<li class=""><code>has(string $id): bool</code></li>
+<li class=""><code>get(string $id): mixed</code></li>
+<li class=""><code>getTyped(string $id, string $class): object</code> — Typed accessor: resolves <code>$id</code> and asserts the instance is a <code>$class</code>.</li>
+<li class=""><code>ids(): array</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="containerexception-class">ContainerException (class)<a href="#containerexception-class" class="hash-link" aria-label="Direct link to ContainerException (class)" title="Direct link to ContainerException (class)" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="notfoundexception-class">NotFoundException (class)<a href="#notfoundexception-class" class="hash-link" aria-label="Direct link to NotFoundException (class)" title="Direct link to NotFoundException (class)" translate="no">​</a></h3>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcoredatabaseconfig">Omnitrix\Core\Database\Config<a href="#omnitrixcoredatabaseconfig" class="hash-link" aria-label="Direct link to Omnitrix\Core\Database\Config" title="Direct link to Omnitrix\Core\Database\Config" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="databaseconfig-class">DatabaseConfig (class)<a href="#databaseconfig-class" class="hash-link" aria-label="Direct link to DatabaseConfig (class)" title="Direct link to DatabaseConfig (class)" translate="no">​</a></h3>
+<p>Validated settings of one named database connection (the <code>database</code> config section).</p>
+<ul>
+<li class=""><code>static fromArray(array $config, string $name = &#x27;default&#x27;): Omnitrix\Core\Database\Config\DatabaseConfig</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="poolconfig-class">PoolConfig (class)<a href="#poolconfig-class" class="hash-link" aria-label="Direct link to PoolConfig (class)" title="Direct link to PoolConfig (class)" translate="no">​</a></h3>
+<p>Pool sizing and lifecycle limits (seconds; 0 disables a timeout).</p>
+<ul>
+<li class=""><code>__construct(int $min, int $max, float $acquireTimeout, float $idleTimeout, float $maxLifetime, float $validationInterval, float $evictionInterval)</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcoredatabaseconnection">Omnitrix\Core\Database\Connection<a href="#omnitrixcoredatabaseconnection" class="hash-link" aria-label="Direct link to Omnitrix\Core\Database\Connection" title="Direct link to Omnitrix\Core\Database\Connection" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="pdoconnection-class">PdoConnection (class)<a href="#pdoconnection-class" class="hash-link" aria-label="Direct link to PdoConnection (class)" title="Direct link to PdoConnection (class)" translate="no">​</a></h3>
+<p>{@see ConnectionInterface} over PDO + mysqlnd. Under OpenSwoole runtime hooks every network</p>
+<ul>
+<li class=""><code>__construct(?PDO $pdo, string $id, $applyStatementTimeout, int $statementCacheSize = 64)</code></li>
+<li class=""><code>id(): string</code></li>
+<li class=""><code>select(string $sql, array $bindings = …): array</code></li>
+<li class=""><code>execute(string $sql, array $bindings = …): int</code></li>
+<li class=""><code>insert(string $sql, array $bindings = …): int</code></li>
+<li class=""><code>beginTransaction(): void</code></li>
+<li class=""><code>commit(): void</code></li>
+<li class=""><code>rollBack(): void</code></li>
+<li class=""><code>inTransaction(): bool</code></li>
+<li class=""><code>setStatementTimeout(float $seconds): void</code></li>
+<li class=""><code>ping(): bool</code></li>
+<li class=""><code>isBroken(): bool</code></li>
+<li class=""><code>markBroken(): void</code></li>
+<li class=""><code>createdAt(): float</code></li>
+<li class=""><code>lastUsedAt(): float</code></li>
+<li class=""><code>touch(): void</code></li>
+<li class=""><code>close(): void</code></li>
+<li class=""><code>cachedStatements(): int</code> — Number of cached prepared statements (diagnostics).</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcoredatabasecontracts">Omnitrix\Core\Database\Contracts<a href="#omnitrixcoredatabasecontracts" class="hash-link" aria-label="Direct link to Omnitrix\Core\Database\Contracts" title="Direct link to Omnitrix\Core\Database\Contracts" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="connectioninterface-interface">ConnectionInterface (interface)<a href="#connectioninterface-interface" class="hash-link" aria-label="Direct link to ConnectionInterface (interface)" title="Direct link to ConnectionInterface (interface)" translate="no">​</a></h3>
+<p>One physical database connection. Not coroutine-safe: a connection is used by exactly one</p>
+<ul>
+<li class=""><code>id(): string</code> — Stable identifier for logs and pool bookkeeping.</li>
+<li class=""><code>select(string $sql, array $bindings = …): array</code> — Runs a statement that returns rows.</li>
+<li class=""><code>execute(string $sql, array $bindings = …): int</code> — Runs a statement without a result set; returns the affected row count.</li>
+<li class=""><code>insert(string $sql, array $bindings = …): int</code> — Runs an INSERT and returns the generated id (0 when none).</li>
+<li class=""><code>beginTransaction(): void</code></li>
+<li class=""><code>commit(): void</code></li>
+<li class=""><code>rollBack(): void</code></li>
+<li class=""><code>inTransaction(): bool</code></li>
+<li class=""><code>setStatementTimeout(float $seconds): void</code> — Server-side statement time limit for subsequent statements (seconds, 0 = unlimited).</li>
+<li class=""><code>ping(): bool</code> — Cheap liveness check (SELECT 1); false when the connection is unusable.</li>
+<li class=""><code>isBroken(): bool</code> — True once the connection must not be reused (lost, interrupted, in unknown state).</li>
+<li class=""><code>markBroken(): void</code></li>
+<li class=""><code>createdAt(): float</code></li>
+<li class=""><code>lastUsedAt(): float</code></li>
+<li class=""><code>touch(): void</code></li>
+<li class=""><code>close(): void</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="driverinterface-interface">DriverInterface (interface)<a href="#driverinterface-interface" class="hash-link" aria-label="Direct link to DriverInterface (interface)" title="Direct link to DriverInterface (interface)" translate="no">​</a></h3>
+<p>Creates physical connections for one database technology.</p>
+<ul>
+<li class=""><code>name(): string</code></li>
+<li class=""><code>connect(Omnitrix\Core\Database\Config\DatabaseConfig $config): Omnitrix\Core\Database\Contracts\ConnectionInterface</code></li>
+<li class=""><code>grammar(): Omnitrix\Core\Database\Contracts\GrammarInterface</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="grammarinterface-interface">GrammarInterface (interface)<a href="#grammarinterface-interface" class="hash-link" aria-label="Direct link to GrammarInterface (interface)" title="Direct link to GrammarInterface (interface)" translate="no">​</a></h3>
+<p>SQL dialect specifics used by the query builder.</p>
+<ul>
+<li class=""><code>wrap(string $identifier): string</code> — Quotes an identifier such as <code>users</code> or <code>u.name</code> (<code>*</code> is passed through).</li>
+<li class=""><code>wrapTable(string $table): string</code> — Quotes a table name, optionally with an alias (&quot;users as u&quot;).</li>
+<li class=""><code>parameter(): string</code> — Placeholder for one bound value.</li>
+<li class=""><code>compileLimitOffset(?int $limit, ?int $offset): string</code></li>
+<li class=""><code>supportsReturning(): bool</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcoredatabase">Omnitrix\Core\Database<a href="#omnitrixcoredatabase" class="hash-link" aria-label="Direct link to Omnitrix\Core\Database" title="Direct link to Omnitrix\Core\Database" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="database-class">Database (class)<a href="#database-class" class="hash-link" aria-label="Direct link to Database (class)" title="Direct link to Database (class)" translate="no">​</a></h3>
+<p>One named database: its pool, grammar and transaction manager. Worker-scoped.</p>
+<ul>
+<li class=""><code>__construct(Omnitrix\Core\Database\Config\DatabaseConfig $config, Omnitrix\Core\Database\Contracts\DriverInterface $driver, ?Psr\Log\LoggerInterface $logger = NULL)</code></li>
+<li class=""><code>warmUp(): void</code></li>
+<li class=""><code>pool(): Omnitrix\Core\Database\Pool\ConnectionPool</code></li>
+<li class=""><code>stats(): Omnitrix\Core\Database\Pool\PoolStats</code></li>
+<li class=""><code>table(string $table): Omnitrix\Core\Database\Query\Builder</code></li>
+<li class=""><code>query(): Omnitrix\Core\Database\Query\Builder</code></li>
+<li class=""><code>select(string $sql, array $bindings = …): array</code></li>
+<li class=""><code>selectOne(string $sql, array $bindings = …): ?array</code></li>
+<li class=""><code>execute(string $sql, array $bindings = …): int</code></li>
+<li class=""><code>insert(string $sql, array $bindings = …): int</code></li>
+<li class=""><code>transaction(callable $callback, int $attempts = 1): mixed</code></li>
+<li class=""><code>acquire(?float $timeout = NULL): Omnitrix\Core\Database\Pool\PooledConnection</code> — Leases a connection to the caller for several statements (e.g. a cursor); the caller</li>
+<li class=""><code>close(float $drainTimeout = 10.0): int</code> — Graceful shutdown of the pool.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="databasemanager-class">DatabaseManager (class)<a href="#databasemanager-class" class="hash-link" aria-label="Direct link to DatabaseManager (class)" title="Direct link to DatabaseManager (class)" translate="no">​</a></h3>
+<p>Registry of named databases for one worker. Built from the <code>database</code> config section, which</p>
+<ul>
+<li class=""><code>__construct(array $section, ?Psr\Log\LoggerInterface $logger = NULL)</code></li>
+<li class=""><code>registerDriver(string $name, Omnitrix\Core\Database\Contracts\DriverInterface $driver): void</code></li>
+<li class=""><code>connection(?string $name = NULL): Omnitrix\Core\Database\Database</code></li>
+<li class=""><code>table(string $table, ?string $connection = NULL): Omnitrix\Core\Database\Query\Builder</code></li>
+<li class=""><code>names(): array</code></li>
+<li class=""><code>warmUp(): void</code> — Opens the configured minimum connections of every database.</li>
+<li class=""><code>close(float $drainTimeout = 10.0): int</code> — Drains and closes every pool. @return int leased connections that did not return in time</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcoredatabasedrivermysql">Omnitrix\Core\Database\Driver\MySQL<a href="#omnitrixcoredatabasedrivermysql" class="hash-link" aria-label="Direct link to Omnitrix\Core\Database\Driver\MySQL" title="Direct link to Omnitrix\Core\Database\Driver\MySQL" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="mysqldriver-class">MySqlDriver (class)<a href="#mysqldriver-class" class="hash-link" aria-label="Direct link to MySqlDriver (class)" title="Direct link to MySqlDriver (class)" translate="no">​</a></h3>
+<p>MySQL / MariaDB driver on pdo_mysql (mysqlnd).</p>
+<ul>
+<li class=""><code>__construct()</code></li>
+<li class=""><code>name(): string</code></li>
+<li class=""><code>grammar(): Omnitrix\Core\Database\Contracts\GrammarInterface</code></li>
+<li class=""><code>connect(Omnitrix\Core\Database\Config\DatabaseConfig $config): Omnitrix\Core\Database\Contracts\ConnectionInterface</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="mysqlgrammar-class">MySqlGrammar (class)<a href="#mysqlgrammar-class" class="hash-link" aria-label="Direct link to MySqlGrammar (class)" title="Direct link to MySqlGrammar (class)" translate="no">​</a></h3>
+<p>MySQL/MariaDB identifier quoting and dialect fragments.</p>
+<ul>
+<li class=""><code>wrap(string $identifier): string</code></li>
+<li class=""><code>wrapTable(string $table): string</code></li>
+<li class=""><code>parameter(): string</code></li>
+<li class=""><code>compileLimitOffset(?int $limit, ?int $offset): string</code></li>
+<li class=""><code>supportsReturning(): bool</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcoredatabaseexception">Omnitrix\Core\Database\Exception<a href="#omnitrixcoredatabaseexception" class="hash-link" aria-label="Direct link to Omnitrix\Core\Database\Exception" title="Direct link to Omnitrix\Core\Database\Exception" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="connectionexception-class">ConnectionException (class)<a href="#connectionexception-class" class="hash-link" aria-label="Direct link to ConnectionException (class)" title="Direct link to ConnectionException (class)" translate="no">​</a></h3>
+<p>The connection could not be established or was lost. The pool discards the connection and</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="constraintviolationexception-class">ConstraintViolationException (class)<a href="#constraintviolationexception-class" class="hash-link" aria-label="Direct link to ConstraintViolationException (class)" title="Direct link to ConstraintViolationException (class)" translate="no">​</a></h3>
+<p>Integrity constraint violation.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="databaseexception-class">DatabaseException (class)<a href="#databaseexception-class" class="hash-link" aria-label="Direct link to DatabaseException (class)" title="Direct link to DatabaseException (class)" translate="no">​</a></h3>
+<p>Base class of every database error raised by Omnitrix.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="deadlockexception-class">DeadlockException (class)<a href="#deadlockexception-class" class="hash-link" aria-label="Direct link to DeadlockException (class)" title="Direct link to DeadlockException (class)" translate="no">​</a></h3>
+<p>Deadlock detected; the transaction was rolled back and may be retried.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="errorclassifier-class">ErrorClassifier (class)<a href="#errorclassifier-class" class="hash-link" aria-label="Direct link to ErrorClassifier (class)" title="Direct link to ErrorClassifier (class)" translate="no">​</a></h3>
+<p>Maps PDO/MySQL errors to the framework exception hierarchy so callers (and the pool) can</p>
+<ul>
+<li class=""><code>static classify(PDOException $e, string $sql = &#x27;&#x27;, array $bindings = …): Omnitrix\Core\Database\Exception\DatabaseException</code></li>
+<li class=""><code>static isConnectionError(?string $sqlState, int $driverCode, string $message): bool</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="lockwaittimeoutexception-class">LockWaitTimeoutException (class)<a href="#lockwaittimeoutexception-class" class="hash-link" aria-label="Direct link to LockWaitTimeoutException (class)" title="Direct link to LockWaitTimeoutException (class)" translate="no">​</a></h3>
+<p>Lock wait timeout exceeded.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ownershipviolationexception-class">OwnershipViolationException (class)<a href="#ownershipviolationexception-class" class="hash-link" aria-label="Direct link to OwnershipViolationException (class)" title="Direct link to OwnershipViolationException (class)" translate="no">​</a></h3>
+<p>A pooled connection was used from a coroutine that does not own it, or after release.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="poolexhaustedexception-class">PoolExhaustedException (class)<a href="#poolexhaustedexception-class" class="hash-link" aria-label="Direct link to PoolExhaustedException (class)" title="Direct link to PoolExhaustedException (class)" translate="no">​</a></h3>
+<p>No connection became available within the acquisition timeout (backpressure signal).</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="queryexception-class">QueryException (class)<a href="#queryexception-class" class="hash-link" aria-label="Direct link to QueryException (class)" title="Direct link to QueryException (class)" translate="no">​</a></h3>
+<p>A statement failed. Carries the SQL (truncated) and SQLSTATE; bindings are never included.</p>
+<ul>
+<li class=""><code>__construct(string $message, string $sql, ?string $sqlState, int $driverCode, int $bindingCount, ?Throwable $previous = NULL)</code></li>
+<li class=""><code>sql(): string</code></li>
+<li class=""><code>sqlState(): ?string</code></li>
+<li class=""><code>driverCode(): int</code></li>
+<li class=""><code>bindingCount(): int</code></li>
+<li class=""><code>static describe(string $sql, array $bindings): string</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="querytimeoutexception-class">QueryTimeoutException (class)<a href="#querytimeoutexception-class" class="hash-link" aria-label="Direct link to QueryTimeoutException (class)" title="Direct link to QueryTimeoutException (class)" translate="no">​</a></h3>
+<p>Statement exceeded its time limit.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="transactionexception-class">TransactionException (class)<a href="#transactionexception-class" class="hash-link" aria-label="Direct link to TransactionException (class)" title="Direct link to TransactionException (class)" translate="no">​</a></h3>
+<p>Transaction control failed or was misused (commit without begin, nested misuse…).</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="uniqueconstraintviolationexception-class">UniqueConstraintViolationException (class)<a href="#uniqueconstraintviolationexception-class" class="hash-link" aria-label="Direct link to UniqueConstraintViolationException (class)" title="Direct link to UniqueConstraintViolationException (class)" translate="no">​</a></h3>
+<p>Duplicate entry violates a unique constraint.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcoredatabasepool">Omnitrix\Core\Database\Pool<a href="#omnitrixcoredatabasepool" class="hash-link" aria-label="Direct link to Omnitrix\Core\Database\Pool" title="Direct link to Omnitrix\Core\Database\Pool" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="connectionpool-class">ConnectionPool (class)<a href="#connectionpool-class" class="hash-link" aria-label="Direct link to ConnectionPool (class)" title="Direct link to ConnectionPool (class)" translate="no">​</a></h3>
+<p>Bounded pool of physical connections for one worker process.</p>
+<ul>
+<li class=""><code>__construct(string $name, Omnitrix\Core\Database\Config\PoolConfig $config, Closure $factory, ?Closure $log = NULL)</code></li>
+<li class=""><code>warmUp(): void</code> — Opens <code>min</code> connections eagerly and starts the eviction timer (call from the worker).</li>
+<li class=""><code>acquire(?float $timeout = NULL, ?Omnitrix\Core\Concurrency\CancellationToken $token = NULL): Omnitrix\Core\Database\Pool\PooledConnection</code> — Leases a connection to the current coroutine.</li>
+<li class=""><code>withConnection(callable $fn, ?float $timeout = NULL, ?Omnitrix\Core\Concurrency\CancellationToken $token = NULL): mixed</code> — Runs <code>$fn</code> with a leased connection and releases it afterwards (also on exceptions).</li>
+<li class=""><code>stats(): Omnitrix\Core\Database\Pool\PoolStats</code></li>
+<li class=""><code>isClosed(): bool</code></li>
+<li class=""><code>evict(): int</code> — Evicts idle connections past idle_timeout / max_lifetime, keeping <code>min</code>.</li>
+<li class=""><code>close(float $drainTimeout = 10.0): int</code> — Graceful shutdown: refuses new leases, waits up to <code>$drainTimeout</code> for leased</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="poolstats-class">PoolStats (class)<a href="#poolstats-class" class="hash-link" aria-label="Direct link to PoolStats (class)" title="Direct link to PoolStats (class)" translate="no">​</a></h3>
+<p>Snapshot of pool state for metrics and tests.</p>
+<ul>
+<li class=""><code>__construct(int $size, int $idle, int $inUse, int $waiting, int $created, int $destroyed, int $acquired, int $timeouts, int $validationFailures, float $totalWaitSeconds, float $maxWaitSeconds)</code></li>
+<li class=""><code>toArray(): array</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="pooledconnection-class">PooledConnection (class)<a href="#pooledconnection-class" class="hash-link" aria-label="Direct link to PooledConnection (class)" title="Direct link to PooledConnection (class)" translate="no">​</a></h3>
+<p>A connection checked out of the pool, bound to the coroutine that acquired it.</p>
+<ul>
+<li class=""><code>__construct(Omnitrix\Core\Database\Contracts\ConnectionInterface $inner, Omnitrix\Core\Database\Pool\ConnectionPool $pool, int $ownerCid)</code></li>
+<li class=""><code>ownerCid(): int</code></li>
+<li class=""><code>isReleased(): bool</code></li>
+<li class=""><code>release(): void</code> — Returns the connection to the pool (or discards it when broken / mid-transaction).</li>
+<li class=""><code>inner(): Omnitrix\Core\Database\Contracts\ConnectionInterface</code> — The underlying physical connection (for diagnostics; do not retain).</li>
+<li class=""><code>id(): string</code></li>
+<li class=""><code>select(string $sql, array $bindings = …): array</code></li>
+<li class=""><code>execute(string $sql, array $bindings = …): int</code></li>
+<li class=""><code>insert(string $sql, array $bindings = …): int</code></li>
+<li class=""><code>beginTransaction(): void</code></li>
+<li class=""><code>commit(): void</code></li>
+<li class=""><code>rollBack(): void</code></li>
+<li class=""><code>inTransaction(): bool</code></li>
+<li class=""><code>setStatementTimeout(float $seconds): void</code></li>
+<li class=""><code>ping(): bool</code></li>
+<li class=""><code>isBroken(): bool</code></li>
+<li class=""><code>markBroken(): void</code></li>
+<li class=""><code>createdAt(): float</code></li>
+<li class=""><code>lastUsedAt(): float</code></li>
+<li class=""><code>touch(): void</code></li>
+<li class=""><code>close(): void</code> — Closing a leased connection discards it from the pool.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcoredatabasequery">Omnitrix\Core\Database\Query<a href="#omnitrixcoredatabasequery" class="hash-link" aria-label="Direct link to Omnitrix\Core\Database\Query" title="Direct link to Omnitrix\Core\Database\Query" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="builder-class">Builder (class)<a href="#builder-class" class="hash-link" aria-label="Direct link to Builder (class)" title="Direct link to Builder (class)" translate="no">​</a></h3>
+<p>Fluent SQL builder with positional bindings. No hydration, no model layer: results are plain</p>
+<ul>
+<li class=""><code>__construct(Omnitrix\Core\Database\Contracts\GrammarInterface $grammar, Omnitrix\Core\Database\Query\QueryExecutorInterface $executor, ?string $table = NULL)</code></li>
+<li class=""><code>static raw(string $sql, array $bindings = …): Omnitrix\Core\Database\Query\Expression</code></li>
+<li class=""><code>from(string $table): Omnitrix\Core\Database\Query\Builder</code></li>
+<li class=""><code>select(Omnitrix\Core\Database\Query\Expression|string ...$columns): Omnitrix\Core\Database\Query\Builder</code></li>
+<li class=""><code>addSelect(Omnitrix\Core\Database\Query\Expression|string ...$columns): Omnitrix\Core\Database\Query\Builder</code></li>
+<li class=""><code>distinct(): Omnitrix\Core\Database\Query\Builder</code></li>
+<li class=""><code>join(string $table, string $first, string $operator, string $second, string $type = &#x27;inner&#x27;): Omnitrix\Core\Database\Query\Builder</code></li>
+<li class=""><code>leftJoin(string $table, string $first, string $operator, string $second): Omnitrix\Core\Database\Query\Builder</code></li>
+<li class=""><code>rightJoin(string $table, string $first, string $operator, string $second): Omnitrix\Core\Database\Query\Builder</code></li>
+<li class=""><code>where(Omnitrix\Core\Database\Query\Expression|Closure|array|string $column, mixed $operator = NULL, mixed $value = NULL, string $boolean = &#x27;and&#x27;): Omnitrix\Core\Database\Query\Builder</code> — <code>where(&#x27;id&#x27;, 10)</code>, <code>where(&#x27;age&#x27;, &#x27;&gt;=&#x27;, 18)</code>, <code>where(fn (Builder $q) =&gt; $q-&gt;where(...)-&gt;orWhere(...))</code>,</li>
+<li class=""><code>orWhere(Omnitrix\Core\Database\Query\Expression|Closure|array|string $column, mixed $operator = NULL, mixed $value = NULL): Omnitrix\Core\Database\Query\Builder</code></li>
+<li class=""><code>whereIn(string $column, array $values, string $boolean = &#x27;and&#x27;, bool $not = false): Omnitrix\Core\Database\Query\Builder</code></li>
+<li class=""><code>whereNotIn(string $column, array $values, string $boolean = &#x27;and&#x27;): Omnitrix\Core\Database\Query\Builder</code></li>
+<li class=""><code>whereNull(string $column, string $boolean = &#x27;and&#x27;, bool $not = false): Omnitrix\Core\Database\Query\Builder</code></li>
+<li class=""><code>whereNotNull(string $column, string $boolean = &#x27;and&#x27;): Omnitrix\Core\Database\Query\Builder</code></li>
+<li class=""><code>whereBetween(string $column, mixed $from, mixed $to, string $boolean = &#x27;and&#x27;, bool $not = false): Omnitrix\Core\Database\Query\Builder</code></li>
+<li class=""><code>whereColumn(string $first, string $operator, string $second, string $boolean = &#x27;and&#x27;): Omnitrix\Core\Database\Query\Builder</code></li>
+<li class=""><code>whereRaw(string $sql, array $bindings = …, string $boolean = &#x27;and&#x27;): Omnitrix\Core\Database\Query\Builder</code></li>
+<li class=""><code>groupBy(string ...$columns): Omnitrix\Core\Database\Query\Builder</code></li>
+<li class=""><code>having(Omnitrix\Core\Database\Query\Expression|string $column, string $operator, mixed $value, string $boolean = &#x27;and&#x27;): Omnitrix\Core\Database\Query\Builder</code></li>
+<li class=""><code>orderBy(Omnitrix\Core\Database\Query\Expression|string $column, string $direction = &#x27;asc&#x27;): Omnitrix\Core\Database\Query\Builder</code></li>
+<li class=""><code>orderByDesc(string $column): Omnitrix\Core\Database\Query\Builder</code></li>
+<li class=""><code>limit(int $limit): Omnitrix\Core\Database\Query\Builder</code></li>
+<li class=""><code>offset(int $offset): Omnitrix\Core\Database\Query\Builder</code></li>
+<li class=""><code>lockForUpdate(): Omnitrix\Core\Database\Query\Builder</code></li>
+<li class=""><code>toSql(): string</code></li>
+<li class=""><code>getBindings(): array</code></li>
+<li class=""><code>get(): array</code></li>
+<li class=""><code>first(): ?array</code></li>
+<li class=""><code>find(string|int $id, string $column = &#x27;id&#x27;): ?array</code></li>
+<li class=""><code>value(string $column): mixed</code></li>
+<li class=""><code>pluck(string $column): array</code></li>
+<li class=""><code>count(string $column = &#x27;*&#x27;): int</code></li>
+<li class=""><code>exists(): bool</code></li>
+<li class=""><code>sum(string $column): int|float</code></li>
+<li class=""><code>max(string $column): mixed</code></li>
+<li class=""><code>min(string $column): mixed</code></li>
+<li class=""><code>avg(string $column): ?float</code></li>
+<li class=""><code>insert(array $values): int</code></li>
+<li class=""><code>insertGetId(array $values): int</code></li>
+<li class=""><code>update(array $values): int</code></li>
+<li class=""><code>increment(string $column, int|float $amount = 1, array $extra = …): int</code></li>
+<li class=""><code>decrement(string $column, int|float $amount = 1, array $extra = …): int</code></li>
+<li class=""><code>delete(): int</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="expression-class">Expression (class)<a href="#expression-class" class="hash-link" aria-label="Direct link to Expression (class)" title="Direct link to Expression (class)" translate="no">​</a></h3>
+<p>A raw SQL fragment the builder inserts verbatim. Only ever build one from trusted,</p>
+<ul>
+<li class=""><code>__construct(string $sql, array $bindings = …)</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="queryexecutorinterface-interface">QueryExecutorInterface (interface)<a href="#queryexecutorinterface-interface" class="hash-link" aria-label="Direct link to QueryExecutorInterface (interface)" title="Direct link to QueryExecutorInterface (interface)" translate="no">​</a></h3>
+<p>What the {@see Builder} needs to run compiled SQL (implemented by the connection manager).</p>
+<ul>
+<li class=""><code>select(string $sql, array $bindings = …): array</code></li>
+<li class=""><code>execute(string $sql, array $bindings = …): int</code></li>
+<li class=""><code>insert(string $sql, array $bindings = …): int</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="whereclause-class">WhereClause (class)<a href="#whereclause-class" class="hash-link" aria-label="Direct link to WhereClause (class)" title="Direct link to WhereClause (class)" translate="no">​</a></h3>
+<p>One compiled-later WHERE condition.</p>
+<ul>
+<li class=""><code>__construct(string $type, string $boolean = &#x27;and&#x27;, string $column = &#x27;&#x27;, string $operator = &#x27;&#x27;, bool $not = false, int $count = 0, string $sql = &#x27;&#x27;, ?Omnitrix\Core\Database\Query\Builder $nested = NULL, string $first = &#x27;&#x27;, string $second = &#x27;&#x27;)</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcoredatabasetransaction">Omnitrix\Core\Database\Transaction<a href="#omnitrixcoredatabasetransaction" class="hash-link" aria-label="Direct link to Omnitrix\Core\Database\Transaction" title="Direct link to Omnitrix\Core\Database\Transaction" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="transactionmanager-class">TransactionManager (class)<a href="#transactionmanager-class" class="hash-link" aria-label="Direct link to TransactionManager (class)" title="Direct link to TransactionManager (class)" translate="no">​</a></h3>
+<p>Transactions with exclusive connection ownership.</p>
+<ul>
+<li class=""><code>__construct(string $connectionName)</code></li>
+<li class=""><code>transaction(Omnitrix\Core\Database\Pool\ConnectionPool $pool, callable $callback, int $attempts = 1, ?float $acquireTimeout = NULL): mixed</code></li>
+<li class=""><code>pinned(): ?Omnitrix\Core\Database\Pool\PooledConnection</code> — The connection pinned by an enclosing transaction in the <em>current coroutine</em>, if any.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcorehttpclientexception">Omnitrix\Core\HttpClient\Exception<a href="#omnitrixcorehttpclientexception" class="hash-link" aria-label="Direct link to Omnitrix\Core\HttpClient\Exception" title="Direct link to Omnitrix\Core\HttpClient\Exception" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="connectionexception-class-1">ConnectionException (class)<a href="#connectionexception-class-1" class="hash-link" aria-label="Direct link to ConnectionException (class)" title="Direct link to ConnectionException (class)" translate="no">​</a></h3>
+<p>Could not connect, or the connection was reset/closed before a response arrived (refused, reset, server closed).</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="dnsexception-class">DnsException (class)<a href="#dnsexception-class" class="hash-link" aria-label="Direct link to DnsException (class)" title="Direct link to DnsException (class)" translate="no">​</a></h3>
+<p>Hostname could not be resolved.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="httpclientexception-class">HttpClientException (class)<a href="#httpclientexception-class" class="hash-link" aria-label="Direct link to HttpClientException (class)" title="Direct link to HttpClientException (class)" translate="no">​</a></h3>
+<p>Base class of every outbound HTTP failure.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="requestexception-class">RequestException (class)<a href="#requestexception-class" class="hash-link" aria-label="Direct link to RequestException (class)" title="Direct link to RequestException (class)" translate="no">​</a></h3>
+<p>A 4xx/5xx response, raised by {@see Response::throw()}; the response is attached.</p>
+<ul>
+<li class=""><code>__construct(Omnitrix\Core\HttpClient\Response $response)</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="responsetoolargeexception-class">ResponseTooLargeException (class)<a href="#responsetoolargeexception-class" class="hash-link" aria-label="Direct link to ResponseTooLargeException (class)" title="Direct link to ResponseTooLargeException (class)" translate="no">​</a></h3>
+<p>The response body exceeded max_response_size.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="timeoutexception-class-1">TimeoutException (class)<a href="#timeoutexception-class-1" class="hash-link" aria-label="Direct link to TimeoutException (class)" title="Direct link to TimeoutException (class)" translate="no">​</a></h3>
+<p>Connect or response timeout elapsed.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="tlsexception-class">TlsException (class)<a href="#tlsexception-class" class="hash-link" aria-label="Direct link to TlsException (class)" title="Direct link to TlsException (class)" translate="no">​</a></h3>
+<p>TLS handshake or certificate verification failed.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="toomanyredirectsexception-class">TooManyRedirectsException (class)<a href="#toomanyredirectsexception-class" class="hash-link" aria-label="Direct link to TooManyRedirectsException (class)" title="Direct link to TooManyRedirectsException (class)" translate="no">​</a></h3>
+<p>The redirect chain exceeded max_redirects.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcorehttpclient">Omnitrix\Core\HttpClient<a href="#omnitrixcorehttpclient" class="hash-link" aria-label="Direct link to Omnitrix\Core\HttpClient" title="Direct link to Omnitrix\Core\HttpClient" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="httpclient-class">HttpClient (class)<a href="#httpclient-class" class="hash-link" aria-label="Direct link to HttpClient (class)" title="Direct link to HttpClient (class)" translate="no">​</a></h3>
+<p>Outbound HTTP client: pooled connections, strict TLS, timeouts, redirect policy, bounded</p>
+<ul>
+<li class=""><code>__construct(Omnitrix\Core\HttpClient\HttpClientConfig $config, ?Omnitrix\Core\HttpClient\Transport\TransportInterface $transport = NULL)</code></li>
+<li class=""><code>request(): Omnitrix\Core\HttpClient\PendingRequest</code></li>
+<li class=""><code>get(string $url, array $query = …): Omnitrix\Core\HttpClient\Response</code></li>
+<li class=""><code>post(string $url, ?array $json = NULL): Omnitrix\Core\HttpClient\Response</code></li>
+<li class=""><code>send(string $method, Omnitrix\Core\HttpClient\Uri $uri, array $headers, string $body, Omnitrix\Core\HttpClient\RequestOptions $options, ?Omnitrix\Core\Concurrency\CancellationToken $token = NULL): Omnitrix\Core\HttpClient\Response</code> — Executes a prepared request: redirects, retries, size limit and in-flight cap.</li>
+<li class=""><code>stats(): array</code></li>
+<li class=""><code>close(): void</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="httpclientconfig-class">HttpClientConfig (class)<a href="#httpclientconfig-class" class="hash-link" aria-label="Direct link to HttpClientConfig (class)" title="Direct link to HttpClientConfig (class)" translate="no">​</a></h3>
+<p>Validated <code>http_client</code> configuration section (defaults for every outbound request).</p>
+<ul>
+<li class=""><code>static fromArray(array $config): Omnitrix\Core\HttpClient\HttpClientConfig</code></li>
+<li class=""><code>static defaults(): Omnitrix\Core\HttpClient\HttpClientConfig</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="pendingrequest-class">PendingRequest (class)<a href="#pendingrequest-class" class="hash-link" aria-label="Direct link to PendingRequest (class)" title="Direct link to PendingRequest (class)" translate="no">​</a></h3>
+<p>Fluent request builder.</p>
+<ul>
+<li class=""><code>__construct(Omnitrix\Core\HttpClient\HttpClient $client)</code></li>
+<li class=""><code>withHeaders(array $headers): Omnitrix\Core\HttpClient\PendingRequest</code></li>
+<li class=""><code>withHeader(string $name, string $value): Omnitrix\Core\HttpClient\PendingRequest</code></li>
+<li class=""><code>withToken(string $token, string $type = &#x27;Bearer&#x27;): Omnitrix\Core\HttpClient\PendingRequest</code></li>
+<li class=""><code>withBasicAuth(string $username, string $password): Omnitrix\Core\HttpClient\PendingRequest</code></li>
+<li class=""><code>accept(string $contentType): Omnitrix\Core\HttpClient\PendingRequest</code></li>
+<li class=""><code>withQuery(array $query): Omnitrix\Core\HttpClient\PendingRequest</code></li>
+<li class=""><code>asJson(mixed $data): Omnitrix\Core\HttpClient\PendingRequest</code> — JSON body (objects/arrays/JsonSerializable).</li>
+<li class=""><code>asForm(array $fields): Omnitrix\Core\HttpClient\PendingRequest</code> — application/x-www-form-urlencoded body.</li>
+<li class=""><code>withBody(string $body, string $contentType): Omnitrix\Core\HttpClient\PendingRequest</code> — Raw body with an explicit content type.</li>
+<li class=""><code>timeout(float $seconds): Omnitrix\Core\HttpClient\PendingRequest</code> — Response timeout in seconds (after the request was sent).</li>
+<li class=""><code>connectTimeout(float $seconds): Omnitrix\Core\HttpClient\PendingRequest</code></li>
+<li class=""><code>maxRedirects(int $count): Omnitrix\Core\HttpClient\PendingRequest</code></li>
+<li class=""><code>withoutRedirecting(): Omnitrix\Core\HttpClient\PendingRequest</code></li>
+<li class=""><code>maxResponseSize(int $bytes): Omnitrix\Core\HttpClient\PendingRequest</code></li>
+<li class=""><code>withCaFile(string $path): Omnitrix\Core\HttpClient\PendingRequest</code> — Pins a CA bundle for this request (private PKI).</li>
+<li class=""><code>withoutTlsVerification(): Omnitrix\Core\HttpClient\PendingRequest</code> — Disables certificate verification for this request only. Never use against production</li>
+<li class=""><code>retry(int $times, bool $onTimeout = false): Omnitrix\Core\HttpClient\PendingRequest</code> — Retries (idempotent methods only) on connection failures.</li>
+<li class=""><code>http2(bool $enabled = true): Omnitrix\Core\HttpClient\PendingRequest</code></li>
+<li class=""><code>withCancellation(Omnitrix\Core\Concurrency\CancellationToken $token): Omnitrix\Core\HttpClient\PendingRequest</code></li>
+<li class=""><code>get(string $url): Omnitrix\Core\HttpClient\Response</code></li>
+<li class=""><code>head(string $url): Omnitrix\Core\HttpClient\Response</code></li>
+<li class=""><code>post(string $url): Omnitrix\Core\HttpClient\Response</code></li>
+<li class=""><code>put(string $url): Omnitrix\Core\HttpClient\Response</code></li>
+<li class=""><code>patch(string $url): Omnitrix\Core\HttpClient\Response</code></li>
+<li class=""><code>delete(string $url): Omnitrix\Core\HttpClient\Response</code></li>
+<li class=""><code>send(string $method, string $url): Omnitrix\Core\HttpClient\Response</code></li>
+<li class=""><code>download(string $url, string $path): Omnitrix\Core\HttpClient\Response</code> — Streams the response body into <code>$path</code> (not buffered; size limit does not apply).</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="requestoptions-class">RequestOptions (class)<a href="#requestoptions-class" class="hash-link" aria-label="Direct link to RequestOptions (class)" title="Direct link to RequestOptions (class)" translate="no">​</a></h3>
+<p>Per-request overrides of {@see HttpClientConfig} (null = use the configured default).</p>
+<ul>
+<li class=""><code>__construct(?float $timeout = NULL, ?float $connectTimeout = NULL, ?int $maxRedirects = NULL, ?int $maxResponseSize = NULL, ?bool $verifyTls = NULL, ?string $caFile = NULL, ?int $retries = NULL, ?bool $retryOnTimeout = NULL, ?bool $http2 = NULL, ?string $downloadTo = NULL)</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="response-class">Response (class)<a href="#response-class" class="hash-link" aria-label="Direct link to Response (class)" title="Direct link to Response (class)" translate="no">​</a></h3>
+<p>An outbound HTTP response (fully buffered body).</p>
+<ul>
+<li class=""><code>__construct(int $status, array $headers, string $body, string $url, array $setCookies = …, int $redirects = 0, float $elapsed = 0.0, string $protocol = &#x27;1.1&#x27;)</code></li>
+<li class=""><code>status(): int</code></li>
+<li class=""><code>ok(): bool</code></li>
+<li class=""><code>successful(): bool</code></li>
+<li class=""><code>redirect(): bool</code></li>
+<li class=""><code>clientError(): bool</code></li>
+<li class=""><code>serverError(): bool</code></li>
+<li class=""><code>failed(): bool</code></li>
+<li class=""><code>throw(): Omnitrix\Core\HttpClient\Response</code> — Throws {@see RequestException} for 4xx/5xx; returns $this otherwise.</li>
+<li class=""><code>header(string $name, ?string $default = NULL): ?string</code></li>
+<li class=""><code>hasHeader(string $name): bool</code></li>
+<li class=""><code>headers(): array</code></li>
+<li class=""><code>setCookies(): array</code></li>
+<li class=""><code>contentType(): ?string</code></li>
+<li class=""><code>body(): string</code></li>
+<li class=""><code>size(): int</code></li>
+<li class=""><code>json(): mixed</code> — Decoded JSON body (objects as arrays), decoded once and cached.</li>
+<li class=""><code>jsonObject(): array</code> — JSON object body as a string-keyed array.</li>
+<li class=""><code>url(): string</code> — Final URL after redirects.</li>
+<li class=""><code>redirectCount(): int</code></li>
+<li class=""><code>elapsed(): float</code> — Wall-clock seconds for the whole exchange including redirects and retries.</li>
+<li class=""><code>protocol(): string</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcorehttpclienttransport">Omnitrix\Core\HttpClient\Transport<a href="#omnitrixcorehttpclienttransport" class="hash-link" aria-label="Direct link to Omnitrix\Core\HttpClient\Transport" title="Direct link to Omnitrix\Core\HttpClient\Transport" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cancelledoutboundexception-class">CancelledOutboundException (class)<a href="#cancelledoutboundexception-class" class="hash-link" aria-label="Direct link to CancelledOutboundException (class)" title="Direct link to CancelledOutboundException (class)" translate="no">​</a></h3>
+<p>The coroutine performing the request was cancelled (timeout group, request abort).</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="exchange-class">Exchange (class)<a href="#exchange-class" class="hash-link" aria-label="Direct link to Exchange (class)" title="Direct link to Exchange (class)" translate="no">​</a></h3>
+<p>One request as handed to a transport (after defaults, auth, query and body were applied).</p>
+<ul>
+<li class=""><code>__construct(string $method, Omnitrix\Core\HttpClient\Uri $uri, array $headers, string $body, float $connectTimeout, float $timeout, bool $verifyTls, ?string $caFile, bool $http2, ?string $downloadTo = NULL)</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="openswooletransport-class">OpenSwooleTransport (class)<a href="#openswooletransport-class" class="hash-link" aria-label="Direct link to OpenSwooleTransport (class)" title="Direct link to OpenSwooleTransport (class)" translate="no">​</a></h3>
+<p>Pooled OpenSwoole coroutine HTTP transport.</p>
+<ul>
+<li class=""><code>__construct(Omnitrix\Core\HttpClient\HttpClientConfig $config)</code></li>
+<li class=""><code>exchange(Omnitrix\Core\HttpClient\Transport\Exchange $exchange, ?Omnitrix\Core\Concurrency\CancellationToken $token = NULL): Omnitrix\Core\HttpClient\Transport\RawResponse</code></li>
+<li class=""><code>stats(): array</code></li>
+<li class=""><code>close(): void</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="rawresponse-class">RawResponse (class)<a href="#rawresponse-class" class="hash-link" aria-label="Direct link to RawResponse (class)" title="Direct link to RawResponse (class)" translate="no">​</a></h3>
+<p>What a transport returns for one exchange.</p>
+<ul>
+<li class=""><code>__construct(int $status, array $headers, string $body, array $setCookies = …, string $protocol = &#x27;1.1&#x27;)</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="transportinterface-interface">TransportInterface (interface)<a href="#transportinterface-interface" class="hash-link" aria-label="Direct link to TransportInterface (interface)" title="Direct link to TransportInterface (interface)" translate="no">​</a></h3>
+<p>Performs exactly one HTTP exchange. Transports throw the HttpClient exception hierarchy for</p>
+<ul>
+<li class=""><code>exchange(Omnitrix\Core\HttpClient\Transport\Exchange $exchange, ?Omnitrix\Core\Concurrency\CancellationToken $token = NULL): Omnitrix\Core\HttpClient\Transport\RawResponse</code></li>
+<li class=""><code>stats(): array</code></li>
+<li class=""><code>close(): void</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcorehttpclient-1">Omnitrix\Core\HttpClient<a href="#omnitrixcorehttpclient-1" class="hash-link" aria-label="Direct link to Omnitrix\Core\HttpClient" title="Direct link to Omnitrix\Core\HttpClient" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="uri-class">Uri (class)<a href="#uri-class" class="hash-link" aria-label="Direct link to Uri (class)" title="Direct link to Uri (class)" translate="no">​</a></h3>
+<p>Parsed absolute http(s) URL with helpers for query merging and redirect resolution.</p>
+<ul>
+<li class=""><code>static parse(string $url): Omnitrix\Core\HttpClient\Uri</code></li>
+<li class=""><code>isTls(): bool</code></li>
+<li class=""><code>target(): string</code> — Request target (path + query) as sent on the wire.</li>
+<li class=""><code>hostHeader(): string</code></li>
+<li class=""><code>origin(): string</code> — Origin key used for connection pooling.</li>
+<li class=""><code>withQuery(array $params): Omnitrix\Core\HttpClient\Uri</code></li>
+<li class=""><code>resolve(string $location): Omnitrix\Core\HttpClient\Uri</code> — Resolves a Location header against this URL (absolute, protocol-relative, absolute-path or relative).</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcorehttp">Omnitrix\Core\Http<a href="#omnitrixcorehttp" class="hash-link" aria-label="Direct link to Omnitrix\Core\Http" title="Direct link to Omnitrix\Core\Http" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="httperrorinterface-interface">HttpErrorInterface (interface)<a href="#httperrorinterface-interface" class="hash-link" aria-label="Direct link to HttpErrorInterface (interface)" title="Direct link to HttpErrorInterface (interface)" translate="no">​</a></h3>
+<p>An error that maps directly to an HTTP response.</p>
+<ul>
+<li class=""><code>status(): int</code></li>
+<li class=""><code>headers(): array</code></li>
+<li class=""><code>details(): array</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcorehttpserver">Omnitrix\Core\Http\Server<a href="#omnitrixcorehttpserver" class="hash-link" aria-label="Direct link to Omnitrix\Core\Http\Server" title="Direct link to Omnitrix\Core\Http\Server" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="headersalreadysentexception-class">HeadersAlreadySentException (class)<a href="#headersalreadysentexception-class" class="hash-link" aria-label="Direct link to HeadersAlreadySentException (class)" title="Direct link to HeadersAlreadySentException (class)" translate="no">​</a></h3>
+<p>Status, headers or cookies were modified after the response started streaming.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="httpserveradapter-class">HttpServerAdapter (class)<a href="#httpserveradapter-class" class="hash-link" aria-label="Direct link to HttpServerAdapter (class)" title="Direct link to HttpServerAdapter (class)" translate="no">​</a></h3>
+<p>Bridges the runtime entry point to the HTTP transport layer.</p>
+<ul>
+<li class=""><code>__construct(Omnitrix\Core\Http\Server\HttpServerConfig $config, callable $handler, Omnitrix\Core\Runtime\Exception\ExceptionHandlerInterface $exceptionHandler)</code></li>
+<li class=""><code>__invoke(OpenSwoole\Http\Request $raw, OpenSwoole\Http\Response $rawResponse, Omnitrix\Core\Runtime\Context\RequestContext $context): void</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="httpserverconfig-class">HttpServerConfig (class)<a href="#httpserverconfig-class" class="hash-link" aria-label="Direct link to HttpServerConfig (class)" title="Direct link to HttpServerConfig (class)" translate="no">​</a></h3>
+<p>Validated <code>http</code> configuration section (transport-level policies of the HTTP adapter).</p>
+<ul>
+<li class=""><code>static fromArray(array $config, int $packageMaxLength = 2097152): Omnitrix\Core\Http\Server\HttpServerConfig</code></li>
+<li class=""><code>static defaults(): Omnitrix\Core\Http\Server\HttpServerConfig</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="incomingrequest-class">IncomingRequest (class)<a href="#incomingrequest-class" class="hash-link" aria-label="Direct link to IncomingRequest (class)" title="Direct link to IncomingRequest (class)" translate="no">​</a></h3>
+<p>Transport-level view of an HTTP request parsed by OpenSwoole.</p>
+<ul>
+<li class=""><code>__construct(OpenSwoole\Http\Request $raw, int $jsonMaxDepth = 64)</code></li>
+<li class=""><code>raw(): OpenSwoole\Http\Request</code></li>
+<li class=""><code>method(): string</code> — Upper-case HTTP method.</li>
+<li class=""><code>isMethod(string $method): bool</code></li>
+<li class=""><code>path(): string</code> — Path without query string, as sent (not decoded, not normalised).</li>
+<li class=""><code>queryString(): string</code></li>
+<li class=""><code>query(): array</code> — Parsed query parameters (PHP array syntax supported).</li>
+<li class=""><code>queryParam(string $name, mixed $default = NULL): mixed</code></li>
+<li class=""><code>protocolVersion(): string</code> — HTTP protocol version such as &quot;1.1&quot; or &quot;2&quot;.</li>
+<li class=""><code>headers(): array</code></li>
+<li class=""><code>header(string $name, ?string $default = NULL): ?string</code></li>
+<li class=""><code>hasHeader(string $name): bool</code></li>
+<li class=""><code>cookies(): array</code></li>
+<li class=""><code>cookie(string $name, ?string $default = NULL): ?string</code></li>
+<li class=""><code>contentType(): ?string</code> — Media type of the body without parameters, lower-case (e.g. &quot;application/json&quot;), or null.</li>
+<li class=""><code>isJson(): bool</code></li>
+<li class=""><code>declaredContentLength(): ?int</code> — Declared Content-Length, or null when absent/invalid.</li>
+<li class=""><code>body(): string</code> — Raw request body (empty string when none).</li>
+<li class=""><code>bodyLength(): int</code></li>
+<li class=""><code>json(): mixed</code> — Decoded JSON body (objects as associative arrays). Decoded once; an empty body decodes to</li>
+<li class=""><code>jsonObject(): array</code> — JSON body that must be an object (associative array).</li>
+<li class=""><code>form(): array</code> — Parsed form fields for application/x-www-form-urlencoded and multipart bodies.</li>
+<li class=""><code>files(): array</code> — Uploaded files as parsed by OpenSwoole.</li>
+<li class=""><code>remoteAddress(): ?string</code></li>
+<li class=""><code>remotePort(): ?int</code></li>
+<li class=""><code>receivedAt(): float</code> — Server-side receive time (float unix timestamp).</li>
+<li class=""><code>connectionId(): int</code> — OpenSwoole connection descriptor.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="openswooleresponsesink-class">OpenSwooleResponseSink (class)<a href="#openswooleresponsesink-class" class="hash-link" aria-label="Direct link to OpenSwooleResponseSink (class)" title="Direct link to OpenSwooleResponseSink (class)" translate="no">​</a></h3>
+<p>{@see ResponseSinkInterface} over the live OpenSwoole response.</p>
+<ul>
+<li class=""><code>__construct(OpenSwoole\Http\Response $response)</code></li>
+<li class=""><code>status(int $code, string $reason): void</code></li>
+<li class=""><code>header(string $name, string $value): void</code></li>
+<li class=""><code>cookie(string $name, string $value, int $expires, string $path, string $domain, bool $secure, bool $httpOnly, string $sameSite): void</code></li>
+<li class=""><code>write(string $chunk): bool</code></li>
+<li class=""><code>end(string $body): bool</code></li>
+<li class=""><code>sendFile(string $path, int $offset, int $length): bool</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="requestrejectedexception-class">RequestRejectedException (class)<a href="#requestrejectedexception-class" class="hash-link" aria-label="Direct link to RequestRejectedException (class)" title="Direct link to RequestRejectedException (class)" translate="no">​</a></h3>
+<p>The transport rejected a request before it reached application code (malformed body, size limit).</p>
+<ul>
+<li class=""><code>__construct(int $status, string $message, array $headers = …, array $details = …, ?Throwable $previous = NULL)</code></li>
+<li class=""><code>static badRequest(string $message, ?Throwable $previous = NULL): Omnitrix\Core\Http\Server\RequestRejectedException</code></li>
+<li class=""><code>static payloadTooLarge(int $limit): Omnitrix\Core\Http\Server\RequestRejectedException</code></li>
+<li class=""><code>status(): int</code></li>
+<li class=""><code>headers(): array</code></li>
+<li class=""><code>details(): array</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="responsesinkinterface-interface">ResponseSinkInterface (interface)<a href="#responsesinkinterface-interface" class="hash-link" aria-label="Direct link to ResponseSinkInterface (interface)" title="Direct link to ResponseSinkInterface (interface)" translate="no">​</a></h3>
+<p>The transport the {@see ResponseWriter} writes to. The OpenSwoole implementation wraps</p>
+<ul>
+<li class=""><code>status(int $code, string $reason): void</code></li>
+<li class=""><code>header(string $name, string $value): void</code></li>
+<li class=""><code>cookie(string $name, string $value, int $expires, string $path, string $domain, bool $secure, bool $httpOnly, string $sameSite): void</code></li>
+<li class=""><code>write(string $chunk): bool</code> — Sends a chunk (chunked transfer encoding). Returns false when the client is gone.</li>
+<li class=""><code>end(string $body): bool</code> — Sends the final (or only) body and completes the response.</li>
+<li class=""><code>sendFile(string $path, int $offset, int $length): bool</code> — Sends a file via sendfile(2); completes the response.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="responsewriter-class">ResponseWriter (class)<a href="#responsewriter-class" class="hash-link" aria-label="Direct link to ResponseWriter (class)" title="Direct link to ResponseWriter (class)" translate="no">​</a></h3>
+<p>Builds and sends one HTTP response.</p>
+<ul>
+<li class=""><code>__construct(Omnitrix\Core\Http\Server\ResponseSinkInterface $sink, bool $headOnly = false, int $jsonFlags = 320)</code></li>
+<li class=""><code>status(int $code): Omnitrix\Core\Http\Server\ResponseWriter</code></li>
+<li class=""><code>statusCode(): int</code></li>
+<li class=""><code>header(string $name, string $value): Omnitrix\Core\Http\Server\ResponseWriter</code></li>
+<li class=""><code>headers(array $headers): Omnitrix\Core\Http\Server\ResponseWriter</code></li>
+<li class=""><code>removeHeader(string $name): Omnitrix\Core\Http\Server\ResponseWriter</code></li>
+<li class=""><code>hasHeader(string $name): bool</code></li>
+<li class=""><code>getHeader(string $name): ?string</code></li>
+<li class=""><code>getHeaders(): array</code></li>
+<li class=""><code>cookie(string $name, string $value, int $expires = 0, string $path = &#x27;/&#x27;, string $domain = &#x27;&#x27;, bool $secure = false, bool $httpOnly = true, string $sameSite = &#x27;Lax&#x27;): Omnitrix\Core\Http\Server\ResponseWriter</code></li>
+<li class=""><code>write(string $chunk): bool</code> — Streams a chunk. The first call commits status and headers.</li>
+<li class=""><code>end(string $body = &#x27;&#x27;): bool</code> — Sends the final body (or an empty body) and ends the response.</li>
+<li class=""><code>json(mixed $data, int $status = 200): bool</code> — Ends with a JSON body.</li>
+<li class=""><code>text(string $body, int $status = 200, string $contentType = &#x27;text/plain; charset=utf-8&#x27;): bool</code></li>
+<li class=""><code>noContent(): bool</code></li>
+<li class=""><code>redirect(string $location, int $status = 302): bool</code></li>
+<li class=""><code>sendFile(string $path, int $offset = 0, int $length = 0): bool</code> — Sends a file with sendfile(2). <code>$length</code> 0 means &quot;to the end of the file&quot;.</li>
+<li class=""><code>isEnded(): bool</code></li>
+<li class=""><code>headersSent(): bool</code></li>
+<li class=""><code>clientGone(): bool</code> — True once the transport reported that the client disconnected.</li>
+<li class=""><code>bytesWritten(): int</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcorehttp-1">Omnitrix\Core\Http<a href="#omnitrixcorehttp-1" class="hash-link" aria-label="Direct link to Omnitrix\Core\Http" title="Direct link to Omnitrix\Core\Http" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="status-class">Status (class)<a href="#status-class" class="hash-link" aria-label="Direct link to Status (class)" title="Direct link to Status (class)" translate="no">​</a></h3>
+<p>HTTP status codes and reason phrases used by the framework.</p>
+<ul>
+<li class=""><code>static phrase(int $code): string</code></li>
+<li class=""><code>static isValid(int $code): bool</code></li>
+<li class=""><code>static isError(int $code): bool</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcoreio">Omnitrix\Core\IO<a href="#omnitrixcoreio" class="hash-link" aria-label="Direct link to Omnitrix\Core\IO" title="Direct link to Omnitrix\Core\IO" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="connectionclosedexception-class">ConnectionClosedException (class)<a href="#connectionclosedexception-class" class="hash-link" aria-label="Direct link to ConnectionClosedException (class)" title="Direct link to ConnectionClosedException (class)" translate="no">​</a></h3>
+<p>The peer closed the connection before the expected data arrived.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="dns-class">Dns (class)<a href="#dns-class" class="hash-link" aria-label="Direct link to Dns (class)" title="Direct link to Dns (class)" translate="no">​</a></h3>
+<p>Coroutine DNS resolution (c-ares via <code>Coroutine\System</code>) with a small per-worker TTL cache.</p>
+<ul>
+<li class=""><code>__construct(float $ttl = 60.0, int $maxEntries = 1024)</code></li>
+<li class=""><code>resolve(string $host, float $timeout = 5.0): string</code></li>
+<li class=""><code>resolveAll(string $host, float $timeout = 5.0): array</code></li>
+<li class=""><code>clear(): void</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="filesystem-class">Filesystem (class)<a href="#filesystem-class" class="hash-link" aria-label="Direct link to Filesystem (class)" title="Direct link to Filesystem (class)" translate="no">​</a></h3>
+<p>Filesystem helpers that do not block the event loop.</p>
+<ul>
+<li class=""><code>read(string $path): string</code></li>
+<li class=""><code>write(string $path, string $data): void</code> — Atomic write: data goes to a sibling temp file which is then renamed over the target.</li>
+<li class=""><code>append(string $path, string $data): void</code></li>
+<li class=""><code>exists(string $path): bool</code></li>
+<li class=""><code>delete(string $path): bool</code></li>
+<li class=""><code>ensureDirectory(string $path, int $mode = 509): void</code></li>
+<li class=""><code>deleteDirectory(string $path): void</code> — Removes a directory tree.</li>
+<li class=""><code>readChunks(string $path, int $chunkSize = 65536): Generator</code> — Streams a file in chunks without loading it into memory.</li>
+<li class=""><code>writeChunks(string $path, iterable $chunks): int</code> — Writes chunks from any iterable to <code>$path</code> (streaming copy); returns bytes written.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ioexception-class">IoException (class)<a href="#ioexception-class" class="hash-link" aria-label="Direct link to IoException (class)" title="Direct link to IoException (class)" translate="no">​</a></h3>
+<p>Base class of socket, DNS and filesystem errors.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="iotimeoutexception-class">IoTimeoutException (class)<a href="#iotimeoutexception-class" class="hash-link" aria-label="Direct link to IoTimeoutException (class)" title="Direct link to IoTimeoutException (class)" translate="no">​</a></h3>
+<p>A socket operation did not complete within its timeout.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="tcpconnection-class">TcpConnection (class)<a href="#tcpconnection-class" class="hash-link" aria-label="Direct link to TcpConnection (class)" title="Direct link to TcpConnection (class)" translate="no">​</a></h3>
+<p>A connected TCP stream on an OpenSwoole coroutine socket. Every wait suspends only the</p>
+<ul>
+<li class=""><code>__construct(OpenSwoole\Coroutine\Socket $socket)</code></li>
+<li class=""><code>static connect(string $host, int $port, float $timeout = 5.0, ?Omnitrix\Core\IO\Dns $dns = NULL): Omnitrix\Core\IO\TcpConnection</code></li>
+<li class=""><code>send(string $data, float $timeout = 5.0): void</code> — Sends all bytes.</li>
+<li class=""><code>receive(int $maxBytes = 65536, float $timeout = 5.0): string</code> — Up to <code>$maxBytes</code> bytes as soon as any arrive; &#x27;&#x27; when the peer closed.</li>
+<li class=""><code>receiveExactly(int $bytes, float $timeout = 5.0): string</code> — Exactly <code>$bytes</code> bytes, or an exception.</li>
+<li class=""><code>receiveLine(int $maxBytes = 65536, float $timeout = 5.0): string</code> — One line including the trailing &quot;\n&quot; (max <code>$maxBytes</code>); &#x27;&#x27; when the peer closed.</li>
+<li class=""><code>remote(): ?array</code></li>
+<li class=""><code>close(): void</code></li>
+<li class=""><code>isClosed(): bool</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="tcpserver-class">TcpServer (class)<a href="#tcpserver-class" class="hash-link" aria-label="Direct link to TcpServer (class)" title="Direct link to TcpServer (class)" translate="no">​</a></h3>
+<p>Coroutine TCP server for auxiliary listeners inside a worker or standalone coroutine program</p>
+<ul>
+<li class=""><code>__construct(string $host, int $port, Omnitrix\Core\Runtime\Exception\ExceptionHandlerInterface $exceptionHandler, int $maxConnections = 1024, int $backlog = 512)</code></li>
+<li class=""><code>port(): int</code> — The bound port (useful with port 0).</li>
+<li class=""><code>serve(callable $handler): void</code> — Accept loop; returns after {@see stop()}. Run it in its own coroutine.</li>
+<li class=""><code>isRunning(): bool</code></li>
+<li class=""><code>stop(): void</code> — Stops accepting (the loop exits within 0.5 s) and closes the listener.</li>
+<li class=""><code>close(): void</code></li>
+<li class=""><code>accepted(): int</code></li>
+<li class=""><code>activeConnections(): int</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="tempfiles-class">TempFiles (class)<a href="#tempfiles-class" class="hash-link" aria-label="Direct link to TempFiles (class)" title="Direct link to TempFiles (class)" translate="no">​</a></h3>
+<p>Temporary files with guaranteed cleanup. Files are created with unpredictable names</p>
+<ul>
+<li class=""><code>__construct(?string $directory = NULL, Omnitrix\Core\IO\Filesystem $filesystem = …)</code></li>
+<li class=""><code>create(string $prefix = &#x27;omnitrix-&#x27;, string $suffix = &#x27;.tmp&#x27;): string</code></li>
+<li class=""><code>forRequest(Omnitrix\Core\Runtime\Context\RequestContext $context, string $prefix = &#x27;omnitrix-&#x27;, string $suffix = &#x27;.tmp&#x27;): string</code> — Creates a temp file removed automatically when <code>$context</code> is disposed.</li>
+<li class=""><code>remove(string $path): void</code></li>
+<li class=""><code>cleanup(): int</code></li>
+<li class=""><code>count(): int</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="udpsocket-class">UdpSocket (class)<a href="#udpsocket-class" class="hash-link" aria-label="Direct link to UdpSocket (class)" title="Direct link to UdpSocket (class)" translate="no">​</a></h3>
+<p>Coroutine UDP socket (datagrams; no delivery guarantee).</p>
+<ul>
+<li class=""><code>__construct(string $bindHost = &#x27;0.0.0.0&#x27;, int $bindPort = 0)</code></li>
+<li class=""><code>port(): int</code></li>
+<li class=""><code>sendTo(string $address, int $port, string $data): void</code></li>
+<li class=""><code>receive(float $timeout = 5.0): array</code> — Waits for one datagram.</li>
+<li class=""><code>close(): void</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcorelog">Omnitrix\Core\Log<a href="#omnitrixcorelog" class="hash-link" aria-label="Direct link to Omnitrix\Core\Log" title="Direct link to Omnitrix\Core\Log" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="jsonlogger-class">JsonLogger (class)<a href="#jsonlogger-class" class="hash-link" aria-label="Direct link to JsonLogger (class)" title="Direct link to JsonLogger (class)" translate="no">​</a></h3>
+<p>Minimal structured (one JSON object per line) PSR-3 logger writing to a stream.</p>
+<ul>
+<li class=""><code>__construct($stream = NULL, array $redactKeys = …, bool $includeTraces = false, string $channel = &#x27;omnitrix&#x27;, string $minimumLevel = &#x27;debug&#x27;)</code></li>
+<li class=""><code>log($level, Stringable|string $message, array $context = …): void</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcoreobservability">Omnitrix\Core\Observability<a href="#omnitrixcoreobservability" class="hash-link" aria-label="Direct link to Omnitrix\Core\Observability" title="Direct link to Omnitrix\Core\Observability" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="metricsregistry-class">MetricsRegistry (class)<a href="#metricsregistry-class" class="hash-link" aria-label="Direct link to MetricsRegistry (class)" title="Direct link to MetricsRegistry (class)" translate="no">​</a></h3>
+<p>Request metrics in OpenSwoole shared memory: every worker records into the same table (create</p>
+<ul>
+<li class=""><code>__construct(int $maxSeries = 4096)</code></li>
+<li class=""><code>observe(string $route, string $method, int $status, float $seconds): void</code></li>
+<li class=""><code>series(): array</code></li>
+<li class=""><code>render(array $gauges = …): string</code> — Prometheus text exposition (v0.0.4).</li>
+<li class=""><code>maxSeen(): int</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcorepool">Omnitrix\Core\Pool<a href="#omnitrixcorepool" class="hash-link" aria-label="Direct link to Omnitrix\Core\Pool" title="Direct link to Omnitrix\Core\Pool" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="clientpool-class">ClientPool (class)<a href="#clientpool-class" class="hash-link" aria-label="Direct link to ClientPool (class)" title="Direct link to ClientPool (class)" translate="no">​</a></h3>
+<p>Bounded pool of reusable client objects (HTTP connections, Redis clients…) for one worker.</p>
+<ul>
+<li class=""><code>__construct(string $key, int $max, float $acquireTimeout, float $idleTimeout, Closure $factory, Closure $destroyer, ?Closure $validator = NULL, float $validationInterval = 0.0)</code></li>
+<li class=""><code>acquire(?Omnitrix\Core\Concurrency\CancellationToken $token = NULL): object</code></li>
+<li class=""><code>release(object $client, bool $healthy = true): void</code></li>
+<li class=""><code>evict(): int</code> — Closes idle clients unused for longer than the idle timeout.</li>
+<li class=""><code>close(): void</code></li>
+<li class=""><code>stats(): array</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="pooltimeoutexception-class">PoolTimeoutException (class)<a href="#pooltimeoutexception-class" class="hash-link" aria-label="Direct link to PoolTimeoutException (class)" title="Direct link to PoolTimeoutException (class)" translate="no">​</a></h3>
+<p>No pooled client became available within the acquisition timeout (backpressure signal).</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcoreprocess">Omnitrix\Core\Process<a href="#omnitrixcoreprocess" class="hash-link" aria-label="Direct link to Omnitrix\Core\Process" title="Direct link to Omnitrix\Core\Process" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cpuexception-class">CpuException (class)<a href="#cpuexception-class" class="hash-link" aria-label="Direct link to CpuException (class)" title="Direct link to CpuException (class)" translate="no">​</a></h3>
+<p>Base class of CPU pool errors.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cpujobexception-class">CpuJobException (class)<a href="#cpujobexception-class" class="hash-link" aria-label="Direct link to CpuJobException (class)" title="Direct link to CpuJobException (class)" translate="no">​</a></h3>
+<p>The job threw inside the worker process; the worker survives. Carries the remote class name.</p>
+<ul>
+<li class=""><code>__construct(string $message, string $remoteClass)</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cpupool-class">CpuPool (class)<a href="#cpupool-class" class="hash-link" aria-label="Direct link to CpuPool (class)" title="Direct link to CpuPool (class)" translate="no">​</a></h3>
+<p>Client side of the CPU pool, used from HTTP workers (or any coroutine).</p>
+<ul>
+<li class=""><code>__construct(Omnitrix\Core\Process\CpuPoolConfig $config, Omnitrix\Core\Process\CpuLoadBoard $board)</code></li>
+<li class=""><code>run(string $job, array $args = …, ?float $timeout = NULL): mixed</code> — Runs a registered job with JSON-compatible arguments and returns its JSON-compatible result.</li>
+<li class=""><code>stats(): array</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cpupoolconfig-class">CpuPoolConfig (class)<a href="#cpupoolconfig-class" class="hash-link" aria-label="Direct link to CpuPoolConfig (class)" title="Direct link to CpuPoolConfig (class)" translate="no">​</a></h3>
+<p>CPU pool settings.</p>
+<ul>
+<li class=""><code>__construct(int $workers = 2, float $timeout = 30.0, int $maxPending = 64, string $socketDirectory = &#x27;&#x27;, string $name = &#x27;default&#x27;)</code></li>
+<li class=""><code>socketPath(int $index): string</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cputimeoutexception-class">CpuTimeoutException (class)<a href="#cputimeoutexception-class" class="hash-link" aria-label="Direct link to CpuTimeoutException (class)" title="Direct link to CpuTimeoutException (class)" translate="no">​</a></h3>
+<p>The job did not finish in time; if it had started, its worker process was killed and is restarted.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="workercrashedexception-class">WorkerCrashedException (class)<a href="#workercrashedexception-class" class="hash-link" aria-label="Direct link to WorkerCrashedException (class)" title="Direct link to WorkerCrashedException (class)" translate="no">​</a></h3>
+<p>The worker process died while running the job (fatal error, OOM, signal). It is restarted.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcorequeue">Omnitrix\Core\Queue<a href="#omnitrixcorequeue" class="hash-link" aria-label="Direct link to Omnitrix\Core\Queue" title="Direct link to Omnitrix\Core\Queue" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="job-class">Job (class)<a href="#job-class" class="hash-link" aria-label="Direct link to Job (class)" title="Direct link to Job (class)" translate="no">​</a></h3>
+<p>An immutable queued job. The JSON form is what lives in Redis.</p>
+<ul>
+<li class=""><code>__construct(string $id, string $name, array $payload, string $queue = &#x27;default&#x27;, int $attempts = 0, int $maxAttempts = 3, float $createdAt = 0.0, ?string $lastError = NULL)</code></li>
+<li class=""><code>static create(string $name, array $payload, string $queue = &#x27;default&#x27;, int $maxAttempts = 3): Omnitrix\Core\Queue\Job</code></li>
+<li class=""><code>withAttempt(?string $error): Omnitrix\Core\Queue\Job</code></li>
+<li class=""><code>hasAttemptsLeft(): bool</code></li>
+<li class=""><code>toJson(): string</code></li>
+<li class=""><code>static fromJson(string $json): Omnitrix\Core\Queue\Job</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="queueconsumer-class">QueueConsumer (class)<a href="#queueconsumer-class" class="hash-link" aria-label="Direct link to QueueConsumer (class)" title="Direct link to QueueConsumer (class)" translate="no">​</a></h3>
+<p>Processes jobs from one queue with <code>$concurrency</code> coroutines in a long-running consumer</p>
+<ul>
+<li class=""><code>__construct(Omnitrix\Core\Queue\RedisQueue $queue, array $handlers, string $queueName = &#x27;default&#x27;, int $concurrency = 4, float $jobTimeout = 60.0, float $backoffBase = 1.0, float $backoffMax = 300.0, Psr\Log\LoggerInterface $logger = …, ?string $consumerId = NULL)</code></li>
+<li class=""><code>run(): void</code> — Blocks until stop() was called and in-flight jobs finished. Run inside a coroutine.</li>
+<li class=""><code>stop(): void</code></li>
+<li class=""><code>isRunning(): bool</code></li>
+<li class=""><code>stats(): array</code></li>
+<li class=""><code>handlerCount(): int</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="queueexception-class">QueueException (class)<a href="#queueexception-class" class="hash-link" aria-label="Direct link to QueueException (class)" title="Direct link to QueueException (class)" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="queueproducer-class">QueueProducer (class)<a href="#queueproducer-class" class="hash-link" aria-label="Direct link to QueueProducer (class)" title="Direct link to QueueProducer (class)" translate="no">​</a></h3>
+<p>Producer side of the queue, used by request handlers (one per worker).</p>
+<ul>
+<li class=""><code>__construct(Omnitrix\Core\Queue\RedisQueue $queue, string $defaultQueue = &#x27;default&#x27;, int $defaultMaxAttempts = 3)</code></li>
+<li class=""><code>dispatch(string $name, array $payload = …, float $delay = 0.0, ?string $queue = NULL, ?int $maxAttempts = NULL): string</code> — Enqueues <code>$name</code> with a JSON-compatible payload; returns the job id.</li>
+<li class=""><code>stats(?string $queue = NULL): array</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="redisqueue-class">RedisQueue (class)<a href="#redisqueue-class" class="hash-link" aria-label="Direct link to RedisQueue (class)" title="Direct link to RedisQueue (class)" translate="no">​</a></h3>
+<p>Reliable queue on Redis lists.</p>
+<ul>
+<li class=""><code>__construct(Omnitrix\Core\Redis\RedisClient $redis)</code></li>
+<li class=""><code>push(Omnitrix\Core\Queue\Job $job, float $delay = 0.0): void</code> — Enqueues a job, optionally delayed by <code>$delay</code> seconds.</li>
+<li class=""><code>reserve(string $queue, string $consumer, int $timeout = 1): ?array</code> — Waits up to <code>$timeout</code> seconds (whole seconds, ≥ 1) for a job and moves it to the</li>
+<li class=""><code>ack(string $queue, string $consumer, string $raw): void</code> — Removes a finished job from the processing list.</li>
+<li class=""><code>retry(string $queue, string $consumer, string $raw, Omnitrix\Core\Queue\Job $next, float $delay): void</code> — Re-schedules a failed job after <code>$delay</code> seconds (atomic move).</li>
+<li class=""><code>bury(string $queue, string $consumer, string $raw, Omnitrix\Core\Queue\Job $final): void</code> — Moves a job that exhausted its attempts to the dead letter list (atomic).</li>
+<li class=""><code>heartbeat(string $consumer, int $ttl): void</code> — Marks a consumer alive for <code>$ttl</code> seconds.</li>
+<li class=""><code>forgetConsumer(string $consumer): void</code></li>
+<li class=""><code>recover(string $queue): int</code> — Returns jobs held by consumers whose heartbeat expired (crashed or killed) to <code>ready</code>.</li>
+<li class=""><code>stats(string $queue): array</code></li>
+<li class=""><code>deadLetters(string $queue, int $limit = 100): array</code></li>
+<li class=""><code>promoteDue(string $queue): int</code> — Moves due delayed jobs to <code>ready</code> (atomic Lua script).</li>
+<li class=""><code>purge(string $queue): void</code> — Deletes every key of a queue (tests / administration).</li>
+<li class=""><code>static key(string $queue, string $suffix): string</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcoreredis">Omnitrix\Core\Redis<a href="#omnitrixcoreredis" class="hash-link" aria-label="Direct link to Omnitrix\Core\Redis" title="Direct link to Omnitrix\Core\Redis" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="errorclassifier-class-1">ErrorClassifier (class)<a href="#errorclassifier-class-1" class="hash-link" aria-label="Direct link to ErrorClassifier (class)" title="Direct link to ErrorClassifier (class)" translate="no">​</a></h3>
+<p>Maps phpredis exceptions (message-based; phpredis has no error codes) to typed exceptions.</p>
+<ul>
+<li class=""><code>static classify(Throwable $e, string $context = &#x27;&#x27;): Omnitrix\Core\Redis\Exception\RedisException</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcoreredisexception">Omnitrix\Core\Redis\Exception<a href="#omnitrixcoreredisexception" class="hash-link" aria-label="Direct link to Omnitrix\Core\Redis\Exception" title="Direct link to Omnitrix\Core\Redis\Exception" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="commandexception-class">CommandException (class)<a href="#commandexception-class" class="hash-link" aria-label="Direct link to CommandException (class)" title="Direct link to CommandException (class)" translate="no">​</a></h3>
+<p>The server rejected a command (WRONGTYPE, syntax, NOAUTH…); the connection stays usable.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="connectionexception-class-2">ConnectionException (class)<a href="#connectionexception-class-2" class="hash-link" aria-label="Direct link to ConnectionException (class)" title="Direct link to ConnectionException (class)" translate="no">​</a></h3>
+<p>Connect/auth failure, lost connection or read timeout; the pooled connection is discarded.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="redisexception-class">RedisException (class)<a href="#redisexception-class" class="hash-link" aria-label="Direct link to RedisException (class)" title="Direct link to RedisException (class)" translate="no">​</a></h3>
+<p>Base class of Redis errors raised by Omnitrix.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="timeoutexception-class-2">TimeoutException (class)<a href="#timeoutexception-class-2" class="hash-link" aria-label="Direct link to TimeoutException (class)" title="Direct link to TimeoutException (class)" translate="no">​</a></h3>
+<p>A read timed out (blocking command or slow server); the connection is discarded.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcoreredis-1">Omnitrix\Core\Redis<a href="#omnitrixcoreredis-1" class="hash-link" aria-label="Direct link to Omnitrix\Core\Redis" title="Direct link to Omnitrix\Core\Redis" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="redisclient-class">RedisClient (class)<a href="#redisclient-class" class="hash-link" aria-label="Direct link to RedisClient (class)" title="Direct link to RedisClient (class)" translate="no">​</a></h3>
+<p>Coroutine-safe Redis access: every command leases a pooled connection for its duration.</p>
+<ul>
+<li class=""><code>__construct(Omnitrix\Core\Redis\RedisConfig $config, ?Omnitrix\Core\Redis\RedisPool $pool = NULL)</code></li>
+<li class=""><code>pool(): Omnitrix\Core\Redis\RedisPool</code></li>
+<li class=""><code>withConnection(callable $fn, ?Omnitrix\Core\Concurrency\CancellationToken $token = NULL): mixed</code> — Runs <code>$fn</code> with a leased connection. Connection-class failures discard the connection.</li>
+<li class=""><code>command(string $name, array $args = …): mixed</code> — Any command by name (<code>$redis-&gt;rawCommand</code>), for commands without a typed helper.</li>
+<li class=""><code>get(string $key): ?string</code></li>
+<li class=""><code>set(string $key, string $value, ?int $ttl = NULL): bool</code></li>
+<li class=""><code>setIfAbsent(string $key, string $value, ?int $ttl = NULL): bool</code> — SET NX (returns false when the key exists).</li>
+<li class=""><code>mget(array $keys): array</code></li>
+<li class=""><code>delete(string ...$keys): int</code></li>
+<li class=""><code>exists(string $key): bool</code></li>
+<li class=""><code>expire(string $key, int $seconds): bool</code></li>
+<li class=""><code>ttl(string $key): int</code> — Remaining TTL in seconds, -1 without expiry, -2 when missing.</li>
+<li class=""><code>increment(string $key, int $by = 1): int</code></li>
+<li class=""><code>decrement(string $key, int $by = 1): int</code></li>
+<li class=""><code>hget(string $key, string $field): ?string</code></li>
+<li class=""><code>hset(string $key, string $field, string $value): void</code></li>
+<li class=""><code>hgetall(string $key): array</code></li>
+<li class=""><code>lpush(string $key, string ...$values): int</code></li>
+<li class=""><code>rpush(string $key, string ...$values): int</code></li>
+<li class=""><code>lpop(string $key): ?string</code></li>
+<li class=""><code>llen(string $key): int</code></li>
+<li class=""><code>blpop(array $keys, int $timeout): ?array</code> — Blocking pop (BLPOP) bounded by <code>$timeout</code> seconds; null when nothing arrived. The pooled</li>
+<li class=""><code>sadd(string $key, string ...$members): int</code></li>
+<li class=""><code>smembers(string $key): array</code></li>
+<li class=""><code>pipeline(callable $commands): array</code> — Queues commands on one connection and sends them in one round trip.</li>
+<li class=""><code>transaction(callable $commands): array</code> — MULTI/EXEC transaction (atomic on the server).</li>
+<li class=""><code>publish(string $channel, string $message): int</code></li>
+<li class=""><code>subscribe(array $channels, callable $handler, ?Omnitrix\Core\Concurrency\CancellationToken $token = NULL): void</code> — Subscribes on a dedicated connection and delivers messages to <code>$handler</code> until it returns</li>
+<li class=""><code>ping(): bool</code></li>
+<li class=""><code>stats(): array</code></li>
+<li class=""><code>close(): void</code></li>
+<li class=""><code>getMany(array $keys): array</code></li>
+<li class=""><code>throwIfUnavailable(): void</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="redisconfig-class">RedisConfig (class)<a href="#redisconfig-class" class="hash-link" aria-label="Direct link to RedisConfig (class)" title="Direct link to RedisConfig (class)" translate="no">​</a></h3>
+<p>Validated <code>redis</code> configuration section.</p>
+<ul>
+<li class=""><code>static fromArray(array $config): Omnitrix\Core\Redis\RedisConfig</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="redispool-class">RedisPool (class)<a href="#redispool-class" class="hash-link" aria-label="Direct link to RedisPool (class)" title="Direct link to RedisPool (class)" translate="no">​</a></h3>
+<p>Pool of phpredis connections for one worker. Each connection is used by one coroutine at a</p>
+<ul>
+<li class=""><code>__construct(Omnitrix\Core\Redis\RedisConfig $config)</code></li>
+<li class=""><code>connect(): Redis</code> — Opens a fresh, authenticated connection outside the pool (pub/sub, blocking consumers).</li>
+<li class=""><code>acquire(?Omnitrix\Core\Concurrency\CancellationToken $token = NULL): Redis</code></li>
+<li class=""><code>release(Redis $redis, bool $healthy = true): void</code></li>
+<li class=""><code>stats(): array</code></li>
+<li class=""><code>close(): void</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcoreruntimeconfig">Omnitrix\Core\Runtime\Config<a href="#omnitrixcoreruntimeconfig" class="hash-link" aria-label="Direct link to Omnitrix\Core\Runtime\Config" title="Direct link to Omnitrix\Core\Runtime\Config" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="invalidconfigurationexception-class">InvalidConfigurationException (class)<a href="#invalidconfigurationexception-class" class="hash-link" aria-label="Direct link to InvalidConfigurationException (class)" title="Direct link to InvalidConfigurationException (class)" translate="no">​</a></h3>
+<p>A configuration value is missing, has the wrong type or is out of range.</p>
+<ul>
+<li class=""><code>static at(string $path, string $problem): Omnitrix\Core\Runtime\Config\InvalidConfigurationException</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="runtimeconfig-class">RuntimeConfig (class)<a href="#runtimeconfig-class" class="hash-link" aria-label="Direct link to RuntimeConfig (class)" title="Direct link to RuntimeConfig (class)" translate="no">​</a></h3>
+<p>Validated, immutable runtime/server configuration.</p>
+<ul>
+<li class=""><code>static fromArray(array $config): Omnitrix\Core\Runtime\Config\RuntimeConfig</code></li>
+<li class=""><code>toOpenSwooleSettings(): array</code> — The OpenSwoole <code>Server::set()</code> array. Explicit options win over <code>extraOptions</code>.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="servermode-enum">ServerMode (enum)<a href="#servermode-enum" class="hash-link" aria-label="Direct link to ServerMode (enum)" title="Direct link to ServerMode (enum)" translate="no">​</a></h3>
+<p>OpenSwoole process model.</p>
+<ul>
+<li class=""><code>openSwooleMode(): int</code></li>
+<li class=""><code>static cases(): array</code></li>
+<li class=""><code>static from(string|int $value): static</code></li>
+<li class=""><code>static tryFrom(string|int $value): ?static</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcoreruntimecontext">Omnitrix\Core\Runtime\Context<a href="#omnitrixcoreruntimecontext" class="hash-link" aria-label="Direct link to Omnitrix\Core\Runtime\Context" title="Direct link to Omnitrix\Core\Runtime\Context" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="contextnotavailableexception-class">ContextNotAvailableException (class)<a href="#contextnotavailableexception-class" class="hash-link" aria-label="Direct link to ContextNotAvailableException (class)" title="Direct link to ContextNotAvailableException (class)" translate="no">​</a></h3>
+<p>Raised when request-scoped state is accessed outside of a request coroutine (or its children).</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="contextstorage-class">ContextStorage (class)<a href="#contextstorage-class" class="hash-link" aria-label="Direct link to ContextStorage (class)" title="Direct link to ContextStorage (class)" translate="no">​</a></h3>
+<p>Coroutine-local storage for the current {@see RequestContext}.</p>
+<ul>
+<li class=""><code>static bind(Omnitrix\Core\Runtime\Context\RequestContext $context): void</code> — Binds a context to the current coroutine.</li>
+<li class=""><code>static unbind(): void</code> — Removes the binding from the current coroutine (does not dispose the context).</li>
+<li class=""><code>static current(): ?Omnitrix\Core\Runtime\Context\RequestContext</code> — The context bound to this coroutine or inherited from an ancestor, or null.</li>
+<li class=""><code>static require(): Omnitrix\Core\Runtime\Context\RequestContext</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="requestcontext-class">RequestContext (class)<a href="#requestcontext-class" class="hash-link" aria-label="Direct link to RequestContext (class)" title="Direct link to RequestContext (class)" translate="no">​</a></h3>
+<p>Per-request state container.</p>
+<ul>
+<li class=""><code>__construct(string $id)</code></li>
+<li class=""><code>static create(): Omnitrix\Core\Runtime\Context\RequestContext</code></li>
+<li class=""><code>elapsed(): float</code> — Seconds elapsed since the context was created.</li>
+<li class=""><code>set(string $key, mixed $value): void</code></li>
+<li class=""><code>get(string $key, mixed $default = NULL): mixed</code></li>
+<li class=""><code>has(string $key): bool</code></li>
+<li class=""><code>remove(string $key): void</code></li>
+<li class=""><code>all(): array</code></li>
+<li class=""><code>setDeadline(float $unixTimestamp): void</code> — Absolute deadline as a unix timestamp (float seconds). Consumers (pools, clients) read</li>
+<li class=""><code>deadline(): ?float</code></li>
+<li class=""><code>remainingTime(): ?float</code> — Seconds until the deadline (may be negative once expired), or null when no deadline.</li>
+<li class=""><code>isExpired(): bool</code></li>
+<li class=""><code>defer(callable $callback): void</code> — Registers a callback executed when the request ends. Callbacks run in reverse</li>
+<li class=""><code>isDisposed(): bool</code></li>
+<li class=""><code>dispose(): array</code> — Runs deferred callbacks (LIFO) and clears attributes. Idempotent.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcoreruntimecoroutine">Omnitrix\Core\Runtime\Coroutine<a href="#omnitrixcoreruntimecoroutine" class="hash-link" aria-label="Direct link to Omnitrix\Core\Runtime\Coroutine" title="Direct link to Omnitrix\Core\Runtime\Coroutine" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="coroutines-class">Coroutines (class)<a href="#coroutines-class" class="hash-link" aria-label="Direct link to Coroutines (class)" title="Direct link to Coroutines (class)" translate="no">​</a></h3>
+<p>Guarded coroutine creation.</p>
+<ul>
+<li class=""><code>static spawn(callable $body, Omnitrix\Core\Runtime\Exception\ExceptionHandlerInterface $handler, array $context = …): int</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="sleep-class">Sleep (class)<a href="#sleep-class" class="hash-link" aria-label="Direct link to Sleep (class)" title="Direct link to Sleep (class)" translate="no">​</a></h3>
+<p>Cooperative sleep with sub-second resolution.</p>
+<ul>
+<li class=""><code>static for(float $seconds): void</code></li>
+<li class=""><code>static milliseconds(int $ms): void</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="timers-class">Timers (class)<a href="#timers-class" class="hash-link" aria-label="Direct link to Timers (class)" title="Direct link to Timers (class)" translate="no">​</a></h3>
+<p>Thin, typed wrapper around OpenSwoole timers.</p>
+<ul>
+<li class=""><code>static after(int $ms, callable $callback): ?int</code> — Schedules <code>$callback</code> once after <code>$ms</code> milliseconds; returns the timer id or null.</li>
+<li class=""><code>static tick(int $ms, callable $callback): ?int</code> — Schedules <code>$callback</code> every <code>$ms</code> milliseconds; returns the timer id or null.</li>
+<li class=""><code>static clear(int $timerId): bool</code></li>
+<li class=""><code>static exists(int $timerId): bool</code></li>
+<li class=""><code>static clearAll(): void</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcoreruntimeexception">Omnitrix\Core\Runtime\Exception<a href="#omnitrixcoreruntimeexception" class="hash-link" aria-label="Direct link to Omnitrix\Core\Runtime\Exception" title="Direct link to Omnitrix\Core\Runtime\Exception" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="errorhandler-class">ErrorHandler (class)<a href="#errorhandler-class" class="hash-link" aria-label="Direct link to ErrorHandler (class)" title="Direct link to ErrorHandler (class)" translate="no">​</a></h3>
+<p>Converts PHP warnings/notices/deprecations into {@see ErrorException}s so they surface</p>
+<ul>
+<li class=""><code>register(): void</code></li>
+<li class=""><code>unregister(): void</code></li>
+<li class=""><code>isRegistered(): bool</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="exceptionhandlerinterface-interface">ExceptionHandlerInterface (interface)<a href="#exceptionhandlerinterface-interface" class="hash-link" aria-label="Direct link to ExceptionHandlerInterface (interface)" title="Direct link to ExceptionHandlerInterface (interface)" translate="no">​</a></h3>
+<p>Receives every exception the runtime catches at a coroutine boundary (request handlers,</p>
+<ul>
+<li class=""><code>handle(Throwable $exception, array $context = …): void</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="loggingexceptionhandler-class">LoggingExceptionHandler (class)<a href="#loggingexceptionhandler-class" class="hash-link" aria-label="Direct link to LoggingExceptionHandler (class)" title="Direct link to LoggingExceptionHandler (class)" translate="no">​</a></h3>
+<p>Logs exceptions at <code>error</code> level with the originating context. If the logger itself fails,</p>
+<ul>
+<li class=""><code>__construct(Psr\Log\LoggerInterface $logger)</code></li>
+<li class=""><code>handle(Throwable $exception, array $context = …): void</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcoreruntimelifecycle">Omnitrix\Core\Runtime\Lifecycle<a href="#omnitrixcoreruntimelifecycle" class="hash-link" aria-label="Direct link to Omnitrix\Core\Runtime\Lifecycle" title="Direct link to Omnitrix\Core\Runtime\Lifecycle" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="lifecyclestate-enum">LifecycleState (enum)<a href="#lifecyclestate-enum" class="hash-link" aria-label="Direct link to LifecycleState (enum)" title="Direct link to LifecycleState (enum)" translate="no">​</a></h3>
+<ul>
+<li class=""><code>static cases(): array</code></li>
+<li class=""><code>static from(string|int $value): static</code></li>
+<li class=""><code>static tryFrom(string|int $value): ?static</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="serverruntime-class">ServerRuntime (class)<a href="#serverruntime-class" class="hash-link" aria-label="Direct link to ServerRuntime (class)" title="Direct link to ServerRuntime (class)" translate="no">​</a></h3>
+<p>Application lifecycle root: Created → Built → Running → Stopped.</p>
+<ul>
+<li class=""><code>static create(array $config, ?Psr\Log\LoggerInterface $logger = NULL, ?Omnitrix\Core\Runtime\Exception\ExceptionHandlerInterface $exceptionHandler = NULL): Omnitrix\Core\Runtime\Lifecycle\ServerRuntime</code></li>
+<li class=""><code>state(): Omnitrix\Core\Runtime\Lifecycle\LifecycleState</code></li>
+<li class=""><code>config(): array</code></li>
+<li class=""><code>runtimeConfig(): Omnitrix\Core\Runtime\Config\RuntimeConfig</code></li>
+<li class=""><code>logger(): Psr\Log\LoggerInterface</code></li>
+<li class=""><code>exceptionHandler(): Omnitrix\Core\Runtime\Exception\ExceptionHandlerInterface</code></li>
+<li class=""><code>workerLifecycle(): Omnitrix\Core\Runtime\Worker\WorkerLifecycle</code></li>
+<li class=""><code>onWorkerStart(callable $listener): Omnitrix\Core\Runtime\Lifecycle\ServerRuntime</code></li>
+<li class=""><code>onWorkerStop(callable $listener): Omnitrix\Core\Runtime\Lifecycle\ServerRuntime</code></li>
+<li class=""><code>configureContainer(callable $configurator): Omnitrix\Core\Runtime\Lifecycle\ServerRuntime</code> — Registers services in each worker&#x27;s container before start listeners run.</li>
+<li class=""><code>handle(callable $handler): Omnitrix\Core\Runtime\Lifecycle\ServerRuntime</code></li>
+<li class=""><code>onTask(callable $handler): Omnitrix\Core\Runtime\Lifecycle\ServerRuntime</code></li>
+<li class=""><code>onBuild(callable $hook): Omnitrix\Core\Runtime\Lifecycle\ServerRuntime</code> — Runs after the server object is created and before it starts (master process); used to</li>
+<li class=""><code>build(): OpenSwoole\Http\Server</code> — Builds the server without starting it (useful for inspection and tests).</li>
+<li class=""><code>run(): void</code> — Builds (if needed) and starts the server. Blocks until the server shuts down.</li>
+<li class=""><code>server(): ?OpenSwoole\Http\Server</code></li>
+<li class=""><code>stop(): void</code> — Requests a graceful shutdown (from any worker or the master).</li>
+<li class=""><code>reload(): void</code> — Gracefully restarts all workers.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcoreruntimescheduler">Omnitrix\Core\Runtime\Scheduler<a href="#omnitrixcoreruntimescheduler" class="hash-link" aria-label="Direct link to Omnitrix\Core\Runtime\Scheduler" title="Direct link to Omnitrix\Core\Runtime\Scheduler" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="boundedscheduler-class">BoundedScheduler (class)<a href="#boundedscheduler-class" class="hash-link" aria-label="Direct link to BoundedScheduler (class)" title="Direct link to BoundedScheduler (class)" translate="no">​</a></h3>
+<p>Admits at most <code>$limit</code> concurrently running coroutines (backpressure for application-level</p>
+<ul>
+<li class=""><code>__construct(int $limit, float $acquireTimeout, Omnitrix\Core\Runtime\Exception\ExceptionHandlerInterface $exceptionHandler)</code></li>
+<li class=""><code>spawn(callable $task, ?callable $onComplete = NULL, ?float $acquireTimeout = NULL): int</code> — Starts <code>$task</code> in a new coroutine once a slot is free. Returns the coroutine id.</li>
+<li class=""><code>run(callable $task, ?float $acquireTimeout = NULL): mixed</code> — Runs <code>$task</code> inline in the current coroutine while holding a slot.</li>
+<li class=""><code>running(): int</code></li>
+<li class=""><code>available(): int</code></li>
+<li class=""><code>stats(): array</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="schedulersaturatedexception-class">SchedulerSaturatedException (class)<a href="#schedulersaturatedexception-class" class="hash-link" aria-label="Direct link to SchedulerSaturatedException (class)" title="Direct link to SchedulerSaturatedException (class)" translate="no">​</a></h3>
+<p>The bounded scheduler could not admit a task within the acquisition timeout.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcoreruntimeshutdown">Omnitrix\Core\Runtime\Shutdown<a href="#omnitrixcoreruntimeshutdown" class="hash-link" aria-label="Direct link to Omnitrix\Core\Runtime\Shutdown" title="Direct link to Omnitrix\Core\Runtime\Shutdown" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="resourceregistry-class">ResourceRegistry (class)<a href="#resourceregistry-class" class="hash-link" aria-label="Direct link to ResourceRegistry (class)" title="Direct link to ResourceRegistry (class)" translate="no">​</a></h3>
+<p>Tracks worker-scoped resources (pools, sockets, timers, temp files) and releases them in a</p>
+<ul>
+<li class=""><code>register(string $name, callable $closer, int $priority = 0): void</code></li>
+<li class=""><code>has(string $name): bool</code></li>
+<li class=""><code>forget(string $name): void</code> — Removes a resource without closing it (the owner released it already).</li>
+<li class=""><code>names(): array</code></li>
+<li class=""><code>count(): int</code></li>
+<li class=""><code>releaseAll(): array</code> — Releases everything. Idempotent and re-entrancy safe.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="signalhandler-class">SignalHandler (class)<a href="#signalhandler-class" class="hash-link" aria-label="Direct link to SignalHandler (class)" title="Direct link to SignalHandler (class)" translate="no">​</a></h3>
+<p>Signal handling for standalone coroutine runtimes (queue consumers, CPU pools, tooling).</p>
+<ul>
+<li class=""><code>onTerminate(callable $onSignal, array $signals = …): void</code></li>
+<li class=""><code>release(): void</code></li>
+<li class=""><code>installedSignals(): array</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcoreruntimeworker">Omnitrix\Core\Runtime\Worker<a href="#omnitrixcoreruntimeworker" class="hash-link" aria-label="Direct link to Omnitrix\Core\Runtime\Worker" title="Direct link to Omnitrix\Core\Runtime\Worker" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="workercontext-class">WorkerContext (class)<a href="#workercontext-class" class="hash-link" aria-label="Direct link to WorkerContext (class)" title="Direct link to WorkerContext (class)" translate="no">​</a></h3>
+<p>Everything a worker-scoped service may need at start-up: identity, the worker container,</p>
+<ul>
+<li class=""><code>__construct(int $workerId, int $pid, Omnitrix\Core\Runtime\Worker\WorkerRole $role, Omnitrix\Core\Container\Container $container, Omnitrix\Core\Runtime\Shutdown\ResourceRegistry $resources, ?OpenSwoole\Server $server)</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="workerrole-enum">WorkerRole (enum)<a href="#workerrole-enum" class="hash-link" aria-label="Direct link to WorkerRole (enum)" title="Direct link to WorkerRole (enum)" translate="no">​</a></h3>
+<ul>
+<li class=""><code>static cases(): array</code></li>
+<li class=""><code>static from(string|int $value): static</code></li>
+<li class=""><code>static tryFrom(string|int $value): ?static</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="omnitrixcoresupport">Omnitrix\Core\Support<a href="#omnitrixcoresupport" class="hash-link" aria-label="Direct link to Omnitrix\Core\Support" title="Direct link to Omnitrix\Core\Support" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="id-class">Id (class)<a href="#id-class" class="hash-link" aria-label="Direct link to Id (class)" title="Direct link to Id (class)" translate="no">​</a></h3>
+<p>Opaque identifiers (request ids, task ids). Cryptographically random, URL-safe hex.</p>
+<ul>
+<li class=""><code>static generate(): string</code> — 32 hex characters (128 bits).</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="platform-class">Platform (class)<a href="#platform-class" class="hash-link" aria-label="Direct link to Platform (class)" title="Direct link to Platform (class)" translate="no">​</a></h3>
+<p>Read-only facts about the runtime the framework is executing on.</p>
+<ul>
+<li class=""><code>static phpVersion(): string</code></li>
+<li class=""><code>static hasOpenSwoole(): bool</code></li>
+<li class=""><code>static openSwooleVersion(): ?string</code></li>
+<li class=""><code>static kernelVersion(): ?string</code> — Kernel release string such as &quot;4.14.190&quot; (Linux) or null when not determinable.</li>
+<li class=""><code>static supportsIoUring(): bool</code> — Whether the io_uring reactor can be <em>requested</em> safely: the extension exposes the</li>
+<li class=""><code>static inCoroutine(): bool</code></li>
+<li class=""><code>static assertSupported(): void</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="runtimerequirementexception-class">RuntimeRequirementException (class)<a href="#runtimerequirementexception-class" class="hash-link" aria-label="Direct link to RuntimeRequirementException (class)" title="Direct link to RuntimeRequirementException (class)" translate="no">​</a></h3>
+<p>Thrown when the process does not satisfy a hard runtime requirement of the framework</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/omnitrix-docs/reference/framework-api"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Framework API (omnitrix/framework)</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#omnitrixcorecache" class="table-of-contents__link toc-highlight">Omnitrix\Core\Cache</a><ul><li><a href="#cache-class" class="table-of-contents__link toc-highlight">Cache (class)</a></li><li><a href="#keyvaluestoreinterface-interface" class="table-of-contents__link toc-highlight">KeyValueStoreInterface (interface)</a></li></ul></li><li><a href="#omnitrixcoreconcurrency" class="table-of-contents__link toc-highlight">Omnitrix\Core\Concurrency</a><ul><li><a href="#async-class" class="table-of-contents__link toc-highlight">Async (class)</a></li><li><a href="#cancellationtoken-class" class="table-of-contents__link toc-highlight">CancellationToken (class)</a></li><li><a href="#cancelledexception-class" class="table-of-contents__link toc-highlight">CancelledException (class)</a></li><li><a href="#outcome-class" class="table-of-contents__link toc-highlight">Outcome (class)</a></li><li><a href="#semaphore-class" class="table-of-contents__link toc-highlight">Semaphore (class)</a></li><li><a href="#task-class" class="table-of-contents__link toc-highlight">Task (class)</a></li><li><a href="#taskscope-class" class="table-of-contents__link toc-highlight">TaskScope (class)</a></li><li><a href="#taskstate-enum" class="table-of-contents__link toc-highlight">TaskState (enum)</a></li><li><a href="#timeoutexception-class" class="table-of-contents__link toc-highlight">TimeoutException (class)</a></li></ul></li><li><a href="#omnitrixcorecontainer" class="table-of-contents__link toc-highlight">Omnitrix\Core\Container</a><ul><li><a href="#container-class" class="table-of-contents__link toc-highlight">Container (class)</a></li><li><a href="#containerexception-class" class="table-of-contents__link toc-highlight">ContainerException (class)</a></li><li><a href="#notfoundexception-class" class="table-of-contents__link toc-highlight">NotFoundException (class)</a></li></ul></li><li><a href="#omnitrixcoredatabaseconfig" class="table-of-contents__link toc-highlight">Omnitrix\Core\Database\Config</a><ul><li><a href="#databaseconfig-class" class="table-of-contents__link toc-highlight">DatabaseConfig (class)</a></li><li><a href="#poolconfig-class" class="table-of-contents__link toc-highlight">PoolConfig (class)</a></li></ul></li><li><a href="#omnitrixcoredatabaseconnection" class="table-of-contents__link toc-highlight">Omnitrix\Core\Database\Connection</a><ul><li><a href="#pdoconnection-class" class="table-of-contents__link toc-highlight">PdoConnection (class)</a></li></ul></li><li><a href="#omnitrixcoredatabasecontracts" class="table-of-contents__link toc-highlight">Omnitrix\Core\Database\Contracts</a><ul><li><a href="#connectioninterface-interface" class="table-of-contents__link toc-highlight">ConnectionInterface (interface)</a></li><li><a href="#driverinterface-interface" class="table-of-contents__link toc-highlight">DriverInterface (interface)</a></li><li><a href="#grammarinterface-interface" class="table-of-contents__link toc-highlight">GrammarInterface (interface)</a></li></ul></li><li><a href="#omnitrixcoredatabase" class="table-of-contents__link toc-highlight">Omnitrix\Core\Database</a><ul><li><a href="#database-class" class="table-of-contents__link toc-highlight">Database (class)</a></li><li><a href="#databasemanager-class" class="table-of-contents__link toc-highlight">DatabaseManager (class)</a></li></ul></li><li><a href="#omnitrixcoredatabasedrivermysql" class="table-of-contents__link toc-highlight">Omnitrix\Core\Database\Driver\MySQL</a><ul><li><a href="#mysqldriver-class" class="table-of-contents__link toc-highlight">MySqlDriver (class)</a></li><li><a href="#mysqlgrammar-class" class="table-of-contents__link toc-highlight">MySqlGrammar (class)</a></li></ul></li><li><a href="#omnitrixcoredatabaseexception" class="table-of-contents__link toc-highlight">Omnitrix\Core\Database\Exception</a><ul><li><a href="#connectionexception-class" class="table-of-contents__link toc-highlight">ConnectionException (class)</a></li><li><a href="#constraintviolationexception-class" class="table-of-contents__link toc-highlight">ConstraintViolationException (class)</a></li><li><a href="#databaseexception-class" class="table-of-contents__link toc-highlight">DatabaseException (class)</a></li><li><a href="#deadlockexception-class" class="table-of-contents__link toc-highlight">DeadlockException (class)</a></li><li><a href="#errorclassifier-class" class="table-of-contents__link toc-highlight">ErrorClassifier (class)</a></li><li><a href="#lockwaittimeoutexception-class" class="table-of-contents__link toc-highlight">LockWaitTimeoutException (class)</a></li><li><a href="#ownershipviolationexception-class" class="table-of-contents__link toc-highlight">OwnershipViolationException (class)</a></li><li><a href="#poolexhaustedexception-class" class="table-of-contents__link toc-highlight">PoolExhaustedException (class)</a></li><li><a href="#queryexception-class" class="table-of-contents__link toc-highlight">QueryException (class)</a></li><li><a href="#querytimeoutexception-class" class="table-of-contents__link toc-highlight">QueryTimeoutException (class)</a></li><li><a href="#transactionexception-class" class="table-of-contents__link toc-highlight">TransactionException (class)</a></li><li><a href="#uniqueconstraintviolationexception-class" class="table-of-contents__link toc-highlight">UniqueConstraintViolationException (class)</a></li></ul></li><li><a href="#omnitrixcoredatabasepool" class="table-of-contents__link toc-highlight">Omnitrix\Core\Database\Pool</a><ul><li><a href="#connectionpool-class" class="table-of-contents__link toc-highlight">ConnectionPool (class)</a></li><li><a href="#poolstats-class" class="table-of-contents__link toc-highlight">PoolStats (class)</a></li><li><a href="#pooledconnection-class" class="table-of-contents__link toc-highlight">PooledConnection (class)</a></li></ul></li><li><a href="#omnitrixcoredatabasequery" class="table-of-contents__link toc-highlight">Omnitrix\Core\Database\Query</a><ul><li><a href="#builder-class" class="table-of-contents__link toc-highlight">Builder (class)</a></li><li><a href="#expression-class" class="table-of-contents__link toc-highlight">Expression (class)</a></li><li><a href="#queryexecutorinterface-interface" class="table-of-contents__link toc-highlight">QueryExecutorInterface (interface)</a></li><li><a href="#whereclause-class" class="table-of-contents__link toc-highlight">WhereClause (class)</a></li></ul></li><li><a href="#omnitrixcoredatabasetransaction" class="table-of-contents__link toc-highlight">Omnitrix\Core\Database\Transaction</a><ul><li><a href="#transactionmanager-class" class="table-of-contents__link toc-highlight">TransactionManager (class)</a></li></ul></li><li><a href="#omnitrixcorehttpclientexception" class="table-of-contents__link toc-highlight">Omnitrix\Core\HttpClient\Exception</a><ul><li><a href="#connectionexception-class-1" class="table-of-contents__link toc-highlight">ConnectionException (class)</a></li><li><a href="#dnsexception-class" class="table-of-contents__link toc-highlight">DnsException (class)</a></li><li><a href="#httpclientexception-class" class="table-of-contents__link toc-highlight">HttpClientException (class)</a></li><li><a href="#requestexception-class" class="table-of-contents__link toc-highlight">RequestException (class)</a></li><li><a href="#responsetoolargeexception-class" class="table-of-contents__link toc-highlight">ResponseTooLargeException (class)</a></li><li><a href="#timeoutexception-class-1" class="table-of-contents__link toc-highlight">TimeoutException (class)</a></li><li><a href="#tlsexception-class" class="table-of-contents__link toc-highlight">TlsException (class)</a></li><li><a href="#toomanyredirectsexception-class" class="table-of-contents__link toc-highlight">TooManyRedirectsException (class)</a></li></ul></li><li><a href="#omnitrixcorehttpclient" class="table-of-contents__link toc-highlight">Omnitrix\Core\HttpClient</a><ul><li><a href="#httpclient-class" class="table-of-contents__link toc-highlight">HttpClient (class)</a></li><li><a href="#httpclientconfig-class" class="table-of-contents__link toc-highlight">HttpClientConfig (class)</a></li><li><a href="#pendingrequest-class" class="table-of-contents__link toc-highlight">PendingRequest (class)</a></li><li><a href="#requestoptions-class" class="table-of-contents__link toc-highlight">RequestOptions (class)</a></li><li><a href="#response-class" class="table-of-contents__link toc-highlight">Response (class)</a></li></ul></li><li><a href="#omnitrixcorehttpclienttransport" class="table-of-contents__link toc-highlight">Omnitrix\Core\HttpClient\Transport</a><ul><li><a href="#cancelledoutboundexception-class" class="table-of-contents__link toc-highlight">CancelledOutboundException (class)</a></li><li><a href="#exchange-class" class="table-of-contents__link toc-highlight">Exchange (class)</a></li><li><a href="#openswooletransport-class" class="table-of-contents__link toc-highlight">OpenSwooleTransport (class)</a></li><li><a href="#rawresponse-class" class="table-of-contents__link toc-highlight">RawResponse (class)</a></li><li><a href="#transportinterface-interface" class="table-of-contents__link toc-highlight">TransportInterface (interface)</a></li></ul></li><li><a href="#omnitrixcorehttpclient-1" class="table-of-contents__link toc-highlight">Omnitrix\Core\HttpClient</a><ul><li><a href="#uri-class" class="table-of-contents__link toc-highlight">Uri (class)</a></li></ul></li><li><a href="#omnitrixcorehttp" class="table-of-contents__link toc-highlight">Omnitrix\Core\Http</a><ul><li><a href="#httperrorinterface-interface" class="table-of-contents__link toc-highlight">HttpErrorInterface (interface)</a></li></ul></li><li><a href="#omnitrixcorehttpserver" class="table-of-contents__link toc-highlight">Omnitrix\Core\Http\Server</a><ul><li><a href="#headersalreadysentexception-class" class="table-of-contents__link toc-highlight">HeadersAlreadySentException (class)</a></li><li><a href="#httpserveradapter-class" class="table-of-contents__link toc-highlight">HttpServerAdapter (class)</a></li><li><a href="#httpserverconfig-class" class="table-of-contents__link toc-highlight">HttpServerConfig (class)</a></li><li><a href="#incomingrequest-class" class="table-of-contents__link toc-highlight">IncomingRequest (class)</a></li><li><a href="#openswooleresponsesink-class" class="table-of-contents__link toc-highlight">OpenSwooleResponseSink (class)</a></li><li><a href="#requestrejectedexception-class" class="table-of-contents__link toc-highlight">RequestRejectedException (class)</a></li><li><a href="#responsesinkinterface-interface" class="table-of-contents__link toc-highlight">ResponseSinkInterface (interface)</a></li><li><a href="#responsewriter-class" class="table-of-contents__link toc-highlight">ResponseWriter (class)</a></li></ul></li><li><a href="#omnitrixcorehttp-1" class="table-of-contents__link toc-highlight">Omnitrix\Core\Http</a><ul><li><a href="#status-class" class="table-of-contents__link toc-highlight">Status (class)</a></li></ul></li><li><a href="#omnitrixcoreio" class="table-of-contents__link toc-highlight">Omnitrix\Core\IO</a><ul><li><a href="#connectionclosedexception-class" class="table-of-contents__link toc-highlight">ConnectionClosedException (class)</a></li><li><a href="#dns-class" class="table-of-contents__link toc-highlight">Dns (class)</a></li><li><a href="#filesystem-class" class="table-of-contents__link toc-highlight">Filesystem (class)</a></li><li><a href="#ioexception-class" class="table-of-contents__link toc-highlight">IoException (class)</a></li><li><a href="#iotimeoutexception-class" class="table-of-contents__link toc-highlight">IoTimeoutException (class)</a></li><li><a href="#tcpconnection-class" class="table-of-contents__link toc-highlight">TcpConnection (class)</a></li><li><a href="#tcpserver-class" class="table-of-contents__link toc-highlight">TcpServer (class)</a></li><li><a href="#tempfiles-class" class="table-of-contents__link toc-highlight">TempFiles (class)</a></li><li><a href="#udpsocket-class" class="table-of-contents__link toc-highlight">UdpSocket (class)</a></li></ul></li><li><a href="#omnitrixcorelog" class="table-of-contents__link toc-highlight">Omnitrix\Core\Log</a><ul><li><a href="#jsonlogger-class" class="table-of-contents__link toc-highlight">JsonLogger (class)</a></li></ul></li><li><a href="#omnitrixcoreobservability" class="table-of-contents__link toc-highlight">Omnitrix\Core\Observability</a><ul><li><a href="#metricsregistry-class" class="table-of-contents__link toc-highlight">MetricsRegistry (class)</a></li></ul></li><li><a href="#omnitrixcorepool" class="table-of-contents__link toc-highlight">Omnitrix\Core\Pool</a><ul><li><a href="#clientpool-class" class="table-of-contents__link toc-highlight">ClientPool (class)</a></li><li><a href="#pooltimeoutexception-class" class="table-of-contents__link toc-highlight">PoolTimeoutException (class)</a></li></ul></li><li><a href="#omnitrixcoreprocess" class="table-of-contents__link toc-highlight">Omnitrix\Core\Process</a><ul><li><a href="#cpuexception-class" class="table-of-contents__link toc-highlight">CpuException (class)</a></li><li><a href="#cpujobexception-class" class="table-of-contents__link toc-highlight">CpuJobException (class)</a></li><li><a href="#cpupool-class" class="table-of-contents__link toc-highlight">CpuPool (class)</a></li><li><a href="#cpupoolconfig-class" class="table-of-contents__link toc-highlight">CpuPoolConfig (class)</a></li><li><a href="#cputimeoutexception-class" class="table-of-contents__link toc-highlight">CpuTimeoutException (class)</a></li><li><a href="#workercrashedexception-class" class="table-of-contents__link toc-highlight">WorkerCrashedException (class)</a></li></ul></li><li><a href="#omnitrixcorequeue" class="table-of-contents__link toc-highlight">Omnitrix\Core\Queue</a><ul><li><a href="#job-class" class="table-of-contents__link toc-highlight">Job (class)</a></li><li><a href="#queueconsumer-class" class="table-of-contents__link toc-highlight">QueueConsumer (class)</a></li><li><a href="#queueexception-class" class="table-of-contents__link toc-highlight">QueueException (class)</a></li><li><a href="#queueproducer-class" class="table-of-contents__link toc-highlight">QueueProducer (class)</a></li><li><a href="#redisqueue-class" class="table-of-contents__link toc-highlight">RedisQueue (class)</a></li></ul></li><li><a href="#omnitrixcoreredis" class="table-of-contents__link toc-highlight">Omnitrix\Core\Redis</a><ul><li><a href="#errorclassifier-class-1" class="table-of-contents__link toc-highlight">ErrorClassifier (class)</a></li></ul></li><li><a href="#omnitrixcoreredisexception" class="table-of-contents__link toc-highlight">Omnitrix\Core\Redis\Exception</a><ul><li><a href="#commandexception-class" class="table-of-contents__link toc-highlight">CommandException (class)</a></li><li><a href="#connectionexception-class-2" class="table-of-contents__link toc-highlight">ConnectionException (class)</a></li><li><a href="#redisexception-class" class="table-of-contents__link toc-highlight">RedisException (class)</a></li><li><a href="#timeoutexception-class-2" class="table-of-contents__link toc-highlight">TimeoutException (class)</a></li></ul></li><li><a href="#omnitrixcoreredis-1" class="table-of-contents__link toc-highlight">Omnitrix\Core\Redis</a><ul><li><a href="#redisclient-class" class="table-of-contents__link toc-highlight">RedisClient (class)</a></li><li><a href="#redisconfig-class" class="table-of-contents__link toc-highlight">RedisConfig (class)</a></li><li><a href="#redispool-class" class="table-of-contents__link toc-highlight">RedisPool (class)</a></li></ul></li><li><a href="#omnitrixcoreruntimeconfig" class="table-of-contents__link toc-highlight">Omnitrix\Core\Runtime\Config</a><ul><li><a href="#invalidconfigurationexception-class" class="table-of-contents__link toc-highlight">InvalidConfigurationException (class)</a></li><li><a href="#runtimeconfig-class" class="table-of-contents__link toc-highlight">RuntimeConfig (class)</a></li><li><a href="#servermode-enum" class="table-of-contents__link toc-highlight">ServerMode (enum)</a></li></ul></li><li><a href="#omnitrixcoreruntimecontext" class="table-of-contents__link toc-highlight">Omnitrix\Core\Runtime\Context</a><ul><li><a href="#contextnotavailableexception-class" class="table-of-contents__link toc-highlight">ContextNotAvailableException (class)</a></li><li><a href="#contextstorage-class" class="table-of-contents__link toc-highlight">ContextStorage (class)</a></li><li><a href="#requestcontext-class" class="table-of-contents__link toc-highlight">RequestContext (class)</a></li></ul></li><li><a href="#omnitrixcoreruntimecoroutine" class="table-of-contents__link toc-highlight">Omnitrix\Core\Runtime\Coroutine</a><ul><li><a href="#coroutines-class" class="table-of-contents__link toc-highlight">Coroutines (class)</a></li><li><a href="#sleep-class" class="table-of-contents__link toc-highlight">Sleep (class)</a></li><li><a href="#timers-class" class="table-of-contents__link toc-highlight">Timers (class)</a></li></ul></li><li><a href="#omnitrixcoreruntimeexception" class="table-of-contents__link toc-highlight">Omnitrix\Core\Runtime\Exception</a><ul><li><a href="#errorhandler-class" class="table-of-contents__link toc-highlight">ErrorHandler (class)</a></li><li><a href="#exceptionhandlerinterface-interface" class="table-of-contents__link toc-highlight">ExceptionHandlerInterface (interface)</a></li><li><a href="#loggingexceptionhandler-class" class="table-of-contents__link toc-highlight">LoggingExceptionHandler (class)</a></li></ul></li><li><a href="#omnitrixcoreruntimelifecycle" class="table-of-contents__link toc-highlight">Omnitrix\Core\Runtime\Lifecycle</a><ul><li><a href="#lifecyclestate-enum" class="table-of-contents__link toc-highlight">LifecycleState (enum)</a></li><li><a href="#serverruntime-class" class="table-of-contents__link toc-highlight">ServerRuntime (class)</a></li></ul></li><li><a href="#omnitrixcoreruntimescheduler" class="table-of-contents__link toc-highlight">Omnitrix\Core\Runtime\Scheduler</a><ul><li><a href="#boundedscheduler-class" class="table-of-contents__link toc-highlight">BoundedScheduler (class)</a></li><li><a href="#schedulersaturatedexception-class" class="table-of-contents__link toc-highlight">SchedulerSaturatedException (class)</a></li></ul></li><li><a href="#omnitrixcoreruntimeshutdown" class="table-of-contents__link toc-highlight">Omnitrix\Core\Runtime\Shutdown</a><ul><li><a href="#resourceregistry-class" class="table-of-contents__link toc-highlight">ResourceRegistry (class)</a></li><li><a href="#signalhandler-class" class="table-of-contents__link toc-highlight">SignalHandler (class)</a></li></ul></li><li><a href="#omnitrixcoreruntimeworker" class="table-of-contents__link toc-highlight">Omnitrix\Core\Runtime\Worker</a><ul><li><a href="#workercontext-class" class="table-of-contents__link toc-highlight">WorkerContext (class)</a></li><li><a href="#workerrole-enum" class="table-of-contents__link toc-highlight">WorkerRole (enum)</a></li></ul></li><li><a href="#omnitrixcoresupport" class="table-of-contents__link toc-highlight">Omnitrix\Core\Support</a><ul><li><a href="#id-class" class="table-of-contents__link toc-highlight">Id (class)</a></li><li><a href="#platform-class" class="table-of-contents__link toc-highlight">Platform (class)</a></li><li><a href="#runtimerequirementexception-class" class="table-of-contents__link toc-highlight">RuntimeRequirementException (class)</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/omnitrix-docs/getting-started/installation">Installation</a></li><li class="footer__item"><a class="footer__link-item" href="/omnitrix-docs/getting-started/first-api">Your first API</a></li><li class="footer__item"><a class="footer__link-item" href="/omnitrix-docs/architecture/overview">Architecture</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Packages</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/omnitrix-docs/getting-started/directory-structure">omnitrix/omnitrix (application)</a></li><li class="footer__item"><a class="footer__link-item" href="/omnitrix-docs/reference/framework-api">omnitrix/framework</a></li><li class="footer__item"><a class="footer__link-item" href="/omnitrix-docs/reference/core-api">omnitrix/core</a></li><li class="footer__item"><a class="footer__link-item" href="/omnitrix-docs/getting-started/installation">omnitrix/installer</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Ajmal Alkhaledi. Released under the MIT License.</div></div></div></footer></div>
+</body>
+</html>
