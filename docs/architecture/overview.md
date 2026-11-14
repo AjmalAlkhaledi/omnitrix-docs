@@ -8,9 +8,9 @@ Omnitrix is distributed as three packages:
 
 | Package | Namespace | Role |
 |---|---|---|
-| `omnitrix/omnitrix` | `App\` (yours) | the application template: `bootstrap.php`, `config/`, `routes/`, `src/`, `database/`, the `omnitrix` command. Created once with `composer create-project`; from then on it is your code |
-| `omnitrix/core` | `Omnitrix\` and `Omnitrix\Core\` | all framework logic, installed in `vendor/`: the framework applications build on (`Omnitrix\`) and the engine underneath it (`Omnitrix\Core\`) |
-| `omnitrix/installer` | — | the global `omnitrix new` command, a thin wrapper around `composer create-project` |
+| [`omnitrix/omnitrix`](https://packagist.org/packages/omnitrix/omnitrix) | `App\` (yours) | the application template: `bootstrap.php`, `config/`, `routes/`, `src/`, `database/`, the `omnitrix` command. Created once with `composer create-project`; from then on it is your code |
+| [`omnitrix/core`](https://packagist.org/packages/omnitrix/core) | `Omnitrix\` and `Omnitrix\Core\` | all framework logic, installed in `vendor/`: the framework applications build on (`Omnitrix\`) and the engine underneath it (`Omnitrix\Core\`) |
+| [`omnitrix/installer`](https://packagist.org/packages/omnitrix/installer) | — | the global `omnitrix new` command, a thin wrapper around `composer create-project` |
 
 Your application requires `omnitrix/core`, configures it through `config/` and the `Application`
 methods, and uses it through the framework's facades, models and console. Updating the framework

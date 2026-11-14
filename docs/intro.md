@@ -43,11 +43,12 @@ $router->get('/users/{id:\d+}', function (Request $request): array {
 
 | Package | Role |
 |---|---|
-| `omnitrix/omnitrix` | The application template you install and own |
-| `omnitrix/core` | All framework logic (the framework and its runtime engine), installed in `vendor/` |
-| `omnitrix/installer` | The optional `omnitrix new` command |
+| [`omnitrix/omnitrix`](https://packagist.org/packages/omnitrix/omnitrix) | The application template you install and own |
+| [`omnitrix/core`](https://packagist.org/packages/omnitrix/core) | All framework logic (the framework and its runtime engine), installed in `vendor/` |
+| [`omnitrix/installer`](https://packagist.org/packages/omnitrix/installer) | The optional `omnitrix new` command |
 
-Your code lives in the application; the framework is updated with `composer update omnitrix/core`. See [Architecture](architecture/overview.md).
+All three are published on [Packagist](https://packagist.org/packages/omnitrix/). Your code lives
+in the application; the framework is updated with `composer update omnitrix/core`. See [Architecture](architecture/overview.md).
 
 ## Next steps
 

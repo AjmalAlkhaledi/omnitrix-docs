@@ -36,6 +36,9 @@ below prints a table of what is found and what is needed.
 
 ### With the installer
 
+The installer is published on Packagist as
+[`omnitrix/installer`](https://packagist.org/packages/omnitrix/installer).
+
 ```bash
 composer global require omnitrix/installer
 omnitrix new my-api
@@ -53,6 +56,10 @@ requirements, runs `composer create-project` and prints the next steps.
 | `--skip-requirements` | create the project even if the platform check fails |
 
 ### With Composer
+
+The application template is published on Packagist as
+[`omnitrix/omnitrix`](https://packagist.org/packages/omnitrix/omnitrix); it requires the framework,
+[`omnitrix/core`](https://packagist.org/packages/omnitrix/core).
 
 ```bash
 composer create-project omnitrix/omnitrix my-api

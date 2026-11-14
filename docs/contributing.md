@@ -8,9 +8,9 @@ Omnitrix is developed in four repositories:
 
 | Repository | Package | Contains |
 |---|---|---|
-| [omnitrix](https://github.com/AjmalAlkhaledi/omnitrix) | `omnitrix/omnitrix` | the application template |
-| [omnitrix-core](https://github.com/AjmalAlkhaledi/omnitrix-core) | `omnitrix/core` | the framework (`Omnitrix\`) and the engine (`Omnitrix\Core\`) |
-| [omnitrix-installer](https://github.com/AjmalAlkhaledi/omnitrix-installer) | `omnitrix/installer` | the `omnitrix new` command |
+| [omnitrix](https://github.com/AjmalAlkhaledi/omnitrix) | [`omnitrix/omnitrix`](https://packagist.org/packages/omnitrix/omnitrix) | the application template |
+| [omnitrix-core](https://github.com/AjmalAlkhaledi/omnitrix-core) | [`omnitrix/core`](https://packagist.org/packages/omnitrix/core) | the framework (`Omnitrix\`) and the engine (`Omnitrix\Core\`) |
+| [omnitrix-installer](https://github.com/AjmalAlkhaledi/omnitrix-installer) | [`omnitrix/installer`](https://packagist.org/packages/omnitrix/installer) | the `omnitrix new` command |
 | [omnitrix-docs](https://github.com/AjmalAlkhaledi/omnitrix-docs) | — | this documentation site |
 
 ## Requirements

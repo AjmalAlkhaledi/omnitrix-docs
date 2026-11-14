@@ -51,6 +51,8 @@ const config = {
         items: [
           { type: 'docSidebar', sidebarId: 'guide', position: 'left', label: 'Guide' },
           { type: 'docSidebar', sidebarId: 'reference', position: 'left', label: 'Reference' },
+          { href: 'https://packagist.org/packages/omnitrix/', label: 'Packagist', position: 'right' },
+          { href: 'https://github.com/AjmalAlkhaledi/omnitrix-core', label: 'GitHub', position: 'right' },
         ],
       },
       footer: {
@@ -67,10 +69,17 @@ const config = {
           {
             title: 'Packages',
             items: [
-              { label: 'omnitrix/omnitrix (application template)', to: '/getting-started/directory-structure' },
-              { label: 'omnitrix/core (framework)', to: '/reference/api' },
-              { label: 'omnitrix/installer', to: '/getting-started/installation' },
-              { label: 'GitHub', href: 'https://github.com/AjmalAlkhaledi/omnitrix-core' },
+              { label: 'omnitrix/omnitrix', href: 'https://packagist.org/packages/omnitrix/omnitrix' },
+              { label: 'omnitrix/core', href: 'https://packagist.org/packages/omnitrix/core' },
+              { label: 'omnitrix/installer', href: 'https://packagist.org/packages/omnitrix/installer' },
+            ],
+          },
+          {
+            title: 'Source',
+            items: [
+              { label: 'GitHub: omnitrix', href: 'https://github.com/AjmalAlkhaledi/omnitrix' },
+              { label: 'GitHub: omnitrix-core', href: 'https://github.com/AjmalAlkhaledi/omnitrix-core' },
+              { label: 'GitHub: omnitrix-installer', href: 'https://github.com/AjmalAlkhaledi/omnitrix-installer' },
             ],
           },
         ],
