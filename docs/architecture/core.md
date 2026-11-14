@@ -1,10 +1,11 @@
-# Omnitrix Core
+# The engine (Omnitrix\Core)
 
-Omnitrix Core is the runtime engine behind the Omnitrix framework (`omnitrix/omnitrix`). It
-owns everything that touches OpenSwoole directly: the server lifecycle, workers, request
-contexts, the HTTP transport, concurrency primitives, connection pools and the drivers built on
-them. It contains no routing, middleware or application conventions; those live in the
-framework, which is the only intended consumer. Core never depends on the framework.
+The engine is the lower layer of the `omnitrix/core` package (namespace `Omnitrix\Core\`, in
+`src/Core`). It owns everything that touches OpenSwoole directly: the server lifecycle, workers,
+request contexts, the HTTP transport, concurrency primitives, connection pools and the drivers
+built on them. It contains no routing, middleware or application conventions; those live in the
+framework layer (`Omnitrix\`), which is its only intended consumer. The engine never uses the
+framework layer.
 
 ## Runtime model
 
@@ -83,9 +84,9 @@ Rules enforced by code and tests:
 | `Observability` | `MetricsRegistry` (shared-memory counters and histograms) |
 | `Log`, `Container`, `Support` | `JsonLogger` (PSR-3), PSR-11 `Container`, platform checks and ids |
 
-## Boundary with the framework
+## Boundary with the framework layer
 
-The framework consumes Core through its public classes and two seams designed for it:
+The framework layer consumes the engine through its public classes and two seams designed for it:
 
 - **`Http\HttpErrorInterface`**: the transport renders any throwable implementing it as a JSON
   error with its status, headers and details. The framework's `HttpException` implements it;
@@ -141,10 +142,13 @@ interruption or an unfinished transaction are destroyed instead of reused.
 ## Repository layout
 
 ```
-src/        Omnitrix\Core\ source
-tests/      Unit/, Integration/, Fixtures/ (server scripts started by integration tests), Support/
-bin/        co-phpunit (coroutine PHPUnit runner), services (local MariaDB/Redis for tests)
-tools/      API reference generator
+src/              Omnitrix\        framework layer
+src/Core/         Omnitrix\Core\  engine
+tests/Framework/  framework tests: Unit/, Integration/, Fixtures/, Support/
+tests/Core/       engine tests: Unit/, Integration/, Fixtures/ (servers started by integration tests), Support/
+bin/              omnitrix-phpunit (coroutine PHPUnit runner), services (local MariaDB/Redis for tests)
+benchmarks/       benchmark harness
+tools/            API reference generator, router micro-benchmark
 ```
 
 Documentation for every package is published on this site.

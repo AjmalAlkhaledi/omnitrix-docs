@@ -67,10 +67,10 @@ const config = {
           {
             title: 'Packages',
             items: [
-              { label: 'omnitrix/omnitrix (application)', to: '/getting-started/directory-structure' },
-              { label: 'omnitrix/framework', to: '/reference/framework-api' },
-              { label: 'omnitrix/core', to: '/reference/core-api' },
+              { label: 'omnitrix/omnitrix (application template)', to: '/getting-started/directory-structure' },
+              { label: 'omnitrix/core (framework)', to: '/reference/api' },
               { label: 'omnitrix/installer', to: '/getting-started/installation' },
+              { label: 'GitHub', href: 'https://github.com/AjmalAlkhaledi/omnitrix-core' },
             ],
           },
         ],

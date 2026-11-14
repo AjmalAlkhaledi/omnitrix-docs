@@ -51,7 +51,7 @@ const sidebars = {
     },
     'contributing',
   ],
-  reference: ['reference/framework-api', 'reference/core-api'],
+  reference: ['reference/api'],
 };
 
 export default sidebars;

@@ -15,8 +15,9 @@ The site is published at https://ajmalalkhaledi.github.io/omnitrix-docs/. Every 
 builds it and updates the `gh-pages` branch (`.github/workflows/deploy.yml`). To publish
 elsewhere, set `DOCS_URL` and `DOCS_BASE_URL` when building.
 
-The API reference pages (`docs/reference/`) are generated from the framework and Core sources;
-with the repositories checked out next to this one and their dependencies installed:
+The API reference page (`docs/reference/api.md`) is generated from the `omnitrix/core` sources;
+with that repository checked out next to this one as `omnitrix-core` and its dependencies
+installed:
 
 ```sh
 npm run api

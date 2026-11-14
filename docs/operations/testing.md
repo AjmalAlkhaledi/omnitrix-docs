@@ -57,7 +57,7 @@ it before the suite.
 
 ## Feature tests against the real server
 
-`tests/Feature/ServerTest.php` in the skeleton starts `php omnitrix serve` on a test port, sends
+`tests/Feature/ServerTest.php` in the application template starts `php omnitrix serve` on a test port, sends
 HTTP requests and stops the server with SIGTERM. Use the same pattern for end-to-end tests of your
 routes:
 

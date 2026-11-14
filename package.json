@@ -10,7 +10,7 @@
     "build": "docusaurus build",
     "serve": "docusaurus serve",
     "clear": "docusaurus clear",
-    "api": "php ../omnitrix-framework/tools/api_reference.php > docs/reference/framework-api.md && php ../framework/tools/api_reference.php > docs/reference/core-api.md"
+    "api": "php ../omnitrix-core/tools/api_reference.php > docs/reference/api.md"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.2",

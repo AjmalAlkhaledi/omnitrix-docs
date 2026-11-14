@@ -46,4 +46,4 @@ default (assembly) coroutine context backend.
 ## Consequences
 
 - All I/O libraries must be hook-compatible (mysqlnd-based) or OpenSwoole-native.
-- Tests run inside a coroutine container (`bin/co-phpunit`).
+- Tests run inside a coroutine container (`bin/omnitrix-phpunit`).

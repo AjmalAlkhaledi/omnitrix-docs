@@ -72,7 +72,7 @@ Paths are URL-decoded before matching; the query string is never part of the mat
 The router adds method normalisation, one `RouteMatch` allocation and parameter filtering on
 top of raw FastRoute. `tools/bench/router_bench.php` measures raw FastRoute
 dispatch, `Router::dispatch` and the full kernel path (routing, one middleware, JSON encoding)
-on your own hardware (from a checkout of the `omnitrix/framework` repository):
+on your own hardware (from a checkout of the `omnitrix/core` repository):
 
 ```sh
 php tools/bench/router_bench.php

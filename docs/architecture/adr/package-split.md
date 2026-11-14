@@ -1,29 +1,36 @@
-# ADR-004: Separate Core and Framework packages
+# ADR-004: Package layout — application template and one framework package
 
-Status: Accepted (2026-11-13)
+Status: Accepted (2026-11-14)
 
 ## Context
 
-The runtime engine (server lifecycle, pools, drivers, concurrency) and the developer-facing
-framework (application object, routing, middleware, facades, validation, security) change at
-different speeds and for different reasons. Keeping them in one package exposes engine
-internals as if they were application API and couples their release cycles.
+Applications need a starting point they own (configuration, routes, models, migrations, a
+command line) and framework logic they do not have to read or change. The framework layer
+(application object, routing, middleware, facades, models, console) and the runtime engine
+(server lifecycle, pools, drivers, concurrency) are released together and tested together;
+publishing them as separate packages added version coordination without benefit to
+applications.
 
 ## Decision
 
-- `omnitrix/core` (`Omnitrix\Core\`) contains the engine. It has no routing, middleware or
-  application conventions and never depends on the framework.
-- `omnitrix/omnitrix` (`Omnitrix\`) contains the framework and depends on `omnitrix/core`.
-  Applications depend on the framework only.
-- The transport depends on `Http\HttpErrorInterface` rather than on framework exception
-  classes; the framework's `HttpException` implements it.
-- Core types that legitimately appear in the framework's public API (request context, worker
-  context, query builder, HTTP client responses, typed exceptions, concurrency handles) are
-  documented as stable. Everything else in Core is an implementation detail; plumbing that must
-  be `public` for technical reasons is marked `@internal`.
+- `omnitrix/omnitrix` is the application template (Composer type `project`), installed with
+  `composer create-project omnitrix/omnitrix my-api` or `omnitrix new my-api`. It contains no
+  framework logic.
+- `omnitrix/core` contains all framework logic, installed in `vendor/`:
+  - the framework layer, namespace `Omnitrix\`, in `src/`;
+  - the engine, namespace `Omnitrix\Core\`, in `src/Core/`.
+- The engine never uses the framework layer. The transport depends on
+  `Http\HttpErrorInterface` rather than on framework exception classes; the framework's
+  `HttpException` implements it.
+- Engine types that appear in the framework's public API (request context, worker context,
+  query builder, HTTP client responses, typed exceptions, concurrency handles) are documented
+  as stable. Everything else in the engine is an implementation detail; plumbing that must be
+  `public` for technical reasons is marked `@internal`.
+- `omnitrix/installer` provides the `omnitrix new` command.
 
 ## Consequences
 
-- Core changes that the framework needs are released in Core first; the framework raises its
-  version constraint.
-- Each repository has its own tests, static analysis and documentation.
+- One version number covers framework and engine; an application updates both with
+  `composer update omnitrix/core`.
+- The layering is enforced by namespaces, `@internal` markers and code review rather than by
+  separate packages.

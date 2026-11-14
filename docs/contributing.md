@@ -4,22 +4,21 @@ sidebar_position: 100
 
 # Contributing
 
-Omnitrix is developed in separate repositories:
+Omnitrix is developed in four repositories:
 
 | Repository | Package | Contains |
 |---|---|---|
-| framework | `omnitrix/core` | the runtime engine |
-| omnitrix-framework | `omnitrix/framework` | the framework |
-| omnitrix | `omnitrix/omnitrix` | the application skeleton |
-| installer | `omnitrix/installer` | the `omnitrix new` command |
-| docs | — | this documentation site |
+| [omnitrix](https://github.com/AjmalAlkhaledi/omnitrix) | `omnitrix/omnitrix` | the application template |
+| [omnitrix-core](https://github.com/AjmalAlkhaledi/omnitrix-core) | `omnitrix/core` | the framework (`Omnitrix\`) and the engine (`Omnitrix\Core\`) |
+| [omnitrix-installer](https://github.com/AjmalAlkhaledi/omnitrix-installer) | `omnitrix/installer` | the `omnitrix new` command |
+| [omnitrix-docs](https://github.com/AjmalAlkhaledi/omnitrix-docs) | — | this documentation site |
 
 ## Requirements
 
 PHP 8.3+ with ext-openswoole 26.2+, ext-pdo_mysql (mysqlnd) and ext-redis 6.3+, Composer 2,
 OpenSSL, and MariaDB 11+ and Redis 7+ binaries on the `PATH` for the integration tests.
 
-## Running the test suites (Core and framework)
+## Running the test suites (omnitrix/core)
 
 ```bash
 composer install
@@ -37,16 +36,17 @@ needed. To use other servers, export the variables listed in `.env.example`.
 | `make stan` | PHPStan, level max with strict rules |
 | `make test-unit`, `make test-integration`, `make test` | PHPUnit suites |
 
-Tests run inside an OpenSwoole coroutine with runtime hooks enabled (`bin/co-phpunit` in Core,
-`bin/omnitrix-phpunit` in the framework); do not run `vendor/bin/phpunit` directly.
+Tests run inside an OpenSwoole coroutine with runtime hooks enabled (`bin/omnitrix-phpunit`); do
+not run `vendor/bin/phpunit` directly. Engine tests are in `tests/Core`, framework tests in
+`tests/Framework`.
 
 ## Developing packages together
 
-To work on the framework against a local Core checkout (or on the skeleton against a local
-framework), point Composer at the sibling directory without committing the change:
+To try changes to `omnitrix/core` in an application, point Composer at your checkout without
+committing the change:
 
 ```bash
-composer config repositories.omnitrix-core '{"type": "path", "url": "../framework", "options": {"symlink": true, "versions": {"omnitrix/core": "0.1.0"}}}'
+composer config repositories.omnitrix-core '{"type": "path", "url": "../omnitrix-core", "options": {"symlink": true, "versions": {"omnitrix/core": "0.1.0"}}}'
 composer update omnitrix/core
 # ...
 git checkout composer.json && composer update omnitrix/core
@@ -58,14 +58,13 @@ are added to the new project:
 ```bash
 omnitrix new demo \
   --repository='{"type":"path","url":"../omnitrix","options":{"versions":{"omnitrix/omnitrix":"0.1.0"}}}' \
-  --repository='{"type":"path","url":"../omnitrix-framework","options":{"versions":{"omnitrix/framework":"0.1.0"}}}' \
-  --repository='{"type":"path","url":"../framework","options":{"versions":{"omnitrix/core":"0.1.0"}}}'
+  --repository='{"type":"path","url":"../omnitrix-core","options":{"versions":{"omnitrix/core":"0.1.0"}}}'
 ```
 
 ## Conventions
 
-- Core contains engine code only and never depends on the framework. The framework uses only
-  Core's documented public types; anything marked `@internal` may change without notice.
+- The engine (`Omnitrix\Core\`) never uses the framework layer (`Omnitrix\`). The framework uses
+  only the engine's documented public types; anything marked `@internal` may change without notice.
 - Every change comes with tests. Integration tests use real services, never mocks of them.
 - Behaviour that depends on OpenSwoole or extension details gets a test and an entry in
   [Platform notes](architecture/platform-notes.md); significant design decisions get a decision

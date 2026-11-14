@@ -43,12 +43,11 @@ $router->get('/users/{id:\d+}', function (Request $request): array {
 
 | Package | Role |
 |---|---|
-| `omnitrix/omnitrix` | The application skeleton you install and own |
-| `omnitrix/framework` | The framework your application depends on |
-| `omnitrix/core` | The runtime engine underneath the framework; installed automatically |
+| `omnitrix/omnitrix` | The application template you install and own |
+| `omnitrix/core` | All framework logic (the framework and its runtime engine), installed in `vendor/` |
 | `omnitrix/installer` | The optional `omnitrix new` command |
 
-Applications only interact with the framework. See [Architecture](architecture/overview.md).
+Your code lives in the application; the framework is updated with `composer update omnitrix/core`. See [Architecture](architecture/overview.md).
 
 ## Next steps
 

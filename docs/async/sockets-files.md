@@ -1,7 +1,7 @@
 # Sockets, DNS and Filesystem
 
 Most applications never need this page: the database, Redis and HTTP client layers cover
-typical I/O. For custom protocols and file work, Omnitrix Core ships coroutine-aware socket,
+typical I/O. For custom protocols and file work, the engine ships coroutine-aware socket,
 DNS and filesystem helpers in `Omnitrix\Core\IO`. They are stable, documented classes that
 can be used directly from handlers, jobs and worker hooks. Every wait suspends only the
 calling coroutine.

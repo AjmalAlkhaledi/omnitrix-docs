@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Observability
 
-Register metrics and health endpoints in `bootstrap.php`. The skeleton enables `/health` by
+Register metrics and health endpoints in `bootstrap.php`. The application template enables `/health` by
 default.
 
 ```php

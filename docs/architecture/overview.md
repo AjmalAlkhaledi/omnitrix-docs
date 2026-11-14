@@ -4,19 +4,26 @@ sidebar_position: 1
 
 # Architecture overview
 
-Omnitrix is distributed as four packages:
+Omnitrix is distributed as three packages:
 
 | Package | Namespace | Role |
 |---|---|---|
-| `omnitrix/omnitrix` | `App\` (yours) | the application skeleton: `bootstrap.php`, `config/`, `routes/`, `src/`, `database/`, the `omnitrix` command. Created once with `composer create-project`; from then on it is your code |
-| `omnitrix/framework` | `Omnitrix\` | what applications build on: `Application`, routing, middleware, requests and responses, validation, security, rate limiting, observability, facades, models and migrations, the console, queue workers |
-| `omnitrix/core` | `Omnitrix\Core\` | the engine underneath: server runtime and worker lifecycle, request context, HTTP transport, concurrency primitives, connection pools, database driver and query builder, HTTP client, Redis, cache, queue storage, CPU process pool, coroutine I/O |
+| `omnitrix/omnitrix` | `App\` (yours) | the application template: `bootstrap.php`, `config/`, `routes/`, `src/`, `database/`, the `omnitrix` command. Created once with `composer create-project`; from then on it is your code |
+| `omnitrix/core` | `Omnitrix\` and `Omnitrix\Core\` | all framework logic, installed in `vendor/`: the framework applications build on (`Omnitrix\`) and the engine underneath it (`Omnitrix\Core\`) |
 | `omnitrix/installer` | — | the global `omnitrix new` command, a thin wrapper around `composer create-project` |
 
-Applications depend on `omnitrix/framework`. Core is installed with it, configured through
-`config/` and the `Application` methods, and reached through the framework's facades and models.
-Core never depends on the framework. Updating the framework is a `composer update`; the skeleton
-is only used once, when the project is created.
+Your application requires `omnitrix/core`, configures it through `config/` and the `Application`
+methods, and uses it through the framework's facades, models and console. Updating the framework
+is `composer update omnitrix/core`; the template is only used once, when the project is created.
+
+Inside `omnitrix/core` the two layers stay separate:
+
+| Layer | Namespace | Contents |
+|---|---|---|
+| Framework | `Omnitrix\` | `Application`, routing, middleware, requests and responses, validation, security, rate limiting, observability, facades, models and migrations, the console, queue workers |
+| Engine | `Omnitrix\Core\` | server runtime and worker lifecycle, request context, HTTP transport, concurrency primitives, connection pools, database driver and query builder, HTTP client, Redis, cache, queue storage, CPU process pool, coroutine I/O |
+
+The engine never uses the framework layer.
 
 ```
 request ─▶ OpenSwoole Http\Server (process mode) ─▶ worker coroutine          ┐
@@ -48,7 +55,7 @@ request ─▶ OpenSwoole Http\Server (process mode) ─▶ worker coroutine    
 | `Omnitrix\Config` | `Env`, `Config` |
 | `Omnitrix\Support` | `Str` |
 
-## Core types that appear in the public API
+## Engine types that appear in the public API
 
 Some values the framework returns or throws are defined in Core. They are stable, documented
 types; applications use them but do not construct the underlying services:
@@ -87,4 +94,4 @@ public API.
 - **Worker-scoped state.** Services are created per worker after the fork; nothing that holds
   a socket crosses process boundaries.
 
-The engine's internal design is described in [Omnitrix Core](core.md).
+The engine's internal design is described in [The engine](core.md).
