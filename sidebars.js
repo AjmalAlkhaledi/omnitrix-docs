@@ -23,7 +23,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'Database',
-      items: ['database/getting-started', 'database/query-builder', 'database/migrations', 'database/models', 'database/relationships', 'database/seeding'],
+      items: ['database/getting-started', 'database/query-builder', 'database/migrations', 'database/models', 'database/relationships', 'database/seeding', 'database/row-cache'],
     },
     {
       type: 'category',
@@ -45,7 +45,7 @@ const sidebars = {
         {
           type: 'category',
           label: 'Decision records',
-          items: ['architecture/adr/runtime-selection', 'architecture/adr/async-io-strategy', 'architecture/adr/database-driver-strategy', 'architecture/adr/package-split'],
+          items: ['architecture/adr/runtime-selection', 'architecture/adr/async-io-strategy', 'architecture/adr/database-driver-strategy', 'architecture/adr/package-split', 'architecture/adr/row-cache'],
         },
       ],
     },

@@ -295,6 +295,22 @@ Small explicit PSR-11 container (no autowiring, no reflection).
 ### NotFoundException (class)
 
 
+## Omnitrix\Core\Database\Cache
+
+### CacheConfig (class)
+
+The `cache` option of a database connection: which tables have a primary-key row cache and how
+
+- `__construct(bool $enabled, array $tables, int $ttl = 300, bool $negative = true, int $negativeTtl = 60, int $lockTtl = 30, bool $strict = false, string $prefix = 'dbc')`
+- `static disabled(): Omnitrix\Core\Database\Cache\CacheConfig`
+- `static fromArray(mixed $section, string $connection): Omnitrix\Core\Database\Cache\CacheConfig`
+- `caches(string $table): bool`
+
+### CacheUnavailableException (class)
+
+The row cache could not be updated before a write and the connection runs in strict mode.
+
+
 ## Omnitrix\Core\Database\Config
 
 ### DatabaseConfig (class)
@@ -381,7 +397,13 @@ SQL dialect specifics used by the query builder.
 
 One named database: its pool, grammar and transaction manager. Worker-scoped.
 
-- `__construct(Omnitrix\Core\Database\Config\DatabaseConfig $config, Omnitrix\Core\Database\Contracts\DriverInterface $driver, ?Psr\Log\LoggerInterface $logger = NULL)`
+- `__construct(Omnitrix\Core\Database\Config\DatabaseConfig $config, Omnitrix\Core\Database\Contracts\DriverInterface $driver, ?Psr\Log\LoggerInterface $logger = NULL, ?Omnitrix\Core\Redis\RedisClient $redis = NULL)`
+- `cacheEnabled(): bool` — Whether the primary-key row cache is enabled for this connection.
+- `afterCommit(callable $callback): void` — Runs `$callback` after the current transaction commits, or immediately outside a transaction.
+- `invalidate(string $table, array $keys, bool $absent = false): void` — Invalidates cached rows changed outside the query builder (raw SQL from another process, a
+- `writing(string $table, array $keys, callable $write, bool $inserts = false): mixed` — Runs a raw SQL write that changes the given rows of a cached table, keeping the row cache
+- `flushCache(string ...$tables): void` — Retires every cached row of the tables at once. The schema builder calls this after it
+- `cacheStats(): array`
 - `warmUp(): void`
 - `pool(): Omnitrix\Core\Database\Pool\ConnectionPool`
 - `stats(): Omnitrix\Core\Database\Pool\PoolStats`
@@ -399,7 +421,7 @@ One named database: its pool, grammar and transaction manager. Worker-scoped.
 
 Registry of named databases for one worker. Built from the `database` config section, which
 
-- `__construct(array $section, ?Psr\Log\LoggerInterface $logger = NULL)`
+- `__construct(array $section, ?Psr\Log\LoggerInterface $logger = NULL, ?Omnitrix\Core\Redis\RedisClient $redis = NULL)`
 - `registerDriver(string $name, Omnitrix\Core\Database\Contracts\DriverInterface $driver): void`
 - `connection(?string $name = NULL): Omnitrix\Core\Database\Database`
 - `table(string $table, ?string $connection = NULL): Omnitrix\Core\Database\Query\Builder`
@@ -596,6 +618,7 @@ Fluent SQL builder with positional bindings. No hydration, no model layer: resul
 - `increment(string $column, int|float $amount = 1, array $extra = …): int`
 - `decrement(string $column, int|float $amount = 1, array $extra = …): int`
 - `delete(): int`
+- `compileKeyCondition(array $columns, array $keys): string` — `col IN (?, …)` for one key column, `(a = ? and b = ?) or (…)` for composite keys.
 
 ### Expression (class)
 
@@ -623,7 +646,10 @@ One compiled-later WHERE condition.
 
 Transactions with exclusive connection ownership.
 
-- `__construct(string $connectionName)`
+- `__construct(string $connectionName, ?Closure $onEnd = NULL)` — transaction when the outermost transaction ends
+- `inTransaction(): bool`
+- `afterCommit(callable $callback): bool` — Runs `$callback` after the outermost transaction of this coroutine commits. Returns false
+- `remember(array $keys): bool` — Records row-cache keys marked by a write inside the transaction, to be released when the
 - `transaction(Omnitrix\Core\Database\Pool\ConnectionPool $pool, callable $callback, int $attempts = 1, ?float $acquireTimeout = NULL): mixed`
 - `pinned(): ?Omnitrix\Core\Database\Pool\PooledConnection` — The connection pinned by an enclosing transaction in the *current coroutine*, if any.
 
@@ -1835,6 +1861,9 @@ Database access (documentation: Database).
 - `static execute(string $sql, array $bindings = …): int`
 - `static insert(string $sql, array $bindings = …): int`
 - `static transaction(callable $callback, int $attempts = 1): mixed`
+- `static afterCommit(callable $callback): void` — Runs `$callback` once the current transaction has committed (immediately outside a
+- `static invalidate(string $table, array $keys, bool $absent = false): void` — Invalidates cached rows that were changed outside the query builder (another service, a
+- `static writing(string $table, array $keys, callable $write, bool $inserts = false): mixed` — Runs a raw SQL write that changes the given rows of a cached table, keeping the row cache
 - `static raw(string $sql, array $bindings = …): Omnitrix\Core\Database\Query\Expression`
 
 ### Facade (abstract class)
