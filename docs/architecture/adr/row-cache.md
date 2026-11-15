@@ -51,6 +51,14 @@ changes:
 9. **Table generation.** Schema changes (create, alter, drop, rename, `migrate:fresh`) retire all
    entries of the table at once, so ids reused after a truncate or rebuild are not served stale.
 10. **Reads in transactions bypass the cache**, so a transaction sees its own writes.
+11. **Query results by value tags** (the proposal's later phase). A query opted in with
+    `cache()` depends on one `=`/`IN` condition on a tracked column. Because the top-level
+    conditions are joined with AND, a row can only be in the result if that column holds one of
+    the filtered values; writes mark the tags of the affected rows' old and new values with the
+    same protocol as rows. Text tags are the column collation's `WEIGHT_STRING()` (after trimming
+    trailing spaces), so values equal under the collation share a tag; trimming can only merge
+    tags, which over-invalidates but never misses. Values a write cannot know in advance (database
+    defaults, computed assignments) mark a column-wide key.
 
 ## Consequences
 
@@ -59,4 +67,5 @@ changes:
   do not name their rows.
 - Raw SQL, triggers and changes from other applications are invisible to the engine: they need
   `DB::writing()`, `DB::invalidate()` or `flushCache()`.
-- Query-result caching stays out of scope; it needs dependency tracking on query predicates.
+- Queries with `OR`, joins or no condition on a tracked column are not cached; widening this
+  needs predicate analysis beyond single conjuncts.

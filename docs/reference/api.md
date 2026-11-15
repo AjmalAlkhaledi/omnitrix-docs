@@ -301,7 +301,7 @@ Small explicit PSR-11 container (no autowiring, no reflection).
 
 The `cache` option of a database connection: which tables have a primary-key row cache and how
 
-- `__construct(bool $enabled, array $tables, int $ttl = 300, bool $negative = true, int $negativeTtl = 60, int $lockTtl = 30, bool $strict = false, string $prefix = 'dbc')`
+- `__construct(bool $enabled, array $tables, int $ttl = 300, bool $negative = true, int $negativeTtl = 60, int $lockTtl = 30, bool $strict = false, string $prefix = 'dbc', array $queries = …)`
 - `static disabled(): Omnitrix\Core\Database\Cache\CacheConfig`
 - `static fromArray(mixed $section, string $connection): Omnitrix\Core\Database\Cache\CacheConfig`
 - `caches(string $table): bool`
@@ -422,6 +422,7 @@ One named database: its pool, grammar and transaction manager. Worker-scoped.
 Registry of named databases for one worker. Built from the `database` config section, which
 
 - `__construct(array $section, ?Psr\Log\LoggerInterface $logger = NULL, ?Omnitrix\Core\Redis\RedisClient $redis = NULL)`
+- `static validate(array $section, bool $redisAvailable): array` — Validates the `database` section (one connection or named connections) without opening
 - `registerDriver(string $name, Omnitrix\Core\Database\Contracts\DriverInterface $driver): void`
 - `connection(?string $name = NULL): Omnitrix\Core\Database\Database`
 - `table(string $table, ?string $connection = NULL): Omnitrix\Core\Database\Query\Builder`
@@ -601,6 +602,7 @@ Fluent SQL builder with positional bindings. No hydration, no model layer: resul
 - `lockForUpdate(): Omnitrix\Core\Database\Query\Builder`
 - `toSql(): string`
 - `getBindings(): array`
+- `cache(int $seconds): Omnitrix\Core\Database\Query\Builder` — Caches the result of this query for `$seconds` when the connection tracks one of the columns
 - `get(): array`
 - `first(): ?array`
 - `find(string|int $id, string $column = 'id'): ?array`
@@ -1614,6 +1616,7 @@ Query builder that returns models. Every filter, ordering and aggregate of the d
 - `oldest(string $column = 'created_at'): Omnitrix\Database\ModelQuery` — Oldest first by `created_at` (or another column).
 - `limit(int $limit): Omnitrix\Database\ModelQuery`
 - `offset(int $offset): Omnitrix\Database\ModelQuery`
+- `cache(int $seconds): Omnitrix\Database\ModelQuery` — Caches the result for `$seconds` when the query filters with `=` or `IN` on a column listed
 - `get(): Omnitrix\Database\Collection`
 - `first(): ?Omnitrix\Database\Model`
 - `firstOrFail(): Omnitrix\Database\Model`
