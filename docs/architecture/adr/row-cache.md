@@ -60,6 +60,22 @@ changes:
     tags, which over-invalidates but never misses. Values a write cannot know in advance (database
     defaults, computed assignments) mark a column-wide key.
 
+## Reliability decisions (review before release)
+
+12. **Strict by default.** A write whose marks cannot be set is refused, because nothing else can
+    tell other workers that their cached rows are about to change. `strict => false` trades a
+    bounded window for write availability: the writer's worker owes the invalidation and pays it
+    when Redis answers.
+13. **Restart fence.** Persistence can bring back entries from before writes made while Redis was
+    down. Each new connection compares the server `run_id` with the one recorded in Redis; a
+    mismatch retires every cached table (generation and epoch) before use. This replaces the
+    transactional outbox considered earlier: it needs no table and no relay, and it also covers
+    failovers.
+14. **Mark renewal.** A worker-wide timer extends active marks every `lock_ttl / 3`, so a
+    transaction longer than `lock_ttl` never exposes its rows.
+15. **Rollbacks keep cached data.** Marks of rolled back transactions and savepoints are released
+    without a new version; a commit with an unknown outcome is treated as a commit.
+
 ## Consequences
 
 - Lookups by key on cached tables cost one Redis round trip on a hit. A write costs one extra

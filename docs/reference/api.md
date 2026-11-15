@@ -301,7 +301,7 @@ Small explicit PSR-11 container (no autowiring, no reflection).
 
 The `cache` option of a database connection: which tables have a primary-key row cache and how
 
-- `__construct(bool $enabled, array $tables, int $ttl = 300, bool $negative = true, int $negativeTtl = 60, int $lockTtl = 30, bool $strict = false, string $prefix = 'dbc', array $queries = …)`
+- `__construct(bool $enabled, array $tables, int $ttl = 300, bool $negative = true, int $negativeTtl = 60, int $lockTtl = 30, bool $strict = true, string $prefix = 'dbc', array $queries = …)`
 - `static disabled(): Omnitrix\Core\Database\Cache\CacheConfig`
 - `static fromArray(mixed $section, string $connection): Omnitrix\Core\Database\Cache\CacheConfig`
 - `caches(string $table): bool`
@@ -648,7 +648,7 @@ One compiled-later WHERE condition.
 
 Transactions with exclusive connection ownership.
 
-- `__construct(string $connectionName, ?Closure $onEnd = NULL)` — transaction when the outermost transaction ends
+- `__construct(string $connectionName, ?Closure $onEnd = NULL)` — whether the writes committed (invalidate)
 - `inTransaction(): bool`
 - `afterCommit(callable $callback): bool` — Runs `$callback` after the outermost transaction of this coroutine commits. Returns false
 - `remember(array $keys): bool` — Records row-cache keys marked by a write inside the transaction, to be released when the

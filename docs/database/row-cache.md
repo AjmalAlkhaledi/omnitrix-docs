@@ -65,17 +65,34 @@ Writes to tables that are not cached run exactly as before, with no extra work.
 
 ## Consistency
 
-- A reader is never served a value older than a committed write. Each row's version is
-  **marked before** a write statement runs; while it is marked, readers bypass the cache and read
-  the database. When the transaction ends, the row gets a fresh random version, which retires
-  everything cached before or during the write.
-- A slow reader cannot store stale data: its result is stored only if the row's version is still
-  the one it saw before reading the database.
-- If Redis fails after a commit, the marks stay until `lock_ttl` expires, so readers keep using
-  the database; nothing stale is served.
-- If Redis is unavailable, reads use the database and writes still run (strict mode can refuse
-  writes instead, see below).
-- Entries expire after `ttl` seconds in any case.
+The cache is built so that **no reader is served a value older than a committed write**, also
+when Redis fails or restarts:
+
+- **Marked writes.** Each affected row (or query tag) is marked in Redis *before* the write
+  statement runs. While it is marked, readers bypass the cache and read the database. When the
+  outermost transaction commits, the row gets a fresh random version, which retires everything
+  cached before or during the write.
+- **Rollbacks keep the cache.** A transaction (or a nested transaction) that rolls back releases
+  its marks without retiring anything: the rows did not change. A deadlock retry is a rollback
+  followed by a new attempt, so only the attempt that commits invalidates.
+- **Guarded fills.** A slow reader stores its result only if the row's version is still the one it
+  saw before reading the database and nothing is marked.
+- **Long transactions.** Marks are renewed every third of `lock_ttl` while the write runs, so a
+  transaction longer than `lock_ttl` keeps its rows marked until it ends.
+- **Redis restarts.** Every new Redis connection compares the server's `run_id` with the one
+  recorded when the cache was last complete. A restarted (or failed-over) server may have loaded
+  data saved before writes it never saw, so every cached table is retired before anything is
+  served from it.
+- **Redis unavailable before a write.** With `strict` (the default) the write is refused with
+  `CacheUnavailableException` and the database is not changed. With `strict => false` the write
+  runs; the affected keys become a debt of that worker, invalidated as soon as Redis answers, and
+  the worker reads from the database meanwhile. Other workers that can still reach Redis may
+  serve the old row until then — choose `strict => false` only when write availability matters
+  more than that window.
+- **Commits with an unknown outcome** (connection lost during `COMMIT`) invalidate, as if they
+  committed.
+- Reads use the database whenever Redis cannot be reached. Entries expire after `ttl` seconds in
+  any case.
 
 ## Query cache
 
@@ -123,16 +140,42 @@ Not cached (they run against the database every time, even with `cache()`): `OR`
 level, joins, queries without an `=`/`IN` condition on a tracked column, and queries inside a
 transaction. Tracked columns must be integer, `char`, `varchar`, `text` or `enum` columns.
 
-## Writes the builder does not see
+## Which API to use
 
-| Situation | Use |
+| Situation | API |
 |---|---|
-| raw SQL that changes known rows | `DB::writing('users', [10, 11], fn () => DB::execute('update users set …'))` |
+| read a row by key | nothing to do: `User::find(10)`, `DB::table('users')->find(10)` |
+| read a list that filters on a tracked column | `Post::where('user_id', 1)->cache(60)->get()` |
+| write through models or the query builder | nothing to do: invalidation is automatic |
+| write with raw SQL to known rows | `DB::writing('users', [10], fn () => DB::execute('update users set score = score + 1 where id = 10'))` |
 | raw SQL that may insert rows | `DB::writing('users', $ids, $write, inserts: true)` |
-| rows changed by another application, a trigger or a manual fix | `DB::invalidate('users', [10, 11])` (`absent: true` also clears absent answers) |
+| rows changed outside the application (another service, a trigger, a manual fix) | `DB::invalidate('users', [10])` (`absent: true` also clears cached "does not exist" answers) |
 | a table changed wholesale (`TRUNCATE`, bulk import, restore) | `DB::connection()->flushCache('users')` |
+| run code only once the data is committed (send mail, dispatch a job) | `DB::afterCommit(fn () => …)` |
 
-Composite keys are given as tuples in key column order: `DB::invalidate('memberships', [[1, 7]])`.
+```php
+use Omnitrix\Facades\DB;
+
+// Raw SQL the query builder cannot express: mark the rows while it runs.
+DB::writing('users', [10, 11], fn (): int => DB::execute(
+    'update users set score = score + ? where id in (10, 11)', [5],
+));
+
+// A nightly job outside the application changed users 7 and 9.
+DB::invalidate('users', [7, 9]);
+
+// Composite keys are tuples in key column order.
+DB::invalidate('memberships', [[1, 7]]);
+
+// The whole table was reloaded from a backup.
+DB::connection()->flushCache('products');
+```
+
+### Queries that skip the cache automatically
+
+Even with `cache()`, these always read the database: queries inside a transaction, locking reads
+(`lockForUpdate()`), joins, `OR` at the top level, `select()` of specific columns for row
+lookups, and queries without an `=`/`IN` condition on a tracked column.
 
 ## After commit
 
@@ -156,8 +199,8 @@ discarded; a rolled back or retried transaction discards all of them.
 | `ttl` | 300 | seconds a cached row lives |
 | `negative` | `true` | also cache "row does not exist" answers |
 | `negative_ttl` | 60 | seconds an absent answer lives |
-| `lock_ttl` | 30 | seconds a mark from an unfinished write lives (should exceed your longest transaction) |
-| `strict` | `false` | refuse writes to cached tables when Redis cannot be updated before them |
+| `lock_ttl` | 30 | seconds a mark lives without renewal. Running writes renew their marks, so this only bounds how long a crashed worker's marks keep readers on the database |
+| `strict` | `true` | refuse writes to cached tables when Redis cannot be marked before them (see [Consistency](#consistency)) |
 | `prefix` | `dbc` | Redis key prefix (inside the `redis.prefix`) |
 | `enabled` | `true` when tables or queries are listed | switch the cache off without removing the lists |
 
@@ -169,10 +212,22 @@ A cache configured without the `redis` section is rejected when the application 
 
 - **Triggers** that change other tables are not tracked; invalidate those rows with
   `DB::invalidate()`.
-- Rows changed **outside the application** stay cached until they expire unless you invalidate
-  them.
-- Schema changes made while workers run are picked up after a reload (`SIGUSR1`) or restart, as
-  with any deployment.
-- Redis Cluster is not supported (a lookup reads several keys in one `MGET`).
-- Large bulk updates on cached tables lock and invalidate every affected row; keep them to
-  maintenance windows or run them in batches.
+- **Changes outside the application** stay cached until they expire unless you invalidate them.
+- **Redis Cluster** is not supported: a lookup reads a row's keys and its table's keys with one
+  `MGET`. Use a single Redis server; if the application is pointed at another server (a
+  replica promoted after a failure), the different `run_id` is handled like a restart.
+- **Query cache eligibility**: see [Query cache](#query-cache); queries that do not qualify run
+  against the database.
+- Schema changes made outside the schema builder while workers run are picked up after a reload
+  (`SIGUSR1`) or restart; changes made with the schema builder (`php omnitrix migrate`) are picked
+  up immediately.
+- Large bulk updates on cached tables lock and invalidate every affected row; run them in batches
+  or maintenance windows.
+
+## Measuring
+
+`tools/bench/db_cache_bench.php` in the `omnitrix/core` repository measures lookups without the
+cache, with the row cache, with the query cache, and writes with invalidation, at several table
+sizes and levels of concurrency, and reports Redis memory and hit, miss, bypass and error rates.
+Run it on hardware representative of production; in production, watch the
+`omnitrix_db_cache_*_total` metrics.
