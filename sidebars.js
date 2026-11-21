@@ -18,7 +18,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'The basics',
-      items: ['basics/console', 'basics/routing', 'basics/middleware', 'basics/requests-responses', 'basics/validation', 'basics/security'],
+      items: ['basics/console', 'basics/routing', 'basics/middleware', 'basics/requests-responses', 'basics/validation', 'basics/events', 'basics/security'],
     },
     {
       type: 'category',
