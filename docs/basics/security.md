@@ -32,6 +32,40 @@ $app->group('/api', function ($r) use ($limiter) {
 Identities are request-scoped: concurrent requests with distinct tokens on the same worker
 each see only their own identity.
 
+## Named rate limiters
+
+Define limiters once in `bootstrap.php` and apply them by name. A limiter returns one limit, a
+list of limits (all must pass), or `null` for no limit:
+
+```php
+use Omnitrix\RateLimit\{Limit, Throttle};
+
+$app->rateLimiter('api', fn (Request $r) => Limit::perMinute(60)->by(BearerTokenAuth::identity($r)?->id ?? $r->remoteAddress() ?? ''));
+$app->rateLimiter('login', fn (Request $r) => [
+    Limit::perMinute(5)->by((string) $r->input('email')),
+    Limit::perHour(100)->by($r->remoteAddress() ?? '')->response(fn (Request $r, $result) => Response::json(['error' => 'slow down'], 429)),
+]);
+
+$router->post('/login', [AuthController::class, 'login'])->middleware(Throttle::using('login'));
+```
+
+Without `by()` a limit counts per identity, then per client address. A request rejected by one
+limit is not counted by the others. The backend is shared memory for one server, or Redis across
+servers (`config/rate_limit.php`; Redis by default when it is configured).
+
+Limit anything else directly:
+
+```php
+use Omnitrix\Facades\RateLimiter;
+
+if (RateLimiter::tooManyAttempts('otp:' . $phone, 3, 600)) {
+    return Response::json(['retry_in' => RateLimiter::availableIn('otp:' . $phone, 600)], 429);
+}
+RateLimiter::hit('otp:' . $phone, 3, 600);
+RateLimiter::attempt('report:' . $userId, 1, fn () => $reports->build($userId), 3600); // false when over the limit
+RateLimiter::clear('otp:' . $phone, 600);
+```
+
 ## Hashing
 
 `Hash` hashes passwords with bcrypt (default) or argon2id, configured in `config/hashing.php`:
