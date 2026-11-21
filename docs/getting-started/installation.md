@@ -65,7 +65,9 @@ The application template is published on Packagist as
 composer create-project omnitrix/omnitrix my-api
 ```
 
-Both ways produce the same project and copy `.env.example` to `.env`.
+Both ways produce the same project, copy `.env.example` to `.env` and generate the encryption
+key (`APP_KEY`, used by sessions, encrypted cookies and `Crypt`; regenerate it with
+`php omnitrix key:generate --force` only before any data is encrypted).
 
 ## Running it
 
