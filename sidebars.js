@@ -18,7 +18,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'The basics',
-      items: ['basics/console', 'basics/routing', 'basics/middleware', 'basics/requests-responses', 'basics/validation', 'basics/events', 'basics/context', 'basics/sessions', 'basics/authentication', 'basics/security'],
+      items: ['basics/console', 'basics/routing', 'basics/middleware', 'basics/requests-responses', 'basics/validation', 'basics/events', 'basics/context', 'basics/sessions', 'basics/authentication', 'basics/authorization', 'basics/security'],
     },
     {
       type: 'category',
