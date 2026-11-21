@@ -28,7 +28,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'Async & services',
-      items: ['async/concurrency', 'async/http-client', 'async/redis-cache', 'async/queues', 'async/mail', 'async/cpu-pool', 'async/sockets-files'],
+      items: ['async/concurrency', 'async/http-client', 'async/redis-cache', 'async/queues', 'async/mail', 'async/notifications', 'async/cpu-pool', 'async/sockets-files'],
     },
     {
       type: 'category',
