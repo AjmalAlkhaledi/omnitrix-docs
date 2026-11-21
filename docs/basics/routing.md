@@ -77,3 +77,28 @@ on your own hardware (from a checkout of the `omnitrix/core` repository):
 ```sh
 php tools/bench/router_bench.php
 ```
+
+## URLs and signed URLs
+
+```php
+use Omnitrix\Facades\URL;
+
+URL::to('/health');                                   // https://api.example.com/health (app.url)
+URL::route('users.show', ['id' => 10, 'tab' => 'posts']); // fills {id}; the rest is the query string
+```
+
+Signed URLs prove that a link was made by the application and has not been changed — for
+unsubscribe links, e-mail verification or downloads. They need `app.key`:
+
+```php
+$link = URL::signedRoute('unsubscribe', ['user' => 10]);            // no expiry
+$link = URL::temporarySignedRoute('download', 3600, ['file' => 7]); // valid for one hour
+
+$router->get('/unsubscribe/{user:\d+}', [MailController::class, 'unsubscribe'])
+    ->name('unsubscribe')
+    ->middleware(new ValidateSignature()); // 403 for a changed, unsigned or expired link
+```
+
+The signature covers the path and every query parameter, so changing any of them invalidates
+the link; `URL::hasValidSignature($request)` checks a request in your own code.
+
