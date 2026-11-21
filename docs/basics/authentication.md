@@ -82,3 +82,46 @@ Auth::logout();
 long-lived cookie that logs the user in again after the session expired; its token is stored
 hashed and revoked by `logout()`. Passwords stored with outdated hashing settings are re-hashed
 after a successful login.
+
+## E-mail verification
+
+Users implementing `Omnitrix\Contracts\MustVerifyEmail` (trait
+`Omnitrix\Auth\Verification\MustVerifyEmail`, column `email_verified_at`) confirm their address
+through a signed link:
+
+```php
+// routes/api.php
+AuthRoutes::verification($router);        // GET email/verify/{id}/{hash} (signed), POST email/verification-notification
+
+// after registration
+$user->sendEmailVerificationNotification();
+
+// routes only for verified users
+$router->get('/orders', …)->middleware(Authenticate::using('api'), new EnsureEmailIsVerified());
+```
+
+The link expires after an hour (`VerifyEmail::$expireMinutes`) and contains a hash of the address,
+so it stops working when the address changes. Opening it needs no login — the signature proves it
+came from the e-mail. Resending needs a login and is limited to 6 a minute. A successful
+verification dispatches `Omnitrix\Auth\Events\Verified`.
+
+## Password reset
+
+```php
+AuthRoutes::passwordReset($router);       // POST forgot-password {email}, POST reset-password {email, token, password}
+```
+
+`forgot-password` e-mails a link built from `auth.passwords.url` (`{token}` and `{email}` are
+filled in — point it at your frontend) and answers the same whether or not the address has an
+account. Tokens are stored as HMAC hashes, one per address, expire after `expire` minutes and can
+be used once; new links for an address wait `throttle` seconds. `reset-password` sets the new
+password (hashed by the `hashed` cast), revokes the remember token and dispatches
+`Omnitrix\Auth\Events\PasswordReset`. The broker is also available directly:
+
+```php
+$status = Password::sendResetLink(['email' => $email]);   // Password::RESET_LINK_SENT, INVALID_USER, RESET_THROTTLED
+$status = Password::reset($data, function (User $user, string $password): void {
+    $user->update(['password' => $password]);
+});                                                         // Password::PASSWORD_RESET, INVALID_TOKEN, INVALID_USER
+```
+
