@@ -84,7 +84,9 @@ when Redis fails or restarts:
   data saved before writes it never saw, so every cached table is retired before anything is
   served from it.
 - **Redis unavailable before a write.** With `strict` (the default) the write is refused with
-  `CacheUnavailableException` and the database is not changed. With `strict => false` the write
+  `CacheUnavailableException` and the database is not changed; an HTTP request that hits it
+  answers `503 Service Unavailable` with `Retry-After: 1`, so clients and load balancers can
+  retry. With `strict => false` the write
   runs; the affected keys become a debt of that worker, invalidated as soon as Redis answers, and
   the worker reads from the database meanwhile. Other workers that can still reach Redis may
   serve the old row until then — choose `strict => false` only when write availability matters
@@ -205,7 +207,9 @@ discarded; a rolled back or retried transaction discards all of them.
 | `enabled` | `true` when tables or queries are listed | switch the cache off without removing the lists |
 
 `DB::connection()->cacheStats()` returns hits, misses, bypassed reads and errors of the current
-worker; with metrics enabled they are exported as `omnitrix_db_cache_{hits,misses,bypassed,errors}_total`.
+worker; with metrics enabled they are exported as the counters
+`omnitrix_db_cache_{hits,misses,bypassed,errors}_total`, labelled with the connection and the
+worker that served the scrape (like the pool statistics, see [Observability](../operations/observability.md)).
 A cache configured without the `redis` section is rejected when the application is created.
 
 ## Limits
