@@ -233,9 +233,9 @@ A cache configured without the `redis` section is rejected when the application 
 ## Limits
 
 - **Changes outside the application** stay cached until they expire unless you invalidate them.
-- **Redis Cluster** is not supported: a lookup reads a row's keys and its table's keys with one
-  `MGET`. Use a single Redis server; if the application is pointed at another server (a
-  replica promoted after a failure), the different `run_id` is handled like a restart.
+- **Redis Cluster** is supported: every key of a table shares one hash tag, so a table is served
+  by one node; the restart check runs per table against the node that holds it. A node that
+  restarts or a replica promoted after a failure (different `run_id`) retires the tables it holds.
 - **Query cache eligibility**: see [Query cache](#query-cache); queries that do not qualify run
   against the database.
 - Schema changes (triggers included) made outside the schema builder while workers run are picked up after a reload

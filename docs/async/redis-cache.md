@@ -23,6 +23,31 @@ the application; see [Installation](../getting-started/installation.md#requireme
 'cache' => ['prefix' => 'cache:', 'ttl' => 3600],   // optional; the Cache facade needs 'redis'
 ```
 
+### Redis Cluster
+
+List seed nodes under `cluster`; `host`, `port` and `database` are then not used (a cluster has
+only database 0). The client discovers the other nodes and follows slot moves and failovers.
+
+```php
+'redis' => [
+    'cluster' => ['10.0.0.11:6379', '10.0.0.12:6379', '10.0.0.13:6379'],
+    'password' => Env::get('REDIS_PASSWORD'),
+    'prefix' => 'app:',
+],
+```
+
+Everything the framework stores works on a cluster: the cache, the queue (each queue's keys share
+the hash tag `{queue-name}`), the rate limiter and the database row and query cache (each table's
+keys share one tag, so one table lives on one node; spread hot tables by caching several).
+
+| Feature | On a cluster |
+|---|---|
+| typed commands, `mget`, multi-key `delete` | work across slots |
+| `pipeline()` | sent as MULTI/EXEC per node (a cluster has no pipeline mode) |
+| `transaction()` | atomic only when every key has the same hash tag, e.g. `{order:42}:a`, `{order:42}:b` |
+| `command($name, $args)` | sent to the node serving the first argument; arguments are not prefixed (as on a single server) |
+| `withConnection()` | receives a `RedisCluster`; type closures as `Redis\|RedisCluster` |
+
 ## Usage
 
 ```php

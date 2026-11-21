@@ -60,6 +60,11 @@ release.
 - A request that fails because a database, Redis or connection pool is unavailable answers
   `503 Service Unavailable` with `Retry-After: 1` instead of `500`. Alerts that counted these
   failures as 500 should include 503.
+- Row cache keys are tagged per table (`{conn:table}:pk:v` instead of `{conn:table:pk}:v`) so the
+  cache works on a Redis Cluster: after the upgrade the cache starts empty and fills again.
+- Closures passed to `Redis::withConnection()`, `pipeline()` and `transaction()` receive
+  `Redis|RedisCluster`; closures typed `Redis` still run against a single server, but static
+  analysis asks for the union.
 
 ### 0.1 → 0.2
 
