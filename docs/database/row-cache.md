@@ -59,9 +59,27 @@ Every write made through the query builder, models or the `DB` facade:
 | `insert`, `insertGetId` | cached absent answers of the table |
 | changing a primary key value | the old key and absent answers |
 | deletes and key updates that cascade (`ON DELETE CASCADE`, `ON DELETE SET NULL`, `ON UPDATE CASCADE`, …) into cached tables | the cascaded rows, several levels deep, composite foreign keys included |
+| writes to a table whose triggers write to cached tables (directly, through other triggers or through foreign-key cascades) | every entry of those tables, row and query cache |
 | creating, altering, renaming or dropping a cached table with the schema builder, `migrate:fresh` | every entry of that table |
 
-Writes to tables that are not cached run exactly as before, with no extra work.
+Writes to tables that are not cached, and that have no triggers or cascades reaching a cached
+table, run exactly as before, with no extra work.
+
+### Triggers
+
+The rows a trigger changes cannot be known before it runs, so Omnitrix handles triggers per
+table. It reads the triggers of the database from `information_schema` and finds the tables their
+bodies write to (`INSERT`, `UPDATE`, `DELETE`, `REPLACE`), following the triggers and foreign-key
+cascades of those tables in turn. A write to the trigger's table, for the events the trigger
+fires on (an upsert also counts as an update, `REPLACE` also as a delete), then:
+
+1. marks the target tables before it runs: lookups of those tables read the database and nothing
+   is stored for them until the write ends;
+2. retires every entry of the target tables when it commits; a rollback keeps them.
+
+A trigger that calls a stored procedure, or uses a join or a prepared statement, may write any
+table: writes to its table retire every cached table of the connection. Prefer triggers that
+write a single table when that table is cached and written often.
 
 ## Consistency
 
@@ -214,15 +232,13 @@ A cache configured without the `redis` section is rejected when the application 
 
 ## Limits
 
-- **Triggers** that change other tables are not tracked; invalidate those rows with
-  `DB::invalidate()`.
 - **Changes outside the application** stay cached until they expire unless you invalidate them.
 - **Redis Cluster** is not supported: a lookup reads a row's keys and its table's keys with one
   `MGET`. Use a single Redis server; if the application is pointed at another server (a
   replica promoted after a failure), the different `run_id` is handled like a restart.
 - **Query cache eligibility**: see [Query cache](#query-cache); queries that do not qualify run
   against the database.
-- Schema changes made outside the schema builder while workers run are picked up after a reload
+- Schema changes (triggers included) made outside the schema builder while workers run are picked up after a reload
   (`SIGUSR1`) or restart; changes made with the schema builder (`php omnitrix migrate`) are picked
   up immediately.
 - Large bulk updates on cached tables lock and invalidate every affected row; run them in batches
