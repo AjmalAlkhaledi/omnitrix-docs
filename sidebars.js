@@ -23,7 +23,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'Database',
-      items: ['database/getting-started', 'database/query-builder', 'database/migrations', 'database/models', 'database/relationships', 'database/seeding', 'database/row-cache'],
+      items: ['database/getting-started', 'database/query-builder', 'database/migrations', 'database/models', 'database/relationships', 'database/seeding', 'database/factories', 'database/row-cache'],
     },
     {
       type: 'category',
