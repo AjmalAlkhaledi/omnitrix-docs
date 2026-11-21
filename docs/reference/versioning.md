@@ -13,7 +13,7 @@ Omnitrix follows [Semantic Versioning](https://semver.org/). While the version i
 | Minor | `0.2.x` → `0.3.0` | new features **and** breaking changes, each listed under *Upgrading* below and in the changelog |
 | Major | `1.0.0` | from 1.0 on, breaking changes only in major releases |
 
-Require the framework with a caret constraint, such as `"omnitrix/core": "^0.2"`. Composer then
+Require the framework with a caret constraint, such as `"omnitrix/core": "^0.3"`. Composer then
 installs patches automatically and never a new minor version, so an application is never
 upgraded across a breaking change by `composer update`. The application template pins the minor
 version it was written for.
@@ -51,7 +51,10 @@ release.
 
 ## Upgrading
 
-### 0.2 → 0.3 (in development)
+### 0.2 → 0.3
+
+Update the constraint to `"omnitrix/core": "^0.3"`.
+
 
 - `/metrics`: per-worker values (`omnitrix_worker_coroutines`, `omnitrix_event_loop_lag_*`,
   `omnitrix_worker_memory_bytes`) carry a `worker` label, and pool and cache statistics of every
@@ -65,6 +68,11 @@ release.
 - Closures passed to `Redis::withConnection()`, `pipeline()` and `transaction()` receive
   `Redis|RedisCluster`; closures typed `Redis` still run against a single server, but static
   analysis asks for the union.
+- Applications made from the 0.2 template keep working unchanged: the new features are opt-in.
+  To use authentication, e-mail verification and password reset, copy the template's 0.3
+  migrations (`users.password`, `email_verified_at`, `remember_token`, `personal_access_tokens`,
+  `notifications`, `password_reset_tokens`) and its `config/` files, then run
+  `php omnitrix key:generate`. The 0.3 template's `POST /api/users` requires a password.
 
 ### 0.1 → 0.2
 
