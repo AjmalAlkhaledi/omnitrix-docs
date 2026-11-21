@@ -33,7 +33,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'Operations',
-      items: ['operations/runtime', 'operations/scheduling', 'operations/observability', 'operations/deployment', 'operations/testing', 'operations/troubleshooting'],
+      items: ['operations/runtime', 'operations/scheduling', 'operations/maintenance', 'operations/observability', 'operations/deployment', 'operations/testing', 'operations/troubleshooting'],
     },
     {
       type: 'category',
