@@ -32,10 +32,56 @@ $app->group('/api', function ($r) use ($limiter) {
 Identities are request-scoped: concurrent requests with distinct tokens on the same worker
 each see only their own identity.
 
+## Hashing
+
+`Hash` hashes passwords with bcrypt (default) or argon2id, configured in `config/hashing.php`:
+
+```php
+use Omnitrix\Facades\Hash;
+
+$user->password = Hash::make($input['password']);
+
+if (Hash::check($input['password'], $user->password)) {
+    if (Hash::needsRehash($user->password)) {      // settings or driver changed since it was stored
+        $user->update(['password' => Hash::make($input['password'])]);
+    }
+}
+```
+
+`check()` accepts bcrypt and argon2id hashes whatever the current driver, so switching drivers
+keeps existing passwords valid. Hashing is deliberate CPU work (about 50–250 ms at the defaults)
+and holds the worker meanwhile; keep `rounds`/`memory` at values your login rate can afford.
+
+## Encryption
+
+`Crypt` encrypts with AES-256-GCM and the application key. Set the key once per environment:
+
+```bash
+php omnitrix key:generate        # writes APP_KEY=base64:… into .env (keeps an existing key unless --force)
+php omnitrix key:generate --show # prints a key, for secret stores
+```
+
+```php
+use Omnitrix\Encryption\DecryptException;
+use Omnitrix\Facades\Crypt;
+
+$token = Crypt::encrypt(['user' => 10, 'scope' => 'export']); // any JSON value
+try {
+    $data = Crypt::decrypt($token);
+} catch (DecryptException) {
+    // changed, truncated, or encrypted with a key this application does not know
+}
+$secret = Crypt::encryptString('plain text');
+```
+
+Payloads are URL-safe and authenticated: any change is rejected. Each payload names the key that
+encrypted it, so a key can be rotated without breaking existing data — set the new `APP_KEY` and
+list the old one in `app.previous_keys` until data encrypted with it has expired.
+
 ## Checklist
 
 - `APP_DEBUG=false` and `APP_ENV=production` in production.
-- Secrets (database, Redis, tokens) only in the environment, never in the repository.
+- Secrets (database, Redis, tokens, `APP_KEY`) only in the environment, never in the repository.
 - TLS verification of the HTTP client left on (it is on by default).
 - `/metrics` protected by a token or reachable only from the internal network.
 - Rate limits on authentication and other expensive endpoints.
