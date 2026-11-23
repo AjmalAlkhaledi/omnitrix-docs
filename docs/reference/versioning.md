@@ -13,7 +13,7 @@ Omnitrix follows [Semantic Versioning](https://semver.org/). While the version i
 | Minor | `0.2.x` → `0.3.0` | new features **and** breaking changes, each listed under *Upgrading* below and in the changelog |
 | Major | `1.0.0` | from 1.0 on, breaking changes only in major releases |
 
-Require the framework with a caret constraint, such as `"omnitrix/core": "^0.3"`. Composer then
+Require the framework with a caret constraint, such as `"omnitrix/core": "^0.4"`. Composer then
 installs patches automatically and never a new minor version, so an application is never
 upgraded across a breaking change by `composer update`. The application template pins the minor
 version it was written for.
@@ -50,6 +50,25 @@ docs and changelog say what replaces it, and it is removed no earlier than the n
 release.
 
 ## Upgrading
+
+### 0.3 → 0.4
+
+Update the constraint to `"omnitrix/core": "^0.4"`. Nothing else is required; check these
+behaviour changes:
+
+- URLs generated for routes whose parameter pattern accepts `/` (such as `{path:.+}`) keep the
+  slashes instead of `%2F`. Links already sent out with `%2F` still match the route.
+- A presence channel connection no longer receives its own member's `presence.joined`; the
+  member is in `presence.members` on connect.
+- `$request->validate()` also sees uploaded files, so a rule for a field that is uploaded as a
+  file now validates the file.
+- Maintenance mode is always available: `php omnitrix down` answers 503 on every path except
+  `/health/*` and `/metrics`. Add `app.maintenance` (see the template's `config/app.php`) to
+  choose the file path or the `redis` driver.
+
+To use uploads and storage, copy the template's `config/filesystems.php`, create
+`storage/app/private` and `storage/app/public`, and register `StorageRoutes` in
+`routes/api.php`.
 
 ### 0.2 → 0.3
 
